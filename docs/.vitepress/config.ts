@@ -50,7 +50,7 @@ function nav() {
         },
         {
           text: 'Contributing',
-          link: 'https://github.com/gimyboya/prayers.ts/blob/master/.github/CONTRIBUTING.md',
+          link: 'https://github.com/gimyboya/prayers.ts/blob/master/CONTRIBUTING.md',
         },
       ],
     },

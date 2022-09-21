@@ -1,4 +1,3 @@
-import type { FormattedTimeObject } from './types/TimeObject'
 import type { FormatterConfig } from './types/FormatterConfig'
 
 export class Formatter {
@@ -33,13 +32,9 @@ export class Formatter {
     }
   }
 
-  public format(prayerTimeObject: unknown): FormattedTimeObject {
-    // clone the object that is passed to prevent mutation
-    const formattedTimeObject = Object.assign({}, prayerTimeObject)
-    Object.keys(formattedTimeObject).forEach(
-      (key: string) => (formattedTimeObject[key] = this._formatter.format(formattedTimeObject[key]))
-    )
-    return formattedTimeObject
+  public format(): void {
+    // TODO: implement
+    //
   }
 
   public setFormatterOptions(newConfig: Partial<FormatterConfig>) {
