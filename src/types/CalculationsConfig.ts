@@ -80,4 +80,9 @@ export interface CalculationsConfig {
   iqama?: Partial<Iqama>
 }
 
-export type ReactiveCalculationConfig = Omit<CalculationsConfig, 'date'>
+export type ReactiveCalculationsConfig = Omit<CalculationsConfig, 'date'>
+
+export interface FinalCalculationsConfig extends Omit<CalculationsConfig, 'iqama' | 'adjustments'> {
+  adjustments: PrayerAdjustments
+  iqama: Iqama
+}

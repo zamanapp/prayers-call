@@ -3,14 +3,19 @@ import { repeat, repeatWhen } from 'rxjs/operators'
 import { Coordinates, Prayer, Qibla } from 'adhan'
 
 import { BaseCalculator } from './Base'
-import type { CalculationsConfig, ReactiveCalculationConfig } from './types/CalculationsConfig'
+import type {
+  CalculationsConfig,
+  FinalCalculationsConfig,
+  ReactiveCalculationsConfig,
+} from './types/CalculationsConfig'
 import type { PrayerNamesType, PrayersTimeObject, TimeEventObject, TimeObject } from './types/TimeObject'
 import type { CoordinatesObject } from './types/Coordinates'
+import type { Iqama } from './types/Iqama'
 
 // TODO: listen to events in the constructor and refresh the instances in the constructor
 
 export class UseReactiveCalculator extends BaseCalculator {
-  constructor(rConfig: ReactiveCalculationConfig) {
+  constructor(rConfig: ReactiveCalculationsConfig) {
     const config: CalculationsConfig = {
       date: new Date(),
       ...rConfig,
@@ -129,7 +134,7 @@ export class UseReactiveCalculator extends BaseCalculator {
           // calculate the delay needed to issue an iqama event starting from subscription time
           const delay =
             prayerTimes[prayer as keyof PrayersTimeObject].getTime() +
-            this._config.iqama![prayer] * 60000 -
+            (this._config as FinalCalculationsConfig).iqama[prayer as keyof Iqama] * 60000 -
             timeAtSubscription.getTime()
           // if the delay is positive (iqama is in the future) we create a value to emit
           if (delay >= 0) {
