@@ -38,9 +38,13 @@ pnpm add prayers.ts
 
 ### CDN
 
-Prayers.ts can also be added via CDN
+You can use Prayer.ts directly from a CDN via a script tag:
 
-TODO: add CDN instructions
+```html
+<script src="https://unpkg.com/prayers.ts/dist/index.cjs"></script>
+```
+
+Here we are using [unpkg](https://unpkg.com), but you can also use any CDN that serves npm packages, for example [jsdelivr](https://www.jsdelivr.com/) or [cdnjs](https://cdnjs.com/). Of course, you can also download this file and serve it yourself.
 
 ### Deno
 
