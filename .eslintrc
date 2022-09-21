@@ -1,0 +1,8 @@
+{
+  "plugins": ["eslint-plugin-tsdoc"],
+  "extends": ["@antfu", "prettier", "plugin:@typescript-eslint/recommended"],
+  "rules": {
+    "no-console": "warn",
+    "tsdoc/syntax": "warn"
+  }
+}

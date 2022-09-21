@@ -1,0 +1,90 @@
+{
+  "name": "prayers.ts",
+  "type": "module",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.9.0",
+  "description": "",
+  "author": "Gimyboya",
+  "license": "MIT",
+  "funding": "https://github.com/sponsors/gimyboya",
+  "homepage": "https://github.com/gimyboya/prayers.ts#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gimyboya/prayers.ts"
+  },
+  "bugs": "https://github.com/gimyboya/prayers.ts/issues",
+  "keywords": [],
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "*": [
+        "./dist/*",
+        "./dist/index.d.ts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "dev": "unbuild --stub",
+    "lint": "eslint .",
+    "prepublishOnly": "nr build",
+    "semantic-release": "semantic-release",
+    "start": "esno examples/index.ts",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "coverage": "vitest run --coverage",
+    "typecheck": "tsc --noEmit",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.26.1",
+    "@antfu/ni": "^0.17.2",
+    "@antfu/utils": "^0.5.2",
+    "@semantic-release/changelog": "^6.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@types/node": "^18.7.5",
+    "@vitest/coverage-istanbul": "^0.23.2",
+    "@vitest/ui": "^0.23.4",
+    "bumpp": "^8.2.1",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-tsdoc": "^0.2.17",
+    "esno": "^0.16.3",
+    "pnpm": "^7.9.0",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "semantic-release": "^19.0.5",
+    "typescript": "^4.7.4",
+    "unbuild": "^0.8.8",
+    "vite": "^3.0.7",
+    "vitepress": "1.0.0-alpha.15",
+    "vitest": "^0.22.0",
+    "vue": "^3.2.39"
+  },
+  "pnpm": {
+    "peerDependencyRules": {
+      "ignoreMissing": [
+        "@algolia/client-search"
+      ]
+    }
+  },
+  "dependencies": {
+    "adhan": "^4.4.3",
+    "rxjs": "^7.5.6"
+  }
+}

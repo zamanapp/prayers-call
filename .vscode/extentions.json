@@ -1,0 +1,16 @@
+{
+  "recommendations": [
+    "Equinusocio.vsc-community-material-theme",
+    "eamodio.gitlens",
+    "streetsidesoftware.code-spell-checker",
+    "GitHub.vscode-pull-request-github",
+    "usernamehw.errorlens",
+    "dbaeumer.vscode-eslint",
+    "withfig.fig",
+    "wix.vscode-import-cost",
+    "christian-kohler.npm-intellisense",
+    "Gruntfuggly.todo-tree",
+    "esbenp.prettier-vscode",
+    "mattpocock.ts-error-translator"
+  ]
+}
