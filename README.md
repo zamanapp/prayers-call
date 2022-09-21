@@ -1,6 +1,6 @@
 # Prayes.ts
 
-[![NPM version](https://img.shields.io/npm/v/pkg-name?color=a1b858&label=)](https://www.npmjs.com/package/pkg-name)
+[![NPM version](https://img.shields.io/npm/v/prayers.ts?color=a1b858&label=)](https://www.npmjs.com/package/prayers.ts)
 
 Reactive prayer times calculation library for node and the browser built with Typescript
 
@@ -12,13 +12,12 @@ npm install --save prayers.ts
 
 ## Usage
 
-[Documentation]()
+[Documentation](https://prayers-ts.netlify.app)
 
 # Credit
 
-- adhanjs
-- mouhammed Gara
-- Khaled Hussain
+- [Adhanjs](https://github.com/batoulapps/adhan-js)
+- [Khaled Hussain](https://github.com/khalid-hussain)
 
 ## License
 
