@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest'
-import { AsrTime, HighLatitudeRule, Methods, PolarCircleResolution, PrayersTimeCalculator } from '../../src'
+import { AsrTime, HighLatitudeRule, Methods, PolarCircleResolution, UseCalculator } from '../../src'
 
 describe('Configuration at creation time should work properly', () => {
-  const prayerTimeEngine = new PrayersTimeCalculator({
+  const prayerTimeEngine = new UseCalculator({
     date: new Date(),
     latitude: 2.9213,
     longitude: 101.6559,
@@ -43,7 +43,7 @@ describe('Configuration at creation time should work properly', () => {
     expect(prayerTimeEngine.getCalculationOptions().method).toBe(Methods.SINGAPORE)
   })
   it('should accept a custom calculation method', () => {
-    const customPrayerTimeEngine = new PrayersTimeCalculator({
+    const customPrayerTimeEngine = new UseCalculator({
       date: new Date(),
       latitude: 2.9213,
       longitude: 101.6559,

@@ -1,5 +1,6 @@
 export { HighLatitudeRule, PolarCircleResolution } from 'adhan'
 export { UseCalculator } from './Calculator'
+export { UseReactiveCalculator } from './ReactiveCalculator'
 
 // Types export
 export { Methods } from './types/Methods'
