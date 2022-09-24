@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["vitest/importMeta"],
     "target": "es2018",
     "module": "esnext",
     "lib": ["esnext"],

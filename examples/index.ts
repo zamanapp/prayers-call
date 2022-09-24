@@ -3,18 +3,18 @@ import { PrayerNames, UseCalculator } from '../src'
 
 // Cyberjaya location
 const calculator = new UseCalculator({
-  date: new Date(2022, 1, 1),
+  date: new Date(2022, 0, 1),
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.SINGAPORE,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
-
-console.log(calculator.getAllPrayerTimes())
-console.log(calculator.getPrayerTime(PrayerNames.FAJR))
-console.log(calculator.getMiddleOfTheNightTime())
-console.log(calculator.getLastThirdOfTheNightTime())
-console.log(calculator.getCalculationOptions())
+const prayerTimes = calculator.getAllPrayerTimes()
+Object.values(prayerTimes).forEach((date: Date, i) => console.log(Object.keys(prayerTimes)[i], date.toLocaleString()))
+// console.log(calculator.getPrayerTime(PrayerNames.FAJR))
+console.log('Middle', calculator.getMiddleOfTheNightTime().time?.toLocaleString())
+console.log('LastThird', calculator.getLastThirdOfTheNightTime().time?.toLocaleString())
+// console.log(calculator.getCalculationOptions())
 
 const gazaCoordinates = {
   latitude: 31.7782624,

@@ -108,4 +108,38 @@ export class BaseCalculator {
     // return the params of the custom method
     return calculationParams
   }
+
+  protected _refreshPrayerCalculator() {
+    this._config = Object.assign(this._config, {
+      date: new Date(), // refresh the date
+    })
+    const { date, latitude, longitude, method } = this._config as CalculationsConfig
+
+    // create a coordinate object
+    const coordinates = new Coordinates(latitude, longitude)
+
+    // create calculation params based on the method name
+    const calculationParams = this._useMethod(method)
+
+    // creating the calculation object
+    this._prayerTimesCalculator = new PrayerTimes(coordinates, date, calculationParams)
+  }
+
+  protected _refreshQiyamCalculator() {
+    this._config = Object.assign(this._config, {
+      date: new Date(), // refresh the date
+    })
+
+    const { date, latitude, longitude, method } = this._config as CalculationsConfig
+
+    // create a coordinate object
+    const coordinates = new Coordinates(latitude, longitude)
+
+    // create calculation params based on the method name
+    const calculationParams = this._useMethod(method)
+
+    // creating the calculation object
+    const prayerTimesCalculator = new PrayerTimes(coordinates, date, calculationParams)
+    this._qiyamTimesCalculator = new SunnahTimes(prayerTimesCalculator)
+  }
 }

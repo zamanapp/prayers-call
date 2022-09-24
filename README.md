@@ -25,6 +25,7 @@ npm install --save prayers.ts
 
 ## TODO
 
+- add and document a debug mode
 - document the creation of a new Prayer object instance
   - document all the options available to the user
   - list what's the default values

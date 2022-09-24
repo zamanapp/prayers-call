@@ -20,6 +20,17 @@ export enum PrayerNames {
   ISHA = 'isha',
 }
 
+export enum TimesNames {
+  FAJR = 'fajr',
+  SUNRISE = 'sunrise',
+  DHUHR = 'dhuhr',
+  ASR = 'asr',
+  MAGHRIB = 'maghrib',
+  ISHA = 'isha',
+  MIDDLE_OF_THE_NIGHT = 'middleOfTheNight',
+  LAST_THIRD_OF_THE_NIGHT = 'lastThirdOfTheNight',
+}
+
 export interface PrayersTimeObject {
   fajr: Date
   sunrise: Date
