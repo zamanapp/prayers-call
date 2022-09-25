@@ -1,6 +1,7 @@
 import { Observable, defer, merge, timer } from 'rxjs'
-import { delay, repeat, repeatWhen } from 'rxjs/operators'
+import { delay, repeat } from 'rxjs/operators'
 import { Coordinates, Prayer, Qibla } from 'adhan'
+import type { Subscriber } from 'rxjs'
 
 import { BaseCalculator } from './Base'
 import { EventType, TimesNames } from './types/TimeObject'
@@ -23,11 +24,11 @@ export class UseReactiveCalculator extends BaseCalculator {
     }
     super(config)
 
-    this._newSolarDayObserver().subscribe((newDay) => {
+    this._newSolarDayObserver().subscribe(() => {
       this._refreshPrayerCalculator()
     })
 
-    this._newQiyamObserver().subscribe((newQiyam) => {
+    this._newQiyamObserver().subscribe(() => {
       this._refreshQiyamCalculator()
     })
   }
@@ -113,51 +114,56 @@ export class UseReactiveCalculator extends BaseCalculator {
     })
   }
 
-  protected _newQiyamObserver() {
+  protected _newQiyamObserver(): Observable<TimeEventObject> {
     return defer(() => {
       const timeAtSubscription = new Date()
       const nextDay = new Date()
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const lastThirdOfTheNight = new Date(this.getLastThirdOfTheNightTime().time!)
       // get the nearest midnight in future
       nextDay.setHours(24, 0, 0, 0)
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const lastThirdOfTheNight = new Date(this.getLastThirdOfTheNightTime().time!)
       const delayValue =
         nextDay.getTime() -
         timeAtSubscription.getTime() +
         // interval between midnight and last third of the night
         (lastThirdOfTheNight.getTime() - nextDay.getTime())
 
-      return new Observable((subscriber) => {
+      return new Observable((subscriber: Subscriber<TimeEventObject>) => {
         subscriber.next({
           name: TimesNames.LAST_THIRD_OF_THE_NIGHT,
           time: this._qiyamTimesCalculator.lastThirdOfTheNight,
           type: EventType.TRANSIENT,
-        } as TimeEventObject)
+        })
         subscriber.complete()
       }).pipe(delay(delayValue))
     }).pipe(repeat())
   }
 
   // A function that would emit an event every time a prayer time is due
-  private _adhanObserver(): Observable<any> {
-    const prayerTimes = this.getAllPrayerTimes()
+  public adhanObserver(): Observable<TimeEventObject> {
     // we use defer to trigger the observable creation (factory) at subscription time
     return defer(() => {
-      return new Observable((subscriber) => {
-        let noPrayersLeftForToday = true
-        const prayerTimesKeys = Object.keys(prayerTimes)
-        // we capture the time when a subscription happens
-        const timeAtSubscription = new Date()
+      const prayerTimes = this.getAllPrayerTimes()
+      // we capture the time when a subscription happens
+      const timeAtSubscription = new Date()
+      let noPrayersLeftForToday = true
+
+      return new Observable((subscriber: Subscriber<TimeEventObject>) => {
+        const prayerTimesKeys = Object.keys(prayerTimes) as Array<keyof PrayersTimeObject>
         // we create value to emit based on the subscription time
         prayerTimesKeys.forEach((prayer, i) => {
           // calculate the delay needed to issue a prayer event starting from now
-          const delay = prayerTimes[prayer as keyof PrayersTimeObject].getTime() - timeAtSubscription.getTime()
+          const delay = prayerTimes[prayer].getTime() - timeAtSubscription.getTime()
           // if the delay is positive (prayer time is in the future) we create a value to emit
           if (delay >= 0) {
             noPrayersLeftForToday = false
             // we create an event of the the prayer based on the delay
             setTimeout(() => {
-              subscriber.next(prayer)
+              subscriber.next({
+                name: prayer,
+                time: prayerTimes[prayer],
+                type: EventType.ADHAN,
+              })
               // if it's the last prayer we complete
               if (prayer === 'isha') {
                 subscriber.complete()
@@ -166,28 +172,28 @@ export class UseReactiveCalculator extends BaseCalculator {
           }
 
           if (noPrayersLeftForToday && i === prayerTimesKeys.length - 1) {
-            subscriber.next(Prayer.None)
             subscriber.complete()
           }
         })
       })
-    })
+    }).pipe(repeat({ delay: () => this._newSolarDayObserver() }))
   }
 
-  protected _iqamaObserver(): Observable<any> {
-    const prayerTimes = this.getAllPrayerTimes()
+  public iqamaObserver(): Observable<TimeEventObject> {
     // we use defer to trigger the observable creation (factory) at subscription time
     return defer(() => {
-      return new Observable((subscriber) => {
-        let noPrayersLeftForToday = true
-        const prayerTimesKeys = Object.keys(prayerTimes)
-        // we capture the time when a subscription happens
-        const timeAtSubscription = new Date()
+      const prayerTimes = this.getAllPrayerTimes()
+      let noPrayersLeftForToday = true
+      // we capture the time when a subscription happens
+      const timeAtSubscription = new Date()
+
+      return new Observable((subscriber: Subscriber<TimeEventObject>) => {
+        const prayerTimesKeys = Object.keys(prayerTimes) as Array<keyof PrayersTimeObject>
         // we create value to emit based on the subscription time
         prayerTimesKeys.forEach((prayer, i) => {
           // calculate the delay needed to issue an iqama event starting from subscription time
           const delay =
-            prayerTimes[prayer as keyof PrayersTimeObject].getTime() +
+            prayerTimes[prayer].getTime() +
             (this._config as FinalCalculationsConfig).iqama[prayer as keyof Iqama] * 60000 -
             timeAtSubscription.getTime()
           // if the delay is positive (iqama is in the future) we create a value to emit
@@ -195,7 +201,11 @@ export class UseReactiveCalculator extends BaseCalculator {
             noPrayersLeftForToday = false
             // we create an event of the the prayer based on the delay
             setTimeout(() => {
-              subscriber.next(`iqama:${prayer}`)
+              subscriber.next({
+                name: prayer,
+                time: new Date(),
+                type: EventType.IQAMA,
+              })
               // if it's the last prayer we complete
               if (prayer === 'isha') {
                 subscriber.complete()
@@ -204,68 +214,56 @@ export class UseReactiveCalculator extends BaseCalculator {
           }
 
           if (noPrayersLeftForToday && i === prayerTimesKeys.length - 1) {
-            subscriber.next(`iqama:${Prayer.None}`)
             subscriber.complete()
           }
         })
       })
-    })
+    }).pipe(repeat({ delay: () => this._newSolarDayObserver() }))
   }
 
-  protected _middleOfTheNightObserver(): Observable<any> {
-    const middleOfTheNightTime = this._qiyamTimesCalculator.middleOfTheNight
+  public qiyamTimesObserver(): Observable<TimeEventObject> {
     // we use defer to trigger the observable creation (factory) at subscription time
     return defer(() => {
-      return new Observable((subscriber) => {
-        // we capture the time when a subscription happens
-        const timeAtSubscription = new Date()
+      const middleOfTheNightTime = this._qiyamTimesCalculator.middleOfTheNight
+      const lastThirdOfTheNightTime = this._qiyamTimesCalculator.lastThirdOfTheNight
+      // we capture the time when a subscription happens
+      const timeAtSubscription = new Date()
+
+      return new Observable((subscriber: Subscriber<TimeEventObject>) => {
         // calculate the delay needed to issue a middleOfTheNight event starting from now
-        const delay = middleOfTheNightTime.getTime() - timeAtSubscription.getTime()
+        const middleDelay = middleOfTheNightTime.getTime() - timeAtSubscription.getTime()
+        // calculate the delay needed to issue a lastThirdOfTheNight event starting from now
+        const lastDelay = lastThirdOfTheNightTime.getTime() - timeAtSubscription.getTime()
         // if middle of the night time is in the future
-        if (delay >= 0) {
+        if (middleDelay >= 0) {
           // we create an event based on the delay to announce the middle of the night
           setTimeout(() => {
-            subscriber.next('middleOfTheNight')
+            subscriber.next({
+              name: TimesNames.MIDDLE_OF_THE_NIGHT,
+              time: middleOfTheNightTime,
+              type: EventType.TRANSIENT,
+            })
             subscriber.complete()
-          }, delay)
-        } else {
-          subscriber.complete()
+          }, middleDelay)
         }
-      })
-    })
-  }
-
-  protected _LastThirdOfTheNightObserver() {
-    const lastThirdOfTheNightTime = this._qiyamTimesCalculator.lastThirdOfTheNight
-    // we use defer to trigger the observable creation (factory) at subscription time
-    return defer(() => {
-      return new Observable((subscriber) => {
-        // we capture the time when a subscription happens
-        const timeAtSubscription = new Date()
-        // calculate the delay needed to issue a lastThirdOfTheNight event starting from now
-        const delay = lastThirdOfTheNightTime.getTime() - timeAtSubscription.getTime()
-        // if last third of the night time is in the future
-        if (delay >= 0) {
+        if (lastDelay >= 0) {
           // we create an event based on the delay to announce the last third of the night
           setTimeout(() => {
-            subscriber.next('lastThirdOfTheNight')
+            subscriber.next({
+              name: TimesNames.LAST_THIRD_OF_THE_NIGHT,
+              time: lastThirdOfTheNightTime,
+              type: EventType.TRANSIENT,
+            })
             subscriber.complete()
-          }, delay)
-        } else {
-          subscriber.complete()
+          }, lastDelay)
         }
+        // we end the subscription
+        subscriber.complete()
       })
-    })
+    }).pipe(repeat({ delay: () => this._newQiyamObserver() }))
   }
 
-  public listenToPrayerEvents() {
-    return merge(
-      this._adhanObserver(),
-      this._iqamaObserver()
-      // this._middleOfTheNightObserver(),
-      // this._LastThirdOfTheNightObserver()
-    )
-      .pipe(repeatWhen(() => this._newSolarDayObserver()))
-      .pipe(repeat())
+  public prayerEventsObserver() {
+    return merge(this.adhanObserver(), this.iqamaObserver())
   }
 }
