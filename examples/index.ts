@@ -16,13 +16,13 @@ console.log('Middle', calculator.getMiddleOfTheNightTime().time?.toLocaleString(
 console.log('LastThird', calculator.getLastThirdOfTheNightTime().time?.toLocaleString())
 // console.log(calculator.getCalculationOptions())
 
-const gazaCoordinates = {
+const alAqsaCoordinates = {
   latitude: 31.7782624,
   longitude: 35.2335256,
 }
 
 console.log(calculator.getQiblaDirection())
-console.log(calculator.getQiblaDirection(gazaCoordinates))
+console.log(calculator.getQiblaDirection(alAqsaCoordinates))
 // const formatter = new Formatter({
 //   locale: 'en-US',
 //   timeZone: 'Asia/Kuala_Lumpur',

@@ -8,5 +8,6 @@ export default defineConfig({
     coverage: {
       provider: 'istanbul', // or 'c8'
     },
+    watch: false,
   },
 })

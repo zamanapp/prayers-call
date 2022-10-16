@@ -133,11 +133,11 @@ const calculator = new UseCalculator({
 
 calculator.getQiblaDirection() // will return: 292.6457605278075
 
-const gazaCoordinates = {
+const alAqsaCoordinates = {
   latitude: 31.7782624,
   longitude: 35.2335256,
 }
-calculator.getQiblaDirection(gazaCoordinates) // will return: 157.29924281528764
+calculator.getQiblaDirection(alAqsaCoordinates) // will return: 157.29924281528764
 ```
 
 ### getCalculationOptions
@@ -185,14 +185,14 @@ const calculator = new UseCalculator({
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
-const gazaCoordinates = {
+const alAqsaCoordinates = {
   latitude: 31.7782624,
   longitude: 35.2335256,
 }
 
-// now the prayer times are calculated for Gaza
+// now the prayer times are calculated for alAqsa
 calculator.setCalculationOptions({
-  latitude: gazaCoordinates.latitude,
-  longitude: gazaCoordinates.longitude,
+  latitude: alAqsaCoordinates.latitude,
+  longitude: alAqsaCoordinates.longitude,
 })
 ```
