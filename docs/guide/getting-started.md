@@ -12,7 +12,11 @@ Prayers.ts is currently a WIP status. It is already able to make one time calcul
 
 ## Trying Prayers.ts online
 
-TODO: add a stackblitz link here
+You can try Prayer.ts online on [StackBlitz](https://stackblitz.com/edit/prayer-ts?file=src%2Fmain.ts,src%2FPrayerTimes.ts&terminal=dev). It runs Prayer.ts directly in the browser, and it is almost identical to the local setup but doesn't require installing anything on your machine.
+
+::: tip
+The version installed on StackBlitz might be out of date. if you want to try the latest version you can simply update the dependency in the `package.json`
+:::
 
 ## Adding Prayers.ts to your project
 
@@ -50,7 +54,15 @@ Here we are using [unpkg](https://unpkg.com), but you can also use any CDN that 
 
 Unlike Node, Deno relies on direct URL imports instead of a package manager like NPM. Prayers.ts is available on [deno.land/x](https://deno.land/x). The latest version can be imported like so:
 
-TODO: add deno instructions
+```ts
+import { UseCalculator } from 'https://deno.land/x/prayers'
+```
+
+or a specific version:
+
+```ts
+import { UseCalculator } from 'https://deno.land/x/prayers@v1.1.0'
+```
 
 ::: tip
 The rest of this documentation assumes you are using npm/yarn/pnpm and importing directly from the "prayer.ts" package.

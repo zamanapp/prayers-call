@@ -2,7 +2,7 @@
 
 The Prayers.ts library provides two different types of calculators, a basic one time use calculator that can be used to calculate prayer times for any date (past, current and future). and a reactive realtime calculator that can be used to track events (adhan, iqama and other events) in realtime.
 
-## One time Calculator
+## Static Calculator
 
 The `UseCalculator` accepts a date in it's initialization allowing you to get prayer times for any past, current or future date. This calculator however is not reactive. if you need realtime reactive prayer times calculations then read the [RealTime Reactive Calculator](#realtime-reactive-calculator) section.
 
@@ -27,7 +27,28 @@ You can find all the configuration reference in the [Config](../config.md)
 
 ## RealTime Reactive Calculator
 
-WIP
+The `UseReactiveCalculator` provides a number of methods to get realtime updates on prayer times. The event approach can help you trigger certain logic at specific times.
+
+```ts
+import { Methods, UseReactiveCalculator } from 'prayer.ts'
+
+// calculations for Cyberjaya
+const reactiveCalculator = new UseReactiveCalculator({
+  latitude: 2.9213,
+  longitude: 101.6559,
+  method: Methods.SINGAPORE,
+  adjustments: { dhuhr: 3, asr: 3, isha: 2 },
+})
+
+reactiveCalculator.adhanObserver().subscribe({
+  next(value: TimeEventObject) {
+    console.log(`Time for ${value.name} prayer entered`)
+  },
+  error(err) {
+    console.error('An error occurred: ', err)
+  },
+})
+```
 
 For all the methods available to use with `UseReactiveCalculator` check the [Reactive Calculator](./reactive-calculator.md).
 

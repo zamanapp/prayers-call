@@ -1,6 +1,7 @@
 import { Methods } from '../src/types/Methods'
-import { PrayerNames, UseCalculator } from '../src'
-
+import { PrayerNames, UseCalculator, UseReactiveCalculator } from '../src'
+import type { TimeEventObject } from '../src'
+import { TimesNames } from '../src/types/TimeObject'
 // Cyberjaya location
 const calculator = new UseCalculator({
   date: new Date(2022, 0, 1),
@@ -32,14 +33,33 @@ console.log(calculator.getQiblaDirection(alAqsaCoordinates))
 //   hour12: true,
 // })
 
-// calculator.listenToAdhan().subscribe({
-//   next(x: any) {
-//     console.log('got value ', x)
-//   },
-//   error(err: any) {
-//     console.error('something wrong occurred: ', err)
-//   },
-//   complete() {
-//     console.log('done')
-//   },
-// })
+const reactiveCalculator = new UseReactiveCalculator({
+  latitude: 2.9213,
+  longitude: 101.6559,
+  method: Methods.SINGAPORE,
+  adjustments: { dhuhr: 3, asr: 3, isha: 2 },
+})
+
+reactiveCalculator.adhanObserver().subscribe({
+  next(value: TimeEventObject) {
+    console.log(`Time for ${value.name}`)
+  },
+  error(err) {
+    console.error('An error occurred: ', err)
+  },
+})
+
+reactiveCalculator.qiyamTimesObserver().subscribe({
+  next(value: TimeEventObject) {
+    if (value.name === TimesNames.MIDDLE_OF_THE_NIGHT) {
+      // notify Abu bakr
+    }
+
+    if (value.name === TimesNames.LAST_THIRD_OF_THE_NIGHT) {
+      // notify Umar
+    }
+  },
+  error(err) {
+    console.error('An error occurred: ', err)
+  },
+})

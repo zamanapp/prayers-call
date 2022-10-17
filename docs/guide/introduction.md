@@ -12,7 +12,7 @@ Prayers.ts also focuses on ease of use. we wanted to make the Api straightforwar
 
 When working with other solutions out there we couldn't find a solution that offers reactivity as a first citizen feature. because prayer times are time related and are events that happen across time it is very befitting to use reactivity as the paradigm to solve the issue of recalculating the prayer times each time.
 
-It is also worth noting that if we calculate other sunnah times like the last third of the night (which Prayers.ts supports). deciding when to recalculates becomes less trivial.
+This library provides reactivity for Qiyam times as well.
 
 Prayers.ts also aims to be accurate where reactions are triggered only when they are needed.
 
@@ -20,10 +20,10 @@ Prayers.ts also aims to be accurate where reactions are triggered only when they
 
 - Tree shakable
 - Past, current and future time calculations
-- Event based (reactive) Adhan, Iqama and Sunnah time calculations
+- Qiyam prayers time related calculations
+- Event based (reactive) Adhan, Iqama and Qiyam time calculations
 - Accurate Prayer times calculation
-- Multiple calculation methods
+- Multiple pre-defined calculation methods
 - Granular controls over calculations
-- Sunnah prayers time related calculations
 - Qibla calculation
 - I18n and Date formatting supported
