@@ -1,6 +1,6 @@
 # Prayes.ts
 
-[![NPM version](https://img.shields.io/npm/v/prayers.ts?color=a1b858&label=)](https://www.npmjs.com/package/prayers.ts)
+[![npm version](https://badge.fury.io/js/prayers.ts.svg)](https://badge.fury.io/js/prayers.ts)
 
 Reactive prayer times calculation library for node and the browser built with Typescript
 
