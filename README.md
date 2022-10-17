@@ -32,7 +32,6 @@ npm install --save prayers.ts
   - list what's the meaning of each option
   - list the available methods
   - list the params of these methods
-- document how to use the Prayer object instance
 - document how to use the Formatter object instance
   - I18n
 - document how to build your own formatter
