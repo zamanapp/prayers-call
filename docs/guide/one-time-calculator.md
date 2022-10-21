@@ -23,10 +23,10 @@ The calculator offer a number of methods to help you get Prayer times, Qiyam tim
 
 ### getAllPrayerTimes
 
-This method returns a [`PrayersTimeObject`]() containing prayer names as it's keys and their time as values. the time is a `Date` object.
+This method returns a array of [`TimeObject`]() containing the prayer name and it's time. the time is a `Date` object.
 
 ::: info
-Sunrise time is included in the `PrayersTimeObject`
+Sunrise time object is included in the array
 :::
 
 ```ts
@@ -44,14 +44,32 @@ const calculator = new UseCalculator({
 calculator.getAllPrayerTimes()
 // will return:
 /*
- * {
-  fajr: 2022-01-31T22:07:00.000Z,
-  sunrise: 2022-01-31T23:27:00.000Z,
-  dhuhr: 2022-02-01T05:31:00.000Z,
-  asr: 2022-02-01T08:53:00.000Z,
-  maghrib: 2022-02-01T11:27:00.000Z,
-  isha: 2022-02-01T12:41:00.000Z
-}
+ * [
+    {
+      name: "fajr",
+      time: 2022-01-31T22:07:00.000Z,
+    },
+    {
+      name: "sunrise",
+      time: 2022-01-31T23:27:00.000Z,
+    },
+    {
+      name: "dhuhr"
+      time: 2022-02-01T05:31:00.000Z,
+    },
+    {
+      name: "asr"
+      time: 2022-02-01T08:53:00.000Z,
+    },
+    {
+      name: "maghrib"
+      time: 2022-02-01T11:27:00.000Z,
+    },
+    {
+      name: "isha"
+      time: 2022-02-01T12:41:00.000Z
+    }
+  ]
  */
 ```
 

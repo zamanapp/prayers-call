@@ -2,22 +2,40 @@ import { Coordinates, Prayer, Qibla } from 'adhan'
 import { BaseCalculator } from './Base'
 import type { CalculationsConfig } from './types/CalculationsConfig'
 import type { CoordinatesObject } from './types/Coordinates'
-import type { PrayerNamesType, PrayersTimeObject, TimeObject } from './types/TimeObject'
+import type { PrayerNamesType, TimeObject } from './types/TimeObject'
 
 export class UseCalculator extends BaseCalculator {
   constructor(config: CalculationsConfig) {
     super(config)
   }
 
-  public getAllPrayerTimes(): PrayersTimeObject {
-    return {
-      [Prayer.Fajr]: this._prayerTimesCalculator.fajr,
-      [Prayer.Sunrise]: this._prayerTimesCalculator.sunrise,
-      [Prayer.Dhuhr]: this._prayerTimesCalculator.dhuhr,
-      [Prayer.Asr]: this._prayerTimesCalculator.asr,
-      [Prayer.Maghrib]: this._prayerTimesCalculator.maghrib,
-      [Prayer.Isha]: this._prayerTimesCalculator.isha,
-    }
+  public getAllPrayerTimes(): TimeObject[] {
+    return [
+      {
+        name: Prayer.Fajr,
+        time: this._prayerTimesCalculator.fajr,
+      },
+      {
+        name: Prayer.Sunrise,
+        time: this._prayerTimesCalculator.sunrise,
+      },
+      {
+        name: Prayer.Dhuhr,
+        time: this._prayerTimesCalculator.dhuhr,
+      },
+      {
+        name: Prayer.Asr,
+        time: this._prayerTimesCalculator.asr,
+      },
+      {
+        name: Prayer.Maghrib,
+        time: this._prayerTimesCalculator.maghrib,
+      },
+      {
+        name: Prayer.Isha,
+        time: this._prayerTimesCalculator.isha,
+      },
+    ]
   }
 
   public getPrayerTime(prayer: PrayerNamesType): Date | null {

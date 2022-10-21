@@ -38,6 +38,58 @@ const reactiveCalculator = new UseReactiveCalculator({
 reactiveCalculator.getNextPrayerTime() // will return: ""
 ```
 
+### getAllPrayerTimes
+
+This method returns a array of [`TimeObject`]() containing the prayer name and it's time. the time is a `Date` object.
+
+::: info
+Sunrise time object is included in the array
+:::
+
+```ts
+import { Methods, UseCalculator } from 'prayer.ts'
+
+// calculations for Cyberjaya
+const calculator = new UseCalculator({
+  date: new Date(2022, 1, 1),
+  latitude: 2.9213,
+  longitude: 101.6559,
+  method: Methods.SINGAPORE,
+  adjustments: { dhuhr: 3, asr: 3, isha: 2 },
+})
+
+calculator.getAllPrayerTimes()
+// will return:
+/*
+ * [
+    {
+      name: "fajr",
+      time: 2022-01-31T22:07:00.000Z,
+    },
+    {
+      name: "sunrise",
+      time: 2022-01-31T23:27:00.000Z,
+    },
+    {
+      name: "dhuhr"
+      time: 2022-02-01T05:31:00.000Z,
+    },
+    {
+      name: "asr"
+      time: 2022-02-01T08:53:00.000Z,
+    },
+    {
+      name: "maghrib"
+      time: 2022-02-01T11:27:00.000Z,
+    },
+    {
+      name: "isha"
+      time: 2022-02-01T12:41:00.000Z
+    }
+  ]
+ */
+```
+
 ### adhanObserver
 
 This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method can be subscribed to for prayer times events (Adhan).

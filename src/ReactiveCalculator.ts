@@ -10,7 +10,7 @@ import type {
   FinalCalculationsConfig,
   ReactiveCalculationsConfig,
 } from './types/CalculationsConfig'
-import type { PrayerNamesType, PrayersTimeObject, TimeEventObject, TimeObject } from './types/TimeObject'
+import type { PrayerNamesType, TimeEventObject, TimeObject } from './types/TimeObject'
 import type { CoordinatesObject } from './types/Coordinates'
 import type { Iqama } from './types/Iqama'
 
@@ -47,15 +47,33 @@ export class UseReactiveCalculator extends BaseCalculator {
     }
   }
 
-  public getAllPrayerTimes(): PrayersTimeObject {
-    return {
-      [Prayer.Fajr]: this._prayerTimesCalculator.fajr,
-      [Prayer.Sunrise]: this._prayerTimesCalculator.sunrise,
-      [Prayer.Dhuhr]: this._prayerTimesCalculator.dhuhr,
-      [Prayer.Asr]: this._prayerTimesCalculator.asr,
-      [Prayer.Maghrib]: this._prayerTimesCalculator.maghrib,
-      [Prayer.Isha]: this._prayerTimesCalculator.isha,
-    }
+  public getAllPrayerTimes(): TimeObject[] {
+    return [
+      {
+        name: Prayer.Fajr,
+        time: this._prayerTimesCalculator.fajr,
+      },
+      {
+        name: Prayer.Sunrise,
+        time: this._prayerTimesCalculator.sunrise,
+      },
+      {
+        name: Prayer.Dhuhr,
+        time: this._prayerTimesCalculator.dhuhr,
+      },
+      {
+        name: Prayer.Asr,
+        time: this._prayerTimesCalculator.asr,
+      },
+      {
+        name: Prayer.Maghrib,
+        time: this._prayerTimesCalculator.maghrib,
+      },
+      {
+        name: Prayer.Isha,
+        time: this._prayerTimesCalculator.isha,
+      },
+    ]
   }
 
   public getPrayerTime(prayer: PrayerNamesType): Date | null {
@@ -149,29 +167,30 @@ export class UseReactiveCalculator extends BaseCalculator {
       let noPrayersLeftForToday = true
 
       return new Observable((subscriber: Subscriber<TimeEventObject>) => {
-        const prayerTimesKeys = Object.keys(prayerTimes) as Array<keyof PrayersTimeObject>
         // we create value to emit based on the subscription time
-        prayerTimesKeys.forEach((prayer, i) => {
+        prayerTimes.forEach((prayer, i) => {
           // calculate the delay needed to issue a prayer event starting from now
-          const delay = prayerTimes[prayer].getTime() - timeAtSubscription.getTime()
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          const delay = prayer.time!.getTime() - timeAtSubscription.getTime()
           // if the delay is positive (prayer time is in the future) we create a value to emit
           if (delay >= 0) {
             noPrayersLeftForToday = false
             // we create an event of the the prayer based on the delay
             setTimeout(() => {
               subscriber.next({
-                name: prayer,
-                time: prayerTimes[prayer],
+                name: prayer.name,
+                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+                time: prayer.time!,
                 type: EventType.ADHAN,
               })
               // if it's the last prayer we complete
-              if (prayer === 'isha') {
+              if (prayer.name === 'isha') {
                 subscriber.complete()
               }
             }, delay)
           }
 
-          if (noPrayersLeftForToday && i === prayerTimesKeys.length - 1) {
+          if (noPrayersLeftForToday && i === prayerTimes.length - 1) {
             subscriber.complete()
           }
         })
@@ -188,13 +207,13 @@ export class UseReactiveCalculator extends BaseCalculator {
       const timeAtSubscription = new Date()
 
       return new Observable((subscriber: Subscriber<TimeEventObject>) => {
-        const prayerTimesKeys = Object.keys(prayerTimes) as Array<keyof PrayersTimeObject>
         // we create value to emit based on the subscription time
-        prayerTimesKeys.forEach((prayer, i) => {
+        prayerTimes.forEach((prayer, i) => {
           // calculate the delay needed to issue an iqama event starting from subscription time
           const delay =
-            prayerTimes[prayer].getTime() +
-            (this._config as FinalCalculationsConfig).iqama[prayer as keyof Iqama] * 60000 -
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+            prayer.time!.getTime() +
+            (this._config as FinalCalculationsConfig).iqama[prayer.name as keyof Iqama] * 60000 -
             timeAtSubscription.getTime()
           // if the delay is positive (iqama is in the future) we create a value to emit
           if (delay >= 0) {
@@ -202,18 +221,18 @@ export class UseReactiveCalculator extends BaseCalculator {
             // we create an event of the the prayer based on the delay
             setTimeout(() => {
               subscriber.next({
-                name: prayer,
+                name: prayer.name,
                 time: new Date(),
                 type: EventType.IQAMA,
               })
               // if it's the last prayer we complete
-              if (prayer === 'isha') {
+              if (prayer.name === 'isha') {
                 subscriber.complete()
               }
             }, delay)
           }
 
-          if (noPrayersLeftForToday && i === prayerTimesKeys.length - 1) {
+          if (noPrayersLeftForToday && i === prayerTimes.length - 1) {
             subscriber.complete()
           }
         })
