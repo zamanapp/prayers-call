@@ -1,7 +1,7 @@
 import { Observable, defer, merge, timer } from 'rxjs'
 import { delay, repeat } from 'rxjs/operators'
 import { Coordinates, Prayer, Qibla } from 'adhan'
-import type { Subscriber } from 'rxjs'
+import type { Subscriber, Subscription } from 'rxjs'
 
 import { BaseCalculator } from './Base'
 import { EventType, TimesNames } from './types/TimeObject'
@@ -17,20 +17,30 @@ import type { Iqama } from './types/Iqama'
 // TODO: create a logger and use debug mode to log a message
 
 export class UseReactiveCalculator extends BaseCalculator {
+  private _solarDaySubscription: Subscription | undefined
+  private _qiyamSubscription: Subscription | undefined
+
   constructor(rConfig: ReactiveCalculationsConfig) {
     const config: CalculationsConfig = {
       date: new Date(),
       ...rConfig,
     }
     super(config)
+  }
 
-    this._newSolarDayObserver().subscribe(() => {
+  public init() {
+    this._solarDaySubscription = this.newSolarDayObserver().subscribe(() => {
       this._refreshPrayerCalculator()
     })
 
-    this._newQiyamObserver().subscribe(() => {
+    this._qiyamSubscription = this.newQiyamObserver().subscribe(() => {
       this._refreshQiyamCalculator()
     })
+  }
+
+  public destroy() {
+    this._solarDaySubscription?.unsubscribe()
+    this._qiyamSubscription?.unsubscribe()
   }
 
   public getCurrentPrayerTime(): TimeObject {
@@ -118,7 +128,7 @@ export class UseReactiveCalculator extends BaseCalculator {
    * this function is use to refresh the calculator
    * @returns
    */
-  protected _newSolarDayObserver(): Observable<number> {
+  public newSolarDayObserver(): Observable<number> {
     return defer(() => {
       const timeAtSubscription = new Date()
       const nextDay = new Date()
@@ -132,7 +142,7 @@ export class UseReactiveCalculator extends BaseCalculator {
     })
   }
 
-  protected _newQiyamObserver(): Observable<TimeEventObject> {
+  public newQiyamObserver(): Observable<TimeEventObject> {
     return defer(() => {
       const timeAtSubscription = new Date()
       const nextDay = new Date()
@@ -195,7 +205,7 @@ export class UseReactiveCalculator extends BaseCalculator {
           }
         })
       })
-    }).pipe(repeat({ delay: () => this._newSolarDayObserver() }))
+    }).pipe(repeat({ delay: () => this.newSolarDayObserver() }))
   }
 
   public iqamaObserver(): Observable<TimeEventObject> {
@@ -237,7 +247,7 @@ export class UseReactiveCalculator extends BaseCalculator {
           }
         })
       })
-    }).pipe(repeat({ delay: () => this._newSolarDayObserver() }))
+    }).pipe(repeat({ delay: () => this.newSolarDayObserver() }))
   }
 
   public qiyamTimesObserver(): Observable<TimeEventObject> {
@@ -279,7 +289,7 @@ export class UseReactiveCalculator extends BaseCalculator {
         // we end the subscription
         subscriber.complete()
       })
-    }).pipe(repeat({ delay: () => this._newQiyamObserver() }))
+    }).pipe(repeat({ delay: () => this.newQiyamObserver() }))
   }
 
   public prayerEventsObserver() {

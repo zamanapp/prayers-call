@@ -12,18 +12,13 @@ export const expectedMarbleGenerator = (
     throw new Error('Time range is negative or zero')
   }
   const prayerTimes = prayerTimeEngine.getAllPrayerTimes()
-  Object.keys(prayerTimes).forEach((prayer, index) => {
-    console.log(
-      index,
-      prayer,
-      prayerTimes[prayer as keyof PrayersTimeObject].toTimeString(),
-      prayerTimes[prayer as keyof PrayersTimeObject].toDateString()
-    )
+  prayerTimes.forEach((prayer) => {
+    console.log(index, prayer.name, prayer.time!.toTimeString(), prayer.time!.toDateString())
   })
   const iqamaTimes = prayerTimeEngine.getCalculationOptions().iqama as Iqama
-  Object.keys(prayerTimes).forEach((prayer) => {
+  prayerTimes.forEach((prayer) => {
     // calculate the prayer and iqama delay for each prayer
-    let prayerDelay = prayerTimes[prayer as keyof PrayersTimeObject].getTime() - now.getTime()
+    let prayerDelay = prayer.time!.getTime() - now.getTime()
     if (prayerDelay > 0) {
       // move the time forward to prayer time
       now.setTime(now.getTime() + prayerDelay)
@@ -36,11 +31,8 @@ export const expectedMarbleGenerator = (
       index++
     }
     let iqamaDelay = 0
-    if (prayer !== 'sunrise') {
-      iqamaDelay =
-        prayerTimes[prayer as keyof PrayersTimeObject].getTime() +
-        iqamaTimes[prayer as keyof Iqama] * 60000 -
-        now.getTime()
+    if (prayer.name !== 'sunrise') {
+      iqamaDelay = prayer.time!.getTime() + iqamaTimes[prayer.name as keyof Iqama] * 60000 - now.getTime()
       if (iqamaDelay > 0) {
         // move the time forward to iqama time
         now.setTime(now.getTime() + iqamaDelay)

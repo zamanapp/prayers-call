@@ -11,7 +11,7 @@ const calculator = new UseCalculator({
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 const prayerTimes = calculator.getAllPrayerTimes()
-Object.values(prayerTimes).forEach((date: Date, i) => console.log(Object.keys(prayerTimes)[i], date.toLocaleString()))
+prayerTimes.forEach((prayer) => console.log(prayer.name, prayer.time!.toLocaleString()))
 // console.log(calculator.getPrayerTime(PrayerNames.FAJR))
 console.log('Middle', calculator.getMiddleOfTheNightTime().time?.toLocaleString())
 console.log('LastThird', calculator.getLastThirdOfTheNightTime().time?.toLocaleString())
