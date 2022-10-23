@@ -1,9 +1,9 @@
 import { Methods } from '../src/types/Methods'
-import { PrayerNames, UseCalculator, UseReactiveCalculator } from '../src'
+import { PrayerNames, ReactiveCalculator, StaticCalculator } from '../src'
 import type { TimeEventObject } from '../src'
 import { TimesNames } from '../src/types/TimeObject'
 // Cyberjaya location
-const calculator = new UseCalculator({
+const calculator = new StaticCalculator({
   date: new Date(2022, 0, 1),
   latitude: 2.9213,
   longitude: 101.6559,
@@ -33,7 +33,7 @@ console.log(calculator.getQiblaDirection(alAqsaCoordinates))
 //   hour12: true,
 // })
 
-const reactiveCalculator = new UseReactiveCalculator({
+const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.SINGAPORE,

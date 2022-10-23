@@ -55,13 +55,13 @@ Here we are using [unpkg](https://unpkg.com), but you can also use any CDN that 
 Unlike Node, Deno relies on direct URL imports instead of a package manager like NPM. Prayers.ts is available on [deno.land/x](https://deno.land/x). The latest version can be imported like so:
 
 ```ts
-import { UseCalculator } from 'https://deno.land/x/prayers'
+import { StaticCalculator } from 'https://deno.land/x/prayers'
 ```
 
 or a specific version:
 
 ```ts
-import { UseCalculator } from 'https://deno.land/x/prayers@v1.1.0'
+import { StaticCalculator } from 'https://deno.land/x/prayers@v1.1.0'
 ```
 
 ::: tip

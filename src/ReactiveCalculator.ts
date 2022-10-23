@@ -16,7 +16,7 @@ import type { Iqama } from './types/Iqama'
 
 // TODO: create a logger and use debug mode to log a message
 
-export class UseReactiveCalculator extends BaseCalculator {
+export class ReactiveCalculator extends BaseCalculator {
   private _solarDaySubscription: Subscription | undefined
   private _qiyamSubscription: Subscription | undefined
 

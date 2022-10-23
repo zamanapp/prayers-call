@@ -5,10 +5,10 @@ The reactive calculator is a work in progress and the documentation here and the
 ### init
 
 ```ts
-import { Methods, UseReactiveCalculator } from 'prayer.ts'
+import { Methods, ReactiveCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const reactiveCalculator = new UseReactiveCalculator({
+const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.SINGAPORE,
@@ -28,10 +28,10 @@ if the `init` function is not invoked the reactive calculator will remain reacti
 Invoking the `destroy` function will let the calculator unsubscribe from the subscriptions it invoked via the `init` function and avoid memory leaks.
 
 ```ts
-import { Methods, UseReactiveCalculator } from 'prayer.ts'
+import { Methods, ReactiveCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const reactiveCalculator = new UseReactiveCalculator({
+const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.SINGAPORE,
@@ -47,10 +47,10 @@ reactiveCalculator.destroy() // clean up subscriptions
 Based on the current time this method returns a [`TimeObject`]() containing the `name` of the current prayer and it's Adhan time as a `time` property. if the current time is passed `isha` time it will return `{ name: "none", time: null }`.
 
 ```ts
-import { Methods, UseReactiveCalculator } from 'prayer.ts'
+import { Methods, ReactiveCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const reactiveCalculator = new UseReactiveCalculator({
+const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.SINGAPORE,
@@ -67,10 +67,10 @@ reactiveCalculator.getCurrentPrayerTime() // will return: ""
 Based on the current time this method returns a [`TimeObject`]() of the next prayer. if the current prayer is `"isha"` the output will be `{ name: "none", time: null }`.
 
 ```ts
-import { Methods, UseReactiveCalculator } from 'prayer.ts'
+import { Methods, ReactiveCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const reactiveCalculator = new UseReactiveCalculator({
+const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.SINGAPORE,
@@ -90,10 +90,10 @@ Sunrise time object is included in the array
 :::
 
 ```ts
-import { Methods, UseReactiveCalculator } from 'prayer.ts'
+import { Methods, ReactiveCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const reactiveCalculator = new UseReactiveCalculator({
+const reactiveCalculator = new ReactiveCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
@@ -139,10 +139,10 @@ reactiveCalculator.getAllPrayerTimes()
 This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method can be subscribed to for prayer times events (Adhan).
 
 ```ts
-import { Methods, UseReactiveCalculator } from 'prayer.ts'
+import { Methods, ReactiveCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const reactiveCalculator = new UseReactiveCalculator({
+const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.SINGAPORE,
@@ -170,10 +170,10 @@ subscription.unsubscribe()
 This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method can be subscribed to for prayer Iqama times events.
 
 ```ts
-import { Methods, UseReactiveCalculator } from 'prayer.ts'
+import { Methods, ReactiveCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const reactiveCalculator = new UseReactiveCalculator({
+const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.SINGAPORE,
@@ -197,7 +197,7 @@ subscription.unsubscribe()
 ```
 
 ::: tip
-You can adjust how much time is given before each iqama in the `UseReactiveCalculator` config object. refer to the [Config](../config.md) section to know more.
+You can adjust how much time is given before each iqama in the `ReactiveCalculator` config object. refer to the [Config](../config.md) section to know more.
 :::
 
 ### qiyamTimesObserver
@@ -205,10 +205,10 @@ You can adjust how much time is given before each iqama in the `UseReactiveCalcu
 This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method can be subscribed to for Qiyam times events (The middle of the night and the last third of the night).
 
 ```ts
-import { Methods, UseReactiveCalculator } from 'prayer.ts'
+import { Methods, ReactiveCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const reactiveCalculator = new UseReactiveCalculator({
+const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.SINGAPORE,

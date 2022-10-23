@@ -4,7 +4,7 @@ import type { CalculationsConfig } from './types/CalculationsConfig'
 import type { CoordinatesObject } from './types/Coordinates'
 import type { PrayerNamesType, TimeObject } from './types/TimeObject'
 
-export class UseCalculator extends BaseCalculator {
+export class StaticCalculator extends BaseCalculator {
   constructor(config: CalculationsConfig) {
     super(config)
   }

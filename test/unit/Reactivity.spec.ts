@@ -3,12 +3,12 @@ import { TestScheduler } from 'rxjs/testing'
 // import { jumpToTime, shiftTimeBy, resetTime } from 'time-fast-forward';
 // import { travel, reset } from 'timekeeper';
 
-import { AsrTime, HighLatitudeRule, Methods, PolarCircleResolution, UseReactiveCalculator } from '../../src'
+import { AsrTime, HighLatitudeRule, Methods, PolarCircleResolution, ReactiveCalculator } from '../../src'
 import { expectedMarbleGenerator } from './TestsHelper'
 
 describe('Reactive prayer events should be fired properly', () => {
   let testScheduler: TestScheduler
-  let prayerTimeEngine: UseReactiveCalculator
+  let prayerTimeEngine: ReactiveCalculator
   // understanding timers in jest is crucial: https://jestjs.io/docs/jest-object#mock-timers
   beforeEach(() => {
     testScheduler = new TestScheduler((actual, expected) => {
@@ -33,7 +33,7 @@ describe('Reactive prayer events should be fired properly', () => {
 
       testScheduler.run(({ expectObservable }) => {
         // console.log('Starting...', now.toTimeString(), now.toDateString())
-        prayerTimeEngine = new UseReactiveCalculator({
+        prayerTimeEngine = new ReactiveCalculator({
           latitude: 2.9213,
           longitude: 101.6559,
           method: Methods.SINGAPORE,

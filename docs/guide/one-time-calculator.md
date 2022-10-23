@@ -1,12 +1,12 @@
 # Calculator
 
-The `UseCalculator` accepts a date in it's initialization allowing you to get prayer times for any past, current or future date.
+The `StaticCalculator` accepts a date in it's initialization allowing you to get prayer times for any past, current or future date.
 
 ```ts
-import { Methods, UseCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya on Jan 1st 2022
-const calculator = new UseCalculator({
+const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
@@ -30,10 +30,10 @@ Sunrise time object is included in the array
 :::
 
 ```ts
-import { Methods, UseCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const calculator = new UseCalculator({
+const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
@@ -78,10 +78,10 @@ calculator.getAllPrayerTimes()
 Get a specific Prayer time based on the date used to initialize the calculator. this method returns a `Date` object and accept a `prayer` parameter of type [`PrayerNames`]().
 
 ```ts
-import { Methods, PrayerNames, UseCalculator } from 'prayer.ts'
+import { Methods, PrayerNames, StaticCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const calculator = new UseCalculator({
+const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
@@ -98,10 +98,10 @@ calculator.getPrayerTime(PrayerNames.FAJR)
 Return the time of the middle of the night based on the moon. The return type is a `Date` object. These calculations are useful for Qiyam.
 
 ```ts
-import { Methods, UseCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const calculator = new UseCalculator({
+const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
@@ -118,10 +118,10 @@ calculator.getMiddleOfTheNightTime()
 Return the time of the last third of the night based on the moon. The return type is a `Date` object. These calculations are useful for Qiyam.
 
 ```ts
-import { Methods, UseCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const calculator = new UseCalculator({
+const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
@@ -138,10 +138,10 @@ calculator.getLastThirdOfTheNightTime()
 The Qibla direction method return the direction in degrees from North of the Qibla. the return type is a `number`. By default this method will use the initialization coordinates but can accept an optional param of `CoordinatesObject` type.
 
 ```ts
-import { Methods, UseCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const calculator = new UseCalculator({
+const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
@@ -163,10 +163,10 @@ calculator.getQiblaDirection(alAqsaCoordinates) // will return: 157.299242815287
 This method returns the full configuration object.
 
 ```ts
-import { Methods, UseCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const calculator = new UseCalculator({
+const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
@@ -192,10 +192,10 @@ calculator.getCalculationOptions()
 This method allow you to change the configuration of a calculator instance without the need for creating a new one. accepts a `newConfig` param of `Partial<CalculationsConfig>` type. You can find all the configuration reference in the [Config](../config.md)
 
 ```ts
-import { Methods, UseCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const calculator = new UseCalculator({
+const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,

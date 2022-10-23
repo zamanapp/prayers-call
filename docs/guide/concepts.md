@@ -4,13 +4,13 @@ The Prayers.ts library provides two different types of calculators, a basic one 
 
 ## Static Calculator
 
-The `UseCalculator` accepts a date in it's initialization allowing you to get prayer times for any past, current or future date. This calculator however is not reactive. if you need realtime reactive prayer times calculations then read the [RealTime Reactive Calculator](#realtime-reactive-calculator) section.
+The `StaticCalculator` accepts a date in it's initialization allowing you to get prayer times for any past, current or future date. This calculator however is not reactive. if you need realtime reactive prayer times calculations then read the [RealTime Reactive Calculator](#realtime-reactive-calculator) section.
 
 ```ts
-import { Methods, UseCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const calculator = new UseCalculator({
+const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
@@ -21,19 +21,19 @@ const calculator = new UseCalculator({
 calculator.getPrayerTimes()
 ```
 
-For all the methods available to use with `UseCalculator` check the [One time Calculator](./one-time-calculator.md).
+For all the methods available to use with `StaticCalculator` check the [One time Calculator](./one-time-calculator.md).
 
 You can find all the configuration reference in the [Config](../config.md)
 
 ## RealTime Reactive Calculator
 
-The `UseReactiveCalculator` provides a number of methods to get realtime updates on prayer times. The event approach can help you trigger certain logic at specific times.
+The `ReactiveCalculator` provides a number of methods to get realtime updates on prayer times. The event approach can help you trigger certain logic at specific times.
 
 ```ts
-import { Methods, UseReactiveCalculator } from 'prayer.ts'
+import { Methods, ReactiveCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya
-const reactiveCalculator = new UseReactiveCalculator({
+const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.SINGAPORE,
@@ -50,7 +50,7 @@ reactiveCalculator.adhanObserver().subscribe({
 })
 ```
 
-For all the methods available to use with `UseReactiveCalculator` check the [Reactive Calculator](./reactive-calculator.md).
+For all the methods available to use with `ReactiveCalculator` check the [Reactive Calculator](./reactive-calculator.md).
 
 You can find all the configuration reference in the [Config](../config.md)
 

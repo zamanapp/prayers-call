@@ -1,8 +1,8 @@
-import type { PrayersTimeObject, UseCalculator, UseReactiveCalculator } from '../../src'
+import type { PrayersTimeObject, ReactiveCalculator, StaticCalculator } from '../../src'
 import type { Iqama } from '../../src/types/Iqama'
 
 export const expectedMarbleGenerator = (
-  prayerTimeEngine: UseReactiveCalculator | UseCalculator,
+  prayerTimeEngine: ReactiveCalculator | StaticCalculator,
   now: Date,
   testUntil: Date
 ): string => {
