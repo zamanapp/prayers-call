@@ -15,11 +15,11 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/gimyboya/prayers.ts/edit/master/docs/:path',
+      pattern: 'https://github.com/whiterocktech/prayers.ts/edit/master/docs/:path',
       text: 'Edit this page on GitHub',
     },
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/gimyboya/prayers.ts' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/whiterocktech/prayers.ts' }],
 
     footer: {
       message: 'Released under the MIT License.',
@@ -46,11 +46,11 @@ function nav() {
       items: [
         {
           text: 'Changelog',
-          link: 'https://github.com/gimyboya/prayers.ts/blob/master/CHANGELOG.md',
+          link: 'https://github.com/whiterocktech/prayers.ts/blob/master/CHANGELOG.md',
         },
         {
           text: 'Contributing',
-          link: 'https://github.com/gimyboya/prayers.ts/blob/master/CONTRIBUTING.md',
+          link: 'https://github.com/whiterocktech/prayers.ts/blob/master/CONTRIBUTING.md',
         },
       ],
     },

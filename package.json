@@ -6,13 +6,13 @@
   "description": "",
   "author": "Gimyboya",
   "license": "MIT",
-  "funding": "https://github.com/sponsors/gimyboya",
-  "homepage": "https://github.com/gimyboya/prayers.ts#readme",
+  "funding": "https://github.com/sponsors/whiterocktech",
+  "homepage": "https://github.com/whiterocktech/prayers.ts#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gimyboya/prayers.ts"
+    "url": "git+https://github.com/whiterocktech/prayers.ts"
   },
-  "bugs": "https://github.com/gimyboya/prayers.ts/issues",
+  "bugs": "https://github.com/whiterocktech/prayers.ts/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {

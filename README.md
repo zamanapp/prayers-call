@@ -21,7 +21,7 @@ npm install --save prayers.ts
 
 ## License
 
-[MIT](./LICENSE) License © 2022 [GimyBoya](https://github.com/gimyboya)
+[MIT](./LICENSE) License © 2022 [WhiteRock](https://github.com/whiterocktech)
 
 ## TODO
 
