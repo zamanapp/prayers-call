@@ -176,7 +176,8 @@ export class ReactiveCalculator extends BaseCalculator {
       const timeAtSubscription = new Date()
       let noPrayersLeftForToday = true
 
-      return new Observable((subscriber: Subscriber<TimeEventObject>) => {
+      // create the inner observable
+      const innerObservable = new Observable((subscriber: Subscriber<TimeEventObject>) => {
         // we create value to emit based on the subscription time
         prayerTimes.forEach((prayer, i) => {
           // calculate the delay needed to issue a prayer event starting from now
@@ -205,7 +206,10 @@ export class ReactiveCalculator extends BaseCalculator {
           }
         })
       })
-    }).pipe(repeat({ delay: () => this.newSolarDayObserver() }))
+
+      // apply the repeat operator to the inner observable
+      return innerObservable.pipe(repeat({ delay: () => this.newSolarDayObserver() }))
+    })
   }
 
   public iqamaObserver(): Observable<TimeEventObject> {
@@ -216,7 +220,7 @@ export class ReactiveCalculator extends BaseCalculator {
       // we capture the time when a subscription happens
       const timeAtSubscription = new Date()
 
-      return new Observable((subscriber: Subscriber<TimeEventObject>) => {
+      const innerObservable = new Observable((subscriber: Subscriber<TimeEventObject>) => {
         // we create value to emit based on the subscription time
         prayerTimes.forEach((prayer, i) => {
           // calculate the delay needed to issue an iqama event starting from subscription time
@@ -247,7 +251,8 @@ export class ReactiveCalculator extends BaseCalculator {
           }
         })
       })
-    }).pipe(repeat({ delay: () => this.newSolarDayObserver() }))
+      return innerObservable.pipe(repeat({ delay: () => this.newSolarDayObserver() }))
+    })
   }
 
   public qiyamTimesObserver(): Observable<TimeEventObject> {
@@ -258,7 +263,7 @@ export class ReactiveCalculator extends BaseCalculator {
       // we capture the time when a subscription happens
       const timeAtSubscription = new Date()
 
-      return new Observable((subscriber: Subscriber<TimeEventObject>) => {
+      const innerObserver = new Observable((subscriber: Subscriber<TimeEventObject>) => {
         // calculate the delay needed to issue a middleOfTheNight event starting from now
         const middleDelay = middleOfTheNightTime.getTime() - timeAtSubscription.getTime()
         // calculate the delay needed to issue a lastThirdOfTheNight event starting from now
@@ -289,7 +294,9 @@ export class ReactiveCalculator extends BaseCalculator {
         // we end the subscription
         subscriber.complete()
       })
-    }).pipe(repeat({ delay: () => this.newQiyamObserver() }))
+
+      return innerObserver.pipe(repeat({ delay: () => this.newQiyamObserver() }))
+    })
   }
 
   public prayerEventsObserver() {
