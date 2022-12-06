@@ -40,7 +40,10 @@ const reactiveCalculator = new ReactiveCalculator({
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
-reactiveCalculator.adhanObserver().subscribe({
+// create some subscriptions that would refresh the calculations
+reactiveCalculator.int()
+
+const adhanSubscription = reactiveCalculator.adhanObserver().subscribe({
   next(value: TimeEventObject) {
     console.log(`Time for ${value.name} prayer entered`)
   },
@@ -48,6 +51,13 @@ reactiveCalculator.adhanObserver().subscribe({
     console.error('An error occurred: ', err)
   },
 })
+
+// ...
+
+// somewhere later in your code if you need to clean up
+// destroy the subscriptions
+reactiveCalculator.destroy()
+adhanSubscription.unsubscribe()
 ```
 
 For all the methods available to use with `ReactiveCalculator` check the [Reactive Calculator](./reactive-calculator.md).

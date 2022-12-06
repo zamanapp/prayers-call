@@ -1,7 +1,3 @@
-::: danger
-The reactive calculator is a work in progress and the documentation here and the api is just a draft
-:::
-
 ### init
 
 ```ts
