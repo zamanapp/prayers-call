@@ -77,17 +77,14 @@ jobs:
           node-version: ${{ matrix.node }}
           cache: pnpm
 
-      - name: Setup
-        run: npm i -g @antfu/ni
-
       - name: Install
-        run: nci
+        run: pnpm i --frozen-lockfile
 
       - name: Build
-        run: nr build
+        run: pnpm build
 
       - name: Test
-        run: nr test
+        run: pnpm test
   # we release if everything is fine
   Release:
     runs-on: ubuntu-latest
