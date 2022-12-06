@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/whiterocktech/prayers.ts/compare/v1.2.0...v1.2.1) (2022-12-06)
+
+
+### Bug Fixes
+
+* fixed a repeat pipe bug ([515b865](https://github.com/whiterocktech/prayers.ts/commit/515b865faaba62470a47fb66490107d8fd9221d4))
+
 # 1.0.0 (2022-09-21)
 
 ### Bug Fixes
