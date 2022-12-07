@@ -1,8 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import ciDetect from '@npmcli/ci-detect'
 import { Methods, ReactiveCalculator } from '../../src'
 import type { TimeEventObject } from '../../src'
+// false if not in CI
+// otherwise, a string indicating the CI environment type
+const isGithubCI = ciDetect() === 'github-actions'
 
-describe.skip('ReactiveCalculator should work properly', () => {
+describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
   let prayerTimeEngine: ReactiveCalculator
   // understanding timers in jest is crucial: https://jestjs.io/docs/jest-object#mock-timers
   beforeEach(() => {
