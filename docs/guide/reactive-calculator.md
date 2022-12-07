@@ -1,4 +1,14 @@
+# Reactive Calculator
+
+The reactive calculator helps you get realtime notifications about prayers times and prayer times related events. It doesn't need a date to be passed on to it when initialized as it will take the current date (now). once initialized you can get prayer times from it just like you would use the static calculator on top of that it provides you with observables that can help you get notified when events happens.
+
+the reactive calculator also takes care of updating it's own internal config (date and calculations) so you always get real time up to date calculations and notifications. for that make sure to use the `init` function.
+
 ### init
+
+The `init` function allows the reactive calculator to subscribe to time and be aware of date changes. once these subscribers gets notified of a change (a new day or a new qiyam time) they refresh the internal config and calculations of the calculator making provide realtime calculations.
+
+these refreshers happ
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer.ts'

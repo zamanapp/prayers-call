@@ -1,13 +1,13 @@
-# Calculator
+# Statice Calculator
 
-The `StaticCalculator` accepts a date in it's initialization allowing you to get prayer times for any past, current or future date.
+The `StaticCalculator` accepts a date in it's initialization allowing you to get prayer times for a single day in any past, current or future date.
 
 ```ts
 import { Methods, StaticCalculator } from 'prayer.ts'
 
 // calculations for Cyberjaya on Jan 1st 2022
 const calculator = new StaticCalculator({
-  date: new Date(2022, 1, 1),
+  date: new Date(2022, 0, 1),
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.SINGAPORE,
