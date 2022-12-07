@@ -31,7 +31,7 @@ if the `init` function is not invoked the reactive calculator will remain reacti
 
 ### destroy
 
-Invoking the `destroy` function will let the calculator unsubscribe from the subscriptions it invoked via the `init` function and avoid memory leaks.
+Invoking the `destroy` function will let the calculator unsubscribe from the subscriptions it invoked via the `init` function.
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer.ts'
@@ -47,6 +47,10 @@ const reactiveCalculator = new ReactiveCalculator({
 reactiveCalculator.init() // initialize reactive calculations by subscribing to some observables
 reactiveCalculator.destroy() // clean up subscriptions
 ```
+
+::: danger
+If you don't unsubscribe from an Observable, it will continue to run and use up memory, even after you are done with it. This can lead to memory leaks and can potentially cause your application to crash. It is important to unsubscribe from Observables when you are done with them to prevent memory leaks and ensure the smooth running of your application.
+:::
 
 ### getCurrentPrayerTime
 
