@@ -14,3 +14,4 @@ export type {
   TimeEventObject,
   TimeObject,
 } from './types/TimeObject'
+export type { CalculationsConfig, ReactiveCalculationsConfig } from './types/CalculationsConfig'
