@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/whiterocktech/prayers.ts/compare/v1.2.1...v1.2.2) (2022-12-15)
+
+
+### Bug Fixes
+
+* export config types ([27535e0](https://github.com/whiterocktech/prayers.ts/commit/27535e077f5ab40504c26135a6a6c24fa163455e))
+
 ## [1.2.1](https://github.com/whiterocktech/prayers.ts/compare/v1.2.0...v1.2.1) (2022-12-06)
 
 
