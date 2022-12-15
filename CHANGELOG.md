@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/whiterocktech/prayers.ts/compare/v1.2.2...v1.2.3) (2022-12-15)
+
+
+### Bug Fixes
+
+* trigger release ([67b94cd](https://github.com/whiterocktech/prayers.ts/commit/67b94cd5a4d1b52dbb98d638a5aa63949f04d868))
+
 ## [1.2.2](https://github.com/whiterocktech/prayers.ts/compare/v1.2.1...v1.2.2) (2022-12-15)
 
 
