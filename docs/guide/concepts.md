@@ -55,8 +55,8 @@ const adhanSubscription = reactiveCalculator.adhanObserver().subscribe({
 // ...
 
 // somewhere later in your code if you need to clean up
-// destroy the subscriptions
-reactiveCalculator.destroy()
+// cleanup the subscriptions
+reactiveCalculator.cleanup()
 adhanSubscription.unsubscribe()
 ```
 

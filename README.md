@@ -2,7 +2,14 @@
 
 [![npm version](https://badge.fury.io/js/prayers.ts.svg)](https://badge.fury.io/js/prayers.ts)
 
-Reactive prayer times calculation library for node and the browser built with Typescript
+Reactive prayer times calculation library for node and the browser built with Typescript.
+
+> **Warning**
+> This library is a work in progress
+>
+> - it might not be production ready yet.
+> - the api might change.
+> - the docs are still in progress
 
 ## Installation
 
@@ -18,6 +25,10 @@ npm install --save prayers.ts
 
 - [Adhanjs](https://github.com/batoulapps/adhan-js)
 - [Khaled Hussain](https://github.com/khalid-hussain)
+
+<!-- # Related
+
+- vue-prayers -->
 
 ## License
 

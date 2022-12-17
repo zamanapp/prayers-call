@@ -2,6 +2,8 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import ciDetect from '@npmcli/ci-detect'
 import { Methods, ReactiveCalculator } from '../../src'
 import type { TimeEventObject } from '../../src'
+
+// we disabled these tests in CI because they don't seem to stop
 // false if not in CI
 // otherwise, a string indicating the CI environment type
 const isGithubCI = ciDetect() === 'github-actions'
@@ -28,7 +30,6 @@ describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
       adjustments: { dhuhr: 3, asr: 3, isha: 2 },
       iqama: { fajr: 25 },
     })
-    prayerTimeEngine.init()
     const NUMBER_OF_DAYS = 4
     const solarDayObserver = prayerTimeEngine.newSolarDayObserver()
     const expectedDates = [
@@ -43,7 +44,7 @@ describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
     vi.advanceTimersByTime(NUMBER_OF_DAYS * 24 * 60 * 60 * 1000) // 3 days
     expect(expectedDates).toStrictEqual(dates)
     expect(dates.length).toEqual(NUMBER_OF_DAYS - 1)
-    prayerTimeEngine.destroy()
+    prayerTimeEngine.cleanup()
   })
 
   it('Should notify subscribers when a new day comes', () => {
@@ -54,7 +55,6 @@ describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
       adjustments: { dhuhr: 3, asr: 3, isha: 2 },
       iqama: { fajr: 25 },
     })
-    prayerTimeEngine.init()
     const NUMBER_OF_DAYS = 3
     let index = 0
     const solarDayObserver = prayerTimeEngine.newSolarDayObserver()
@@ -64,7 +64,7 @@ describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
     })
     vi.advanceTimersByTime(NUMBER_OF_DAYS * 24 * 60 * 60 * 1000) // 3 days
     expect(index).toEqual(NUMBER_OF_DAYS - 1)
-    prayerTimeEngine.destroy()
+    prayerTimeEngine.cleanup()
   })
 
   it('Should notifies subscribers of prayer times', () => {
@@ -75,7 +75,6 @@ describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
       adjustments: { dhuhr: 3, asr: 3, isha: 2 },
       iqama: { fajr: 25 },
     })
-    prayerTimeEngine.init()
     const adhanObserver = prayerTimeEngine.adhanObserver()
 
     const expectedPrayerTimes = [
@@ -105,7 +104,7 @@ describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
     vi.advanceTimersByTime(3 * 24 * 60 * 60 * 1000) // 3 days
     expect(events).toStrictEqual(expectedPrayerTimes)
     expect(events.length).toEqual(expectedPrayerTimes.length)
-    prayerTimeEngine.destroy()
+    prayerTimeEngine.cleanup()
   })
 
   it('Should notify subscribers when new qiyam time enters')

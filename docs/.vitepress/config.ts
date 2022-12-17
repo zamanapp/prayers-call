@@ -30,6 +30,18 @@ export default defineConfig({
 
 function nav() {
   return [
+    {
+      text: 'Docs',
+      activeMatch: `^/(guide|recipes)/`,
+      items: [
+        { text: 'Guide', link: '/guide/introduction' },
+        { text: 'Recipes', link: '/recipes/' },
+        // {
+        //   text: 'Migration from V1',
+        //   link: 'https://v3-migration.vuejs.org/'
+        // }
+      ],
+    },
     { text: 'Guide', link: '/guide/introduction', activeMatch: '/guide/' },
     {
       text: 'Config',

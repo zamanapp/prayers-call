@@ -57,8 +57,8 @@ export class StaticCalculator extends BaseCalculator {
    */
   public getQiblaDirection(
     { latitude, longitude }: CoordinatesObject = {
-      latitude: this._config.latitude,
-      longitude: this._config.longitude,
+      latitude: this._prayerConfig.latitude,
+      longitude: this._prayerConfig.longitude,
     }
   ): number {
     const coordinates = new Coordinates(latitude, longitude)
@@ -66,11 +66,11 @@ export class StaticCalculator extends BaseCalculator {
   }
 
   public getCalculationOptions(): CalculationsConfig {
-    return this._config
+    return this._prayerConfig
   }
 
   public setCalculationOptions(newConfig: Partial<CalculationsConfig>) {
-    this._config = Object.assign(this._config, newConfig)
-    this._initializer(this._config)
+    this._prayerConfig = Object.assign(this._prayerConfig, newConfig)
+    this._initializer(this._prayerConfig)
   }
 }

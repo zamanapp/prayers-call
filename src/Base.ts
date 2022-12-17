@@ -15,15 +15,16 @@ import { Methods } from './types/Methods'
 export class BaseCalculator {
   protected _prayerTimesCalculator!: PrayerTimes
   protected _qiyamTimesCalculator!: SunnahTimes
-  protected _config!: CalculationsConfig
+  protected _prayerConfig!: CalculationsConfig
+  protected _qiyamConfig!: CalculationsConfig
 
   constructor(config: CalculationsConfig) {
     this._initializer(config)
   }
 
   protected _initializer(config: CalculationsConfig) {
-    this._config = config
-    const { date, latitude, longitude, method, ...paramsOptions } = this._config as CalculationsConfig
+    this._prayerConfig = config
+    const { date, latitude, longitude, method, ...paramsOptions } = this._prayerConfig
 
     // create a coordinate object
     const coordinates = new Coordinates(latitude, longitude)
@@ -48,17 +49,18 @@ export class BaseCalculator {
     calculationParams.polarCircleResolution = paramsOptions.polarCircleResolution || PolarCircleResolution.Unresolved
 
     // assign iqama calculation times
-    this._config.iqama = Object.assign(
+    this._prayerConfig.iqama = Object.assign(
       { fajr: 20, dhuhr: 10, asr: 10, maghrib: 5, isha: 15 }, // the default values
       paramsOptions.iqama // override by the config values
     )
 
     // creating the calculation object
+    this._qiyamConfig = this._prayerConfig
     this._prayerTimesCalculator = new PrayerTimes(coordinates, date, calculationParams)
     this._qiyamTimesCalculator = new SunnahTimes(this._prayerTimesCalculator)
   }
 
-  private _useMethod(method: Methods | CustomMethod | undefined): CalculationParameters {
+  protected _useMethod(method: Methods | CustomMethod | undefined): CalculationParameters {
     if (method === Methods.UMM_AL_QURA) {
       return CalculationMethod.UmmAlQura()
     } else if (method === Methods.MUSLIM_WORLD_LEAGUE) {
@@ -107,39 +109,5 @@ export class BaseCalculator {
     }
     // return the params of the custom method
     return calculationParams
-  }
-
-  protected _refreshPrayerCalculator() {
-    this._config = Object.assign(this._config, {
-      date: new Date(), // refresh the date
-    })
-    const { date, latitude, longitude, method } = this._config as CalculationsConfig
-
-    // create a coordinate object
-    const coordinates = new Coordinates(latitude, longitude)
-
-    // create calculation params based on the method name
-    const calculationParams = this._useMethod(method)
-
-    // creating the calculation object
-    this._prayerTimesCalculator = new PrayerTimes(coordinates, date, calculationParams)
-  }
-
-  protected _refreshQiyamCalculator() {
-    this._config = Object.assign(this._config, {
-      date: new Date(), // refresh the date
-    })
-
-    const { date, latitude, longitude, method } = this._config as CalculationsConfig
-
-    // create a coordinate object
-    const coordinates = new Coordinates(latitude, longitude)
-
-    // create calculation params based on the method name
-    const calculationParams = this._useMethod(method)
-
-    // creating the calculation object
-    const prayerTimesCalculator = new PrayerTimes(coordinates, date, calculationParams)
-    this._qiyamTimesCalculator = new SunnahTimes(prayerTimesCalculator)
   }
 }
