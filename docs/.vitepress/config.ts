@@ -35,7 +35,7 @@ function nav() {
       activeMatch: `^/(guide|recipes)/`,
       items: [
         { text: 'Guide', link: '/guide/introduction' },
-        { text: 'Recipes', link: '/recipes/' },
+        { text: 'Recipes', link: '/recipes/formatters' },
         // {
         //   text: 'Migration from V1',
         //   link: 'https://v3-migration.vuejs.org/'
@@ -89,15 +89,6 @@ function sidebarGuide() {
       ],
     },
     {
-      text: 'Formatting Time',
-      collapsible: true,
-      items: [
-        { text: 'Formatters', link: '/guide/formatters' },
-        { text: 'Hijri Dates', link: '/guide/hijri' },
-        { text: 'Internalization', link: '/guide/i18n' },
-      ],
-    },
-    {
       text: 'Calculating Qibla',
       collapsible: true,
       items: [
@@ -115,6 +106,15 @@ function sidebarGuide() {
           text: 'Testing',
           link: '/guide/testing',
         },
+      ],
+    },
+    {
+      text: 'Recipes',
+      collapsible: true,
+      items: [
+        { text: 'Formatters', link: '/guide/formatters' },
+        { text: 'Hijri Dates', link: '/guide/hijri' },
+        { text: 'Internalization', link: '/guide/i18n' },
       ],
     },
   ]
