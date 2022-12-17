@@ -34,8 +34,8 @@ describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
     const solarDayObserver = prayerTimeEngine.newSolarDayObserver()
     const expectedDates = [
       new Date('2022-01-01T16:00:00.000Z'),
-      new Date('2022-01-02T16:01:00.000Z'),
-      new Date('2022-01-03T16:02:00.000Z'),
+      new Date('2022-01-02T16:00:00.000Z'),
+      new Date('2022-01-03T16:00:00.000Z'),
     ]
     const dates: Date[] = []
     solarDayObserver.subscribe(() => {
