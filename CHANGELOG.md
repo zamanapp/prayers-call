@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/whiterocktech/prayers.ts/compare/v1.2.4...v1.3.0) (2022-12-18)
+
+
+### Features
+
+* add debug mode for reactive calculator ([2f56d79](https://github.com/whiterocktech/prayers.ts/commit/2f56d79bc854daa438e280e90214600ff6efac64))
+
 ## [1.2.4](https://github.com/whiterocktech/prayers.ts/compare/v1.2.3...v1.2.4) (2022-12-17)
 
 
