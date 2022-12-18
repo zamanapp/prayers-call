@@ -1,3 +1,11 @@
+## [1.3.1](https://github.com/whiterocktech/prayers.ts/compare/v1.3.0...v1.3.1) (2022-12-18)
+
+
+### Bug Fixes
+
+* add more log lines ([53457b8](https://github.com/whiterocktech/prayers.ts/commit/53457b8ee60b34f7b5125c037b52ca2f46230b76))
+* fie qiyam observer to repeat accurately ([f8e444e](https://github.com/whiterocktech/prayers.ts/commit/f8e444e6501d69940465e9dd56d0f06e1090b9bd))
+
 # [1.3.0](https://github.com/whiterocktech/prayers.ts/compare/v1.2.4...v1.3.0) (2022-12-18)
 
 
