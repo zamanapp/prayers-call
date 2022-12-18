@@ -1,3 +1,10 @@
+## [1.3.3](https://github.com/whiterocktech/prayers.ts/compare/v1.3.2...v1.3.3) (2022-12-18)
+
+
+### Bug Fixes
+
+* prperly type time property in TimeObject ([63b8e82](https://github.com/whiterocktech/prayers.ts/commit/63b8e82d29630da1908280e5f710313f719b4ee9))
+
 ## [1.3.2](https://github.com/whiterocktech/prayers.ts/compare/v1.3.1...v1.3.2) (2022-12-18)
 
 
