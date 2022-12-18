@@ -1,3 +1,11 @@
+## [1.2.4](https://github.com/whiterocktech/prayers.ts/compare/v1.2.3...v1.2.4) (2022-12-17)
+
+
+### Bug Fixes
+
+* no more additive minute every day ([1bd2686](https://github.com/whiterocktech/prayers.ts/commit/1bd268630f1fe82b30dac32e1bb3ce31d96b8bb3))
+* refactor subscriptions to account for config changes ([98fd0aa](https://github.com/whiterocktech/prayers.ts/commit/98fd0aab9c37656350700d2356b4547103b64243))
+
 ## [1.2.3](https://github.com/whiterocktech/prayers.ts/compare/v1.2.2...v1.2.3) (2022-12-15)
 
 
