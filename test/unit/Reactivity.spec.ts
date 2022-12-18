@@ -29,6 +29,7 @@ describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
       method: Methods.SINGAPORE,
       adjustments: { dhuhr: 3, asr: 3, isha: 2 },
       iqama: { fajr: 25 },
+      debug: true,
     })
     const NUMBER_OF_DAYS = 4
     const solarDayObserver = prayerTimeEngine.newSolarDayObserver()

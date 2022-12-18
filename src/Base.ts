@@ -8,6 +8,7 @@ import {
   PrayerTimes,
   SunnahTimes,
 } from 'adhan'
+import { Logger } from 'tslog'
 import { AsrTime } from './types/AsrTime'
 import type { CalculationsConfig, CustomMethod } from './types/CalculationsConfig'
 import { Methods } from './types/Methods'
@@ -17,6 +18,7 @@ export class BaseCalculator {
   protected _qiyamTimesCalculator!: SunnahTimes
   protected _prayerConfig!: CalculationsConfig
   protected _qiyamConfig!: CalculationsConfig
+  protected _logger!: Logger<any>
 
   constructor(config: CalculationsConfig) {
     this._initializer(config)

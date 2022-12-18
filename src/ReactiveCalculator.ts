@@ -14,8 +14,7 @@ import type { PrayerNamesType, TimeEventObject, TimeObject } from './types/TimeO
 import type { CoordinatesObject } from './types/Coordinates'
 import type { Iqama } from './types/Iqama'
 import { subscriptionsSymbols } from './types/Subscriptions'
-
-// TODO: create a logger and use debug mode to log a message
+import { Logger } from 'tslog'
 
 export class ReactiveCalculator extends BaseCalculator {
   private _subscriptions = new Map<symbol, Subscription>()
@@ -33,11 +32,21 @@ export class ReactiveCalculator extends BaseCalculator {
     }
     super(config)
 
+    this._logger = new Logger({
+      name: `ReactiveCalculator-${Math.random().toString(36).slice(-6)}`,
+      minLevel: config.debug ? 2 : 4,
+      prefix: ['ReactiveCalculator:'],
+    })
+
+    this._logger.debug('logger initialized successfully.')
+
     this._setup()
   }
 
   private _setup() {
+    this._logger.debug('_setup function invoked...')
     // initially we populate the properties.
+    this._logger.debug('calculating prayer and sunnah times...')
     this._calculatePrayerTimes()
     this._calculateCurrentPrayer()
     this._calculateNextPrayer()
@@ -46,6 +55,7 @@ export class ReactiveCalculator extends BaseCalculator {
 
     // we subscribe to time changes and update what needs to be updated
 
+    this._logger.debug('setting new day subscription...')
     // the first two subscription are created in isolation so that we keep them throughout the life of the object
     this._subscriptions.set(
       subscriptionsSymbols.NEW_SOLAR_DAY_SUBSCRIPTION,
@@ -57,6 +67,7 @@ export class ReactiveCalculator extends BaseCalculator {
       })
     )
 
+    this._logger.debug('setting new qiyam subscription...')
     this._subscriptions.set(
       subscriptionsSymbols.NEW_QIYAM_SUBSCRIPTION,
       this.newQiyamObserver().subscribe(() => {
@@ -66,6 +77,7 @@ export class ReactiveCalculator extends BaseCalculator {
       })
     )
 
+    this._logger.debug('setting adhan subscription...')
     this._subscriptions.set(
       subscriptionsSymbols.ADHAN_SUBSCRIPTION,
       this.adhanObserver().subscribe(() => {
@@ -80,11 +92,13 @@ export class ReactiveCalculator extends BaseCalculator {
     // create proxies that handel future changes to the configs
     // every time a value in the config is set it will trigger the handler
     // notice that this includes the `_refreshPrayerCalculator`. in a sense it's recursive but future recursion
+    that._logger.debug('setting up _prayerConfig set trap...')
     this._prayerConfig = new Proxy(this._prayerConfig, {
-      set(config: CalculationsConfig, property: keyof CalculationsConfig, newVal) {
+      set<K extends keyof CalculationsConfig>(config: CalculationsConfig, property: K, newVal: CalculationsConfig[K]) {
         const oldVal = config[property]
-        ;(config[property] as typeof oldVal) = newVal
+        config[property] = newVal
         if (that._initialized && oldVal !== newVal) {
+          that._logger.debug('_prayerConfig set trap triggered')
           const { date, latitude, longitude, method } = config
 
           // create a coordinate object
@@ -93,31 +107,41 @@ export class ReactiveCalculator extends BaseCalculator {
           // create calculation params based on the method name
           const calculationParams = that._useMethod(method)
 
+          that._logger.debug('creating a new _prayerTimesCalculator object')
           // creating the calculation object
           that._prayerTimesCalculator = new PrayerTimes(coordinates, date, calculationParams)
           // clean old subscriptions
+          that._logger.debug(
+            `unsubscribing and cleaning new day and adhan subscriptions. current map size: ${that._subscriptions.size}`
+          )
           that._subscriptions.get(subscriptionsSymbols.NEW_SOLAR_DAY_SUBSCRIPTION)?.unsubscribe()
           that._subscriptions.delete(subscriptionsSymbols.NEW_SOLAR_DAY_SUBSCRIPTION)
           that._subscriptions.get(subscriptionsSymbols.ADHAN_SUBSCRIPTION)?.unsubscribe()
           that._subscriptions.delete(subscriptionsSymbols.ADHAN_SUBSCRIPTION)
+          that._logger.debug(`cleaning done. current map size: ${that._subscriptions.size}`)
           // create new ones
+          that._logger.debug('creating a new subscription for new solar day...')
           that._subscriptions.set(
             subscriptionsSymbols.NEW_SOLAR_DAY_SUBSCRIPTION,
-            that.newSolarDayObserver().subscribe(() => {
+            that.newSolarDayObserver().subscribe((e) => {
+              that._logger.debug('new day event triggered:', e)
               that._refreshPrayerCalculator()
               that._calculatePrayerTimes()
               that._calculateCurrentPrayer()
               that._calculateNextPrayer()
             })
           )
+          that._logger.debug('creating a new subscription for adhan...')
           that._subscriptions.set(
             subscriptionsSymbols.ADHAN_SUBSCRIPTION,
-            that.adhanObserver().subscribe(() => {
+            that.adhanObserver().subscribe((e) => {
+              that._logger.debug('adhan event triggered:', e)
               that._calculateCurrentPrayer()
               that._calculateNextPrayer()
             })
           )
           // recalculate values
+          that._logger.debug('recalculating prayer times...')
           that._calculatePrayerTimes()
           that._calculateCurrentPrayer()
           that._calculateNextPrayer()
@@ -126,12 +150,14 @@ export class ReactiveCalculator extends BaseCalculator {
       },
     })
 
+    that._logger.debug('setting up _qiyamConfig set trap...')
     this._qiyamConfig = new Proxy(this._qiyamConfig, {
-      set(config: CalculationsConfig, property: keyof CalculationsConfig, newVal) {
+      set<K extends keyof CalculationsConfig>(config: CalculationsConfig, property: K, newVal: CalculationsConfig[K]) {
         const oldVal = config[property]
         ;(config[property] as typeof oldVal) = newVal
 
         if (that._initialized && oldVal !== newVal) {
+          that._logger.debug('_qiyamConfig set trap triggered')
           const { date, latitude, longitude, method } = config
 
           // create a coordinate object
@@ -142,20 +168,28 @@ export class ReactiveCalculator extends BaseCalculator {
 
           // creating the calculation object
           const prayerTimesCalculator = new PrayerTimes(coordinates, date, calculationParams)
+          that._logger.debug('creating a new _qiyamTimesCalculator object')
           that._qiyamTimesCalculator = new SunnahTimes(prayerTimesCalculator)
           // clean old subscriptions
+          that._logger.debug(
+            `unsubscribing and cleaning new qiyam subscription. current map size: ${that._subscriptions.size}`
+          )
           that._subscriptions.get(subscriptionsSymbols.NEW_QIYAM_SUBSCRIPTION)?.unsubscribe()
           that._subscriptions.delete(subscriptionsSymbols.NEW_QIYAM_SUBSCRIPTION)
+          that._logger.debug(`cleaning done. current map size: ${that._subscriptions.size}`)
           // create new ones
+          that._logger.debug('creating a new subscription for new qiyam...')
           that._subscriptions.set(
             subscriptionsSymbols.NEW_QIYAM_SUBSCRIPTION,
-            that.newQiyamObserver().subscribe(() => {
+            that.newQiyamObserver().subscribe((e) => {
+              that._logger.debug('new qiyam event triggered:', e)
               that._refreshQiyamCalculator()
               that._calculateMiddleOfTheNight()
               that._calculateThirdOfTheNight()
             })
           )
           // recalculate values
+          that._logger.debug('recalculating sunnah times')
           that._calculateMiddleOfTheNight()
           that._calculateThirdOfTheNight()
         }
@@ -165,6 +199,7 @@ export class ReactiveCalculator extends BaseCalculator {
   }
 
   private _calculatePrayerTimes() {
+    this._logger.debug('_calculatePrayerTimes function invoked.')
     this._prayerTimes = [
       {
         name: Prayer.Fajr,
@@ -194,6 +229,7 @@ export class ReactiveCalculator extends BaseCalculator {
   }
 
   private _calculateCurrentPrayer() {
+    this._logger.debug('_calculateCurrentPrayer function invoked.')
     this._currentPrayer = {
       name: this._prayerTimesCalculator.currentPrayer(),
       time: this._prayerTimesCalculator.timeForPrayer(this._prayerTimesCalculator.currentPrayer()),
@@ -201,6 +237,7 @@ export class ReactiveCalculator extends BaseCalculator {
   }
 
   private _calculateNextPrayer() {
+    this._logger.debug('_calculateNextPrayer function invoked.')
     this._nextPrayer = {
       name: this._prayerTimesCalculator.nextPrayer(),
       time: this._prayerTimesCalculator.timeForPrayer(this._prayerTimesCalculator.nextPrayer()),
@@ -208,16 +245,20 @@ export class ReactiveCalculator extends BaseCalculator {
   }
 
   private _calculateMiddleOfTheNight() {
+    this._logger.debug('_calculateMiddleOfTheNight function invoked.')
     this._middleOfTheNight = { name: 'middleOfTheNight', time: this._qiyamTimesCalculator.middleOfTheNight }
   }
 
   private _calculateThirdOfTheNight() {
+    this._logger.debug('_calculateThirdOfTheNight function invoked.')
     this._thirdOfTheNight = { name: 'lastThirdOfTheNight', time: this._qiyamTimesCalculator.lastThirdOfTheNight }
   }
 
   public cleanup() {
+    this._logger.debug('cleanup function invoked.')
     this._subscriptions.forEach((s) => s.unsubscribe())
     this._subscriptions.clear()
+    this._logger.debug(`Cleanup done. map size: ${this._subscriptions.size}`)
   }
 
   public getCurrentPrayerTime(): TimeObject {
@@ -264,6 +305,7 @@ export class ReactiveCalculator extends BaseCalculator {
   }
 
   public setCalculationOptions(newConfig: Partial<ReactiveCalculationsConfig>) {
+    this._logger.debug('setCalculationOptions function invoked with the following arg', newConfig)
     // changing the config should trigger the set traps via the proxy
     this._prayerConfig = Object.assign(this._prayerConfig, newConfig)
     this._qiyamConfig = Object.assign(this._qiyamConfig, newConfig)
@@ -277,6 +319,7 @@ export class ReactiveCalculator extends BaseCalculator {
    */
   public newSolarDayObserver(): Observable<number> {
     return defer(() => {
+      this._logger.debug('subscription made for new solar day.')
       const timeAtSubscription = new Date()
       const nextDay = new Date()
       // get the nearest midnight in future
@@ -285,12 +328,14 @@ export class ReactiveCalculator extends BaseCalculator {
       // repeat every 24 hours and 1 minute
       const repeat = 1000 * 60 * 60 * 24 + 1000 * 60 * 1
       // will emit first value after nearest midnight (initialDelay) and subsequent values every 24 hours and 1 minutes after
+      this._logger.debug(`initial delay is set to: ${initialDelay} ms`)
       return timer(initialDelay, repeat)
     })
   }
 
   public newQiyamObserver(): Observable<TimeEventObject> {
     return defer(() => {
+      this._logger.debug('subscription made for new qiyam.')
       const timeAtSubscription = new Date()
       const nextDay = new Date()
       // get the nearest midnight in future
@@ -303,6 +348,7 @@ export class ReactiveCalculator extends BaseCalculator {
         // interval between midnight and last third of the night
         (lastThirdOfTheNight.getTime() - nextDay.getTime())
 
+      this._logger.debug(`delay is set to: ${delayValue} ms`)
       return new Observable((subscriber: Subscriber<TimeEventObject>) => {
         subscriber.next({
           name: TimesNames.LAST_THIRD_OF_THE_NIGHT,
@@ -318,6 +364,7 @@ export class ReactiveCalculator extends BaseCalculator {
   public adhanObserver(): Observable<TimeEventObject> {
     // we use defer to trigger the observable creation (factory) at subscription time
     return defer(() => {
+      this._logger.debug('subscription made for adhan.')
       const prayerTimes = this.getAllPrayerTimes()
       // we capture the time when a subscription happens
       const timeAtSubscription = new Date()
@@ -335,6 +382,7 @@ export class ReactiveCalculator extends BaseCalculator {
             noPrayersLeftForToday = false
             // we create an event of the the prayer based on the delay
             setTimeout(() => {
+              this._logger.debug('emitting next adhan event.')
               subscriber.next({
                 name: prayer.name,
                 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -343,6 +391,7 @@ export class ReactiveCalculator extends BaseCalculator {
               })
               // if it's the last prayer we complete
               if (prayer.name === 'isha') {
+                this._logger.debug('adhan subscription complete.')
                 subscriber.complete()
               }
             }, delay)
@@ -362,6 +411,7 @@ export class ReactiveCalculator extends BaseCalculator {
   public iqamaObserver(): Observable<TimeEventObject> {
     // we use defer to trigger the observable creation (factory) at subscription time
     return defer(() => {
+      this._logger.debug('subscription made for iqama.')
       const prayerTimes = this.getAllPrayerTimes()
       let noPrayersLeftForToday = true
       // we capture the time when a subscription happens
@@ -381,6 +431,7 @@ export class ReactiveCalculator extends BaseCalculator {
             noPrayersLeftForToday = false
             // we create an event of the the prayer based on the delay
             setTimeout(() => {
+              this._logger.debug('emitting next iqama event.')
               subscriber.next({
                 name: prayer.name,
                 time: new Date(),
@@ -388,12 +439,14 @@ export class ReactiveCalculator extends BaseCalculator {
               })
               // if it's the last prayer we complete
               if (prayer.name === 'isha') {
+                this._logger.debug('iqama subscription complete.')
                 subscriber.complete()
               }
             }, delay)
           }
 
           if (noPrayersLeftForToday && i === prayerTimes.length - 1) {
+            this._logger.debug('iqama subscription complete again.')
             subscriber.complete()
           }
         })
@@ -405,6 +458,7 @@ export class ReactiveCalculator extends BaseCalculator {
   public qiyamTimesObserver(): Observable<TimeEventObject> {
     // we use defer to trigger the observable creation (factory) at subscription time
     return defer(() => {
+      this._logger.debug('subscription made for qiyam times.')
       const middleOfTheNightTime = this._qiyamTimesCalculator.middleOfTheNight
       const lastThirdOfTheNightTime = this._qiyamTimesCalculator.lastThirdOfTheNight
       // we capture the time when a subscription happens
@@ -419,6 +473,7 @@ export class ReactiveCalculator extends BaseCalculator {
         if (middleDelay >= 0) {
           // we create an event based on the delay to announce the middle of the night
           setTimeout(() => {
+            this._logger.debug('emitting middle of the night event.')
             subscriber.next({
               name: TimesNames.MIDDLE_OF_THE_NIGHT,
               time: middleOfTheNightTime,
@@ -430,6 +485,7 @@ export class ReactiveCalculator extends BaseCalculator {
         if (lastDelay >= 0) {
           // we create an event based on the delay to announce the last third of the night
           setTimeout(() => {
+            this._logger.debug('emitting last third event.')
             subscriber.next({
               name: TimesNames.LAST_THIRD_OF_THE_NIGHT,
               time: lastThirdOfTheNightTime,
@@ -439,6 +495,7 @@ export class ReactiveCalculator extends BaseCalculator {
           }, lastDelay)
         }
         // we end the subscription
+        this._logger.debug('qiyam times subscription complete.')
         subscriber.complete()
       })
 
@@ -451,6 +508,7 @@ export class ReactiveCalculator extends BaseCalculator {
   }
 
   private _refreshPrayerCalculator() {
+    this._logger.debug('_refreshPrayerCalculator function invoked.')
     // changing the config should trigger the set trap via the proxy
     this._prayerConfig = Object.assign(this._prayerConfig, {
       date: new Date(), // refresh the date
@@ -458,6 +516,7 @@ export class ReactiveCalculator extends BaseCalculator {
   }
 
   private _refreshQiyamCalculator() {
+    this._logger.debug('_refreshPrayerCalculator function invoked.')
     // changing the config should trigger the set trap via the proxy
     this._qiyamConfig = Object.assign(this._qiyamConfig, {
       date: new Date(), // refresh the date

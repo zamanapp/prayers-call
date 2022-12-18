@@ -78,6 +78,11 @@ export interface CalculationsConfig {
    * @defaultValue { fajr: 20, dhuhr: 10, asr: 10, maghrib: 5, isha: 15 }
    * */
   iqama?: Partial<Iqama>
+  /**
+   * if set to true will output logs that can be helpful for debugging
+   * @defaultValue false
+   */
+  debug?: boolean
 }
 
 export type ReactiveCalculationsConfig = Omit<CalculationsConfig, 'date'>
