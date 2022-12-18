@@ -1,3 +1,4 @@
+// eslint-ignore-next-line: @typescript-eslint/consistent-type-imports
 import {
   CalculationMethod,
   CalculationParameters,
@@ -8,7 +9,7 @@ import {
   PrayerTimes,
   SunnahTimes,
 } from 'adhan'
-import { Logger } from 'tslog'
+import type { Logger } from 'tslog'
 import { AsrTime } from './types/AsrTime'
 import type { CalculationsConfig, CustomMethod } from './types/CalculationsConfig'
 import { Methods } from './types/Methods'

@@ -1,6 +1,7 @@
 import { Observable, defer, merge, timer } from 'rxjs'
 import { delay, repeat } from 'rxjs/operators'
 import { Coordinates, Prayer, PrayerTimes, Qibla, SunnahTimes } from 'adhan'
+import { Logger } from 'tslog'
 import type { Subscriber, Subscription } from 'rxjs'
 
 import { BaseCalculator } from './Base'
@@ -14,7 +15,6 @@ import type { PrayerNamesType, TimeEventObject, TimeObject } from './types/TimeO
 import type { CoordinatesObject } from './types/Coordinates'
 import type { Iqama } from './types/Iqama'
 import { subscriptionsSymbols } from './types/Subscriptions'
-import { Logger } from 'tslog'
 
 export class ReactiveCalculator extends BaseCalculator {
   private _subscriptions = new Map<symbol, Subscription>()
@@ -59,7 +59,8 @@ export class ReactiveCalculator extends BaseCalculator {
     // the first two subscription are created in isolation so that we keep them throughout the life of the object
     this._subscriptions.set(
       subscriptionsSymbols.NEW_SOLAR_DAY_SUBSCRIPTION,
-      this.newSolarDayObserver().subscribe(() => {
+      this.newSolarDayObserver().subscribe((e) => {
+        this._logger.debug('_setup new day event triggered:', e)
         this._refreshPrayerCalculator()
         this._calculatePrayerTimes()
         this._calculateCurrentPrayer()
@@ -71,7 +72,8 @@ export class ReactiveCalculator extends BaseCalculator {
     this._logger.debug('setting internal new qiyam subscription...')
     this._subscriptions.set(
       subscriptionsSymbols.NEW_QIYAM_SUBSCRIPTION,
-      this.newQiyamObserver().subscribe(() => {
+      this.newQiyamObserver().subscribe((e) => {
+        this._logger.debug('_setup new qiyam event triggered:', e)
         this._refreshQiyamCalculator()
         this._calculateMiddleOfTheNight()
         this._calculateThirdOfTheNight()
@@ -82,7 +84,8 @@ export class ReactiveCalculator extends BaseCalculator {
     this._logger.debug('setting internal adhan subscription...')
     this._subscriptions.set(
       subscriptionsSymbols.ADHAN_SUBSCRIPTION,
-      this.adhanObserver().subscribe(() => {
+      this.adhanObserver().subscribe((e) => {
+        this._logger.debug('_setup adhan event triggered:', e)
         this._calculateCurrentPrayer()
         this._calculateNextPrayer()
       })
@@ -127,7 +130,7 @@ export class ReactiveCalculator extends BaseCalculator {
           that._subscriptions.set(
             subscriptionsSymbols.NEW_SOLAR_DAY_SUBSCRIPTION,
             that.newSolarDayObserver().subscribe((e) => {
-              that._logger.debug('new day event triggered:', e)
+              that._logger.debug('proxy<_prayerConfig> new day event triggered:', e)
               that._refreshPrayerCalculator()
               that._calculatePrayerTimes()
               that._calculateCurrentPrayer()
@@ -139,7 +142,7 @@ export class ReactiveCalculator extends BaseCalculator {
           that._subscriptions.set(
             subscriptionsSymbols.ADHAN_SUBSCRIPTION,
             that.adhanObserver().subscribe((e) => {
-              that._logger.debug('adhan event triggered:', e)
+              that._logger.debug('proxy<_prayerConfig> adhan event triggered:', e)
               that._calculateCurrentPrayer()
               that._calculateNextPrayer()
             })
@@ -187,7 +190,7 @@ export class ReactiveCalculator extends BaseCalculator {
           that._subscriptions.set(
             subscriptionsSymbols.NEW_QIYAM_SUBSCRIPTION,
             that.newQiyamObserver().subscribe((e) => {
-              that._logger.debug('new qiyam event triggered:', e)
+              that._logger.debug('proxy<_qiyamConfig> new qiyam event triggered:', e)
               that._refreshQiyamCalculator()
               that._calculateMiddleOfTheNight()
               that._calculateThirdOfTheNight()
