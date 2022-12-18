@@ -1,3 +1,10 @@
+## [1.3.2](https://github.com/whiterocktech/prayers.ts/compare/v1.3.1...v1.3.2) (2022-12-18)
+
+
+### Bug Fixes
+
+* set engine to node >=16 ([ef1e9b7](https://github.com/whiterocktech/prayers.ts/commit/ef1e9b79c7bac9256a8e0b5ac482ef4021bd385c))
+
 ## [1.3.1](https://github.com/whiterocktech/prayers.ts/compare/v1.3.0...v1.3.1) (2022-12-18)
 
 
