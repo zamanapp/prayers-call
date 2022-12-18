@@ -241,7 +241,7 @@ export class ReactiveCalculator extends BaseCalculator {
     this._logger.debug('_calculateCurrentPrayer function invoked.')
     this._currentPrayer = {
       name: this._prayerTimesCalculator.currentPrayer(),
-      time: this._prayerTimesCalculator.timeForPrayer(this._prayerTimesCalculator.currentPrayer()),
+      time: this._prayerTimesCalculator.timeForPrayer(this._prayerTimesCalculator.currentPrayer())!,
     }
   }
 
@@ -249,7 +249,7 @@ export class ReactiveCalculator extends BaseCalculator {
     this._logger.debug('_calculateNextPrayer function invoked.')
     this._nextPrayer = {
       name: this._prayerTimesCalculator.nextPrayer(),
-      time: this._prayerTimesCalculator.timeForPrayer(this._prayerTimesCalculator.nextPrayer()),
+      time: this._prayerTimesCalculator.timeForPrayer(this._prayerTimesCalculator.nextPrayer())!,
     }
   }
 

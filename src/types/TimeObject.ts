@@ -47,7 +47,7 @@ export interface FormattedTimeObject {
 
 export interface TimeObject {
   name: TimesNamesType
-  time: Date | null
+  time: Date
 }
 
 export interface TimeEventObject {
