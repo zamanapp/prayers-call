@@ -355,15 +355,17 @@ export class ReactiveCalculator extends BaseCalculator {
         (lastThirdOfTheNight.getTime() - nextDay.getTime())
 
       this._logger.debug(`delay is set to: ${delayValue} ms`)
-      return new Observable((subscriber: Subscriber<TimeEventObject>) => {
+      const internalObserver = new Observable((subscriber: Subscriber<TimeEventObject>) => {
         subscriber.next({
           name: TimesNames.LAST_THIRD_OF_THE_NIGHT,
           time: this._qiyamTimesCalculator.lastThirdOfTheNight,
           type: EventType.TRANSIENT,
         })
         subscriber.complete()
-      }).pipe(delay(delayValue))
-    }).pipe(repeat())
+      })
+
+      return internalObserver.pipe(delay(delayValue)).pipe(repeat())
+    })
   }
 
   // A function that would emit an event every time a prayer time is due

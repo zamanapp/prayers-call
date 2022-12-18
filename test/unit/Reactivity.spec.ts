@@ -29,7 +29,6 @@ describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
       method: Methods.SINGAPORE,
       adjustments: { dhuhr: 3, asr: 3, isha: 2 },
       iqama: { fajr: 25 },
-      debug: true,
     })
     const NUMBER_OF_DAYS = 4
     const solarDayObserver = prayerTimeEngine.newSolarDayObserver()
@@ -75,6 +74,7 @@ describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
       method: Methods.SINGAPORE,
       adjustments: { dhuhr: 3, asr: 3, isha: 2 },
       iqama: { fajr: 25 },
+      debug: true,
     })
     const adhanObserver = prayerTimeEngine.adhanObserver()
 
@@ -108,7 +108,29 @@ describe.skipIf(isGithubCI)('ReactiveCalculator should work properly', () => {
     prayerTimeEngine.cleanup()
   })
 
-  it('Should notify subscribers when new qiyam time enters')
+  it('Should notify subscribers when new qiyam time enters', () => {
+    prayerTimeEngine = new ReactiveCalculator({
+      latitude: 2.9213,
+      longitude: 101.6559,
+      method: Methods.SINGAPORE,
+      adjustments: { dhuhr: 3, asr: 3, isha: 2 },
+      iqama: { fajr: 25 },
+    })
+    const NUMBER_OF_DAYS = 4
+    const qiyamObserver = prayerTimeEngine.newQiyamObserver()
+    // const expectedEvents = [
+    //   new Date('2022-01-01T16:00:00.000Z'),
+    //   new Date('2022-01-02T16:00:00.000Z'),
+    //   new Date('2022-01-03T16:00:00.000Z'),
+    // ]
+    const receivedEvents = []
+    qiyamObserver.subscribe((e) => {
+      receivedEvents.push(e)
+    })
+    vi.advanceTimersByTime(NUMBER_OF_DAYS * 24 * 60 * 60 * 1000) // 3 days
+    expect(receivedEvents.length).toEqual(NUMBER_OF_DAYS - 1)
+    prayerTimeEngine.cleanup()
+  })
   it('Should notify subscribers of iqama prayer times')
   it('Should notify subscribers of prayer times (adhan and iqama)')
 })
