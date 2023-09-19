@@ -1,4 +1,4 @@
-export const enum AsrTime {
+export enum AsrTime {
   JUMHOOR,
   HANAFI,
 }

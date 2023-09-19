@@ -1,4 +1,4 @@
-export const enum Methods {
+export enum Methods {
   UMM_AL_QURA = 'UmmAlQura', // Umm al-Qura University, Makkah
   MUSLIM_WORLD_LEAGUE = 'MuslimWorldLeague', // Muslim World League
   MOONSIGHTING_COMMITTEE = 'MoonsightingCommittee', // Moon sighting Committee
