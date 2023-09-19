@@ -1,3 +1,10 @@
+## [1.3.4](https://github.com/whiterocktech/prayers.ts/compare/v1.3.3...v1.3.4) (2023-09-19)
+
+
+### Bug Fixes
+
+* removed const enums as ecports ([3ae127a](https://github.com/whiterocktech/prayers.ts/commit/3ae127ae64aa0d599331a0291ba527d456ea0d2b))
+
 ## [1.3.3](https://github.com/whiterocktech/prayers.ts/compare/v1.3.2...v1.3.3) (2022-12-18)
 
 
