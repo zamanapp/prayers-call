@@ -1,3 +1,10 @@
+## [1.3.5](https://github.com/whiterocktech/prayers-call/compare/v1.3.4...v1.3.5) (2023-09-20)
+
+
+### Bug Fixes
+
+* renamed package to avoid .ts extention ([24dbf2a](https://github.com/whiterocktech/prayers-call/commit/24dbf2aa9a3743ba68ed0dd18035eeaeef08aa2b))
+
 ## [1.3.4](https://github.com/whiterocktech/prayers.ts/compare/v1.3.3...v1.3.4) (2023-09-19)
 
 
