@@ -1,8 +1,8 @@
-# Prayes.ts
-
-[![npm version](https://badge.fury.io/js/prayers.ts.svg)](https://badge.fury.io/js/prayers.ts)
+# Prayes-call
 
 Reactive prayer times calculation library for node and the browser built with Typescript.
+
+[![npm version](https://badge.fury.io/js/prayers-call.svg)](https://badge.fury.io/js/prayers-call)
 
 > **Warning**
 > This library is a work in progress
@@ -14,7 +14,7 @@ Reactive prayer times calculation library for node and the browser built with Ty
 ## Installation
 
 ```bash
-npm install --save prayers.ts
+npm install --save prayers-call
 ```
 
 ## Usage

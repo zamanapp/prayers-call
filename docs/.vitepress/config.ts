@@ -3,7 +3,7 @@ import { version } from '../../package.json'
 
 // if version doesn't work we need to use this plugin https://github.com/semantic-release/git
 export default defineConfig({
-  title: 'Prayers.ts',
+  title: 'prayers-call',
   description: 'A reactive prayer times calculation library for node and the browser built with Typescript',
   ignoreDeadLinks: true, // FIXME: remove this when the docs are mature
   lastUpdated: true,
@@ -15,11 +15,11 @@ export default defineConfig({
     },
 
     editLink: {
-      pattern: 'https://github.com/whiterocktech/prayers.ts/edit/master/docs/:path',
+      pattern: 'https://github.com/whiterocktech/prayers-call/edit/master/docs/:path',
       text: 'Edit this page on GitHub',
     },
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/whiterocktech/prayers.ts' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/whiterocktech/prayers-call' }],
 
     footer: {
       message: 'Released under the MIT License.',
@@ -58,11 +58,11 @@ function nav() {
       items: [
         {
           text: 'Changelog',
-          link: 'https://github.com/whiterocktech/prayers.ts/blob/master/CHANGELOG.md',
+          link: 'https://github.com/whiterocktech/prayers-call/blob/master/CHANGELOG.md',
         },
         {
           text: 'Contributing',
-          link: 'https://github.com/whiterocktech/prayers.ts/blob/master/CONTRIBUTING.md',
+          link: 'https://github.com/whiterocktech/prayers-call/blob/master/CONTRIBUTING.md',
         },
       ],
     },

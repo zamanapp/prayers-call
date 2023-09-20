@@ -1,11 +1,11 @@
 ---
 layout: home
 
-title: Prayers.ts
+title: prayers-call
 titleTemplate: A Reactive Prayer Times Calculator
 
 hero:
-  name: Prayers.ts
+  name: prayers-call
   text: A Reactive Prayer Times Calculator
   tagline: Easy to use, Configurable, and Accurate. All you need to get Prayer times calculations done right.
   actions:
@@ -14,7 +14,7 @@ hero:
       link: /guide/getting-started
     - theme: alt
       text: View on GitHub
-      link: https://github.com/whiterocktech/prayers.ts
+      link: https://github.com/whiterocktech/prayers-call
 
 features:
   - title: 'Accurate'
