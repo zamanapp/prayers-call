@@ -11,5 +11,4 @@ export enum Methods {
   SINGAPORE = 'Singapore',
   NORTH_AMERICA = 'NorthAmerica', // ISNA
   TEHRAN = 'Tehran', // Institute of Geophysics, University of Tehran
-  // CUSTOM = 'Other',
 }

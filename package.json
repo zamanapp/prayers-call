@@ -1,5 +1,5 @@
 {
-  "name": "prayers.ts",
+  "name": "prayers-call",
   "type": "module",
   "version": "1.3.4",
   "packageManager": "pnpm@7.9.0",
@@ -7,12 +7,12 @@
   "author": "Gimyboya",
   "license": "MIT",
   "funding": "https://github.com/sponsors/whiterocktech",
-  "homepage": "https://github.com/whiterocktech/prayers.ts#readme",
+  "homepage": "https://github.com/whiterocktech/prayers-call#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/whiterocktech/prayers.ts"
+    "url": "git+https://github.com/whiterocktech/prayers-call"
   },
-  "bugs": "https://github.com/whiterocktech/prayers.ts/issues",
+  "bugs": "https://github.com/whiterocktech/prayers-call/issues",
   "keywords": [],
   "sideEffects": false,
   "exports": {
