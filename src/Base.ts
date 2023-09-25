@@ -88,6 +88,113 @@ export class BaseCalculator {
       return CalculationMethod.Tehran()
     } else if (method === Methods.TURKEY) {
       return CalculationMethod.Turkey()
+
+      // Custom Methods
+    } else if (
+      method === Methods.STANDARD ||
+      method === Methods.JORDAN ||
+      method === Methods.LIBYA ||
+      method === Methods.PALESTINE ||
+      method === Methods.SUDAN
+    ) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 18,
+        ishaAngle: 18,
+      })
+    } else if (method === Methods.ALGERIA) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 18,
+        ishaAngle: 17,
+        methodAdjustments: {
+          maghrib: 3,
+        },
+      })
+    } else if (method === Methods.BAHRAIN) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 18,
+        ishaAngle: 0,
+        ishaInterval: 90,
+      })
+    } else if (method === Methods.BRUNEI || method === Methods.INDONESIA || method === Methods.MALAYSIA) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 20,
+        ishaAngle: 18,
+        methodAdjustments: {
+          dhuhr: 1,
+        },
+      })
+    } else if (method === Methods.FRANCE) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 12,
+        ishaAngle: 12,
+      })
+    } else if (method === Methods.GERMANY) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 18,
+        ishaAngle: 16.5,
+      })
+    } else if (method === Methods.IRAQ) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 19.5,
+        ishaAngle: 17.5,
+        methodAdjustments: {
+          dhuhr: 7,
+          asr: 7,
+          maghrib: 4,
+        },
+      })
+    } else if (method === Methods.MOROCCO) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 19,
+        ishaAngle: 17,
+        methodAdjustments: {
+          dhuhr: 5,
+          maghrib: 2,
+        },
+      })
+    } else if (method === Methods.RUSSIA) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 16,
+        ishaAngle: 15,
+      })
+    } else if (method === Methods.OMAN) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 18,
+        ishaAngle: 18,
+        methodAdjustments: {
+          dhuhr: 5,
+          asr: 5,
+          maghrib: 5,
+        },
+      })
+    } else if (method === Methods.SYRIA) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 18.5,
+        ishaAngle: 17.5,
+        methodAdjustments: {
+          sunrise: -7,
+          dhuhr: 5,
+          asr: 3,
+          maghrib: 7,
+        },
+      })
+    } else if (method === Methods.TUNISIA) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 18,
+        ishaAngle: 18,
+        methodAdjustments: {
+          dhuhr: 7,
+          maghrib: 2,
+        },
+      })
+    } else if (method === Methods.YEMEN) {
+      return this._pramsFromCustomMethod({
+        fajrAngle: 18,
+        ishaAngle: 17,
+        methodAdjustments: {
+          dhuhr: 2,
+        },
+      })
     } else if (typeof method === 'object') {
       // if we receive an object for custom calculation method
       return this._pramsFromCustomMethod(method)

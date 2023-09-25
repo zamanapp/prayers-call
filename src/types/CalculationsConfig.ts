@@ -5,6 +5,9 @@ import type { Methods } from './Methods'
 import type { PrayerAdjustments } from './PrayerAdjustments'
 import type { ValueOf } from './TypesUtils'
 
+// TODO: add a configuration to take into consideration the altitude of the location
+// TODO: add a configuration to take into consideration daylight savings
+// TODO: add a configuration to take into consideration ramadan timings (+30min on top of the 90min used for UmmAlQura)
 export interface CustomMethod {
   /**
    * Angle of the sun used to calculate Fajr
