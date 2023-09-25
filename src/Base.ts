@@ -13,6 +13,7 @@ import type { Logger } from 'tslog'
 import { AsrTime } from './types/AsrTime'
 import type { CalculationsConfig, CustomMethod } from './types/CalculationsConfig'
 import { Methods } from './types/Methods'
+import { Formatter } from './Formatter'
 
 export class BaseCalculator {
   protected _prayerTimesCalculator!: PrayerTimes
@@ -219,5 +220,23 @@ export class BaseCalculator {
     }
     // return the params of the custom method
     return calculationParams
+  }
+
+  public _adjustForRamadan(): boolean {
+    const adjust = false
+    const date = this._prayerConfig.date.toTemporalInstant()
+    const method = this._prayerConfig.method
+    const hijriFormatter = new Formatter({
+      calendar: this._prayerConfig.hijriCalendar ?? 'islamic-umalqura',
+      dateStyle: 'short',
+    })
+    const hijriMonth = hijriFormatter.format(date).split('/')[0]
+    // check if the month is ramadan
+    if (parseInt(hijriMonth) === 9) {
+      if (method === Methods.UMM_AL_QURA || this._prayerConfig.adjustForRamadan) {
+        return true
+      }
+    }
+    return adjust
   }
 }

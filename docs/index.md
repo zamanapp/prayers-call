@@ -17,12 +17,12 @@ hero:
       link: https://github.com/whiterocktech/prayers-call
 
 features:
-  - title: 'Accurate'
+  - title: Accurate
     details: High precession calculations based on any given coordinates.
   - title: Simple
     details: An easy to use, read and maintain api while providing a grate deal of configuration.
   - title: Reactive
     details: A reactive calculator for realtime operations and even based paradigm.
   - title: Versatile
-    details: Prayer times, Sunnah Times and Qibla all included.
+    details: Rich calculation methods, Sunnah Times and Qibla all included.
 ---

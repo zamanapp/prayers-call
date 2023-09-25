@@ -2,7 +2,8 @@ import { Coordinates, Prayer, Qibla } from 'adhan'
 import { BaseCalculator } from './Base'
 import type { CalculationsConfig } from './types/CalculationsConfig'
 import type { CoordinatesObject } from './types/Coordinates'
-import type { PrayerNamesType, TimeObject } from './types/TimeObject'
+import { PrayerNames, type PrayerNamesType, type TimeObject } from './types/TimeObject'
+import { dateByAddingMinutes } from './utils/DatesUtils'
 
 export class StaticCalculator extends BaseCalculator {
   constructor(config: CalculationsConfig) {
@@ -33,13 +34,20 @@ export class StaticCalculator extends BaseCalculator {
       },
       {
         name: Prayer.Isha,
-        time: this._prayerTimesCalculator.isha,
+        time: this._adjustForRamadan()
+          ? dateByAddingMinutes(this._prayerTimesCalculator.isha, 30)
+          : this._prayerTimesCalculator.isha,
       },
     ]
   }
 
   public getPrayerTime(prayer: PrayerNamesType): Date | null {
-    return this._prayerTimesCalculator.timeForPrayer(prayer)
+    // check if prayer is isha and needs to adjust
+    return prayer === PrayerNames.ISHA && this._adjustForRamadan()
+      ? // then add 30 minutes
+        dateByAddingMinutes(this._prayerTimesCalculator.timeForPrayer(prayer)!, 30)
+      : // else just return the prayer time
+        this._prayerTimesCalculator.timeForPrayer(prayer)
   }
 
   public getMiddleOfTheNightTime(): TimeObject {

@@ -4,6 +4,7 @@ import type { AsrTime } from './AsrTime'
 import type { Methods } from './Methods'
 import type { PrayerAdjustments } from './PrayerAdjustments'
 import type { ValueOf } from './TypesUtils'
+import type { HijriCalendar } from './HijriCalendar'
 
 // TODO: add a configuration to take into consideration the altitude of the location
 // TODO: add a configuration to take into consideration daylight savings
@@ -81,6 +82,17 @@ export interface CalculationsConfig {
    * @defaultValue { fajr: 20, dhuhr: 10, asr: 10, maghrib: 5, isha: 15 }
    * */
   iqama?: Partial<Iqama>
+  /**
+   * if set to true will adjust the prayer times for Ramadan by adding 30 minutes to Isha
+   * This is usually practiced in umm al-qura method
+   * @defaultValue false
+   */
+  adjustForRamadan?: boolean
+  /**
+   * what hijri calendar to use for the calculation
+   * @defaultValue HijriCalendar.UMM_AL_QURA
+   */
+  hijriCalendar?: HijriCalendar
   /**
    * if set to true will output logs that can be helpful for debugging
    * @defaultValue false

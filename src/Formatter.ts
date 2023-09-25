@@ -1,5 +1,4 @@
 import type { FormatterConfig } from './types/FormatterConfig'
-
 export class Formatter {
   private _formatter!: Intl.DateTimeFormat
   private _config!: FormatterConfig
@@ -32,9 +31,8 @@ export class Formatter {
     }
   }
 
-  public format(): void {
-    // TODO: implement
-    //
+  public format(date: Date): string {
+    return this._formatter.format(date)
   }
 
   public setFormatterOptions(newConfig: Partial<FormatterConfig>) {
