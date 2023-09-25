@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/whiterocktech/prayers-call/compare/v1.3.5...v1.4.0) (2023-09-25)
+
+
+### Features
+
+* add ramadan adjustment option ([65c6f20](https://github.com/whiterocktech/prayers-call/commit/65c6f20f85538238851cf29d4f6473700d063c96))
+* added a set of new custom methods ([9bc8abf](https://github.com/whiterocktech/prayers-call/commit/9bc8abff4969e17b244786fdc4e8a967af906dc4))
+
 ## [1.3.5](https://github.com/whiterocktech/prayers-call/compare/v1.3.4...v1.3.5) (2023-09-20)
 
 
