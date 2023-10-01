@@ -7,7 +7,7 @@ const calculator = new StaticCalculator({
   date: new Date(2022, 0, 1),
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 const prayerTimes = calculator.getAllPrayerTimes()

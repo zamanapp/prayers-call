@@ -224,7 +224,7 @@ export class BaseCalculator {
 
   public _adjustForRamadan(): boolean {
     const adjust = false
-    const date = this._prayerConfig.date.toTemporalInstant()
+    const date = this._prayerConfig.date
     const method = this._prayerConfig.method
     const hijriFormatter = new Formatter({
       calendar: this._prayerConfig.hijriCalendar ?? 'islamic-umalqura',
