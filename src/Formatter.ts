@@ -1,4 +1,5 @@
 import type { FormatterConfig } from './types/FormatterConfig'
+import type { FormattedTimeObject, TimeObject } from './types/TimeObject'
 export class Formatter {
   private _formatter!: Intl.DateTimeFormat
   private _config!: FormatterConfig
@@ -31,8 +32,17 @@ export class Formatter {
     }
   }
 
-  public format(date: Date): string {
+  public formatDate(date: Date): string {
     return this._formatter.format(date)
+  }
+
+  public formatPrayers(prayerTimes: TimeObject[]): FormattedTimeObject[] {
+    return prayerTimes.map((v) => {
+      return {
+        name: v.name,
+        time: this.formatDate(v.time),
+      }
+    })
   }
 
   public setFormatterOptions(newConfig: Partial<FormatterConfig>) {

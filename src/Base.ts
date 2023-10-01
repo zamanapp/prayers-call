@@ -230,7 +230,7 @@ export class BaseCalculator {
       calendar: this._prayerConfig.hijriCalendar ?? 'islamic-umalqura',
       dateStyle: 'short',
     })
-    const hijriMonth = hijriFormatter.format(date).split('/')[0]
+    const hijriMonth = hijriFormatter.formatDate(date).split('/')[0]
     // check if the month is ramadan
     if (parseInt(hijriMonth) === 9) {
       if (method === Methods.UMM_AL_QURA || this._prayerConfig.adjustForRamadan) {
