@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/whiterocktech/prayers-call/compare/v1.5.1...v1.5.2) (2023-10-01)
+
+
+### Bug Fixes
+
+* removed the use of Weakmaps ([d55b228](https://github.com/whiterocktech/prayers-call/commit/d55b228520d0a1505f668c0279f18892feef2ca5))
+
 ## [1.5.1](https://github.com/whiterocktech/prayers-call/compare/v1.5.0...v1.5.1) (2023-10-01)
 
 
