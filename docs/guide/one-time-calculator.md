@@ -3,7 +3,7 @@
 The `StaticCalculator` accepts a date in it's initialization allowing you to get prayer times for a single day in any past, current or future date.
 
 ```ts
-import { Methods, StaticCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya on Jan 1st 2022
 const calculator = new StaticCalculator({
@@ -15,7 +15,7 @@ const calculator = new StaticCalculator({
 })
 ```
 
-You can find all the configuration reference in the [Config](../config.md)
+For configuration options, refer to the [Config](../config.md) section.
 
 ## Methods
 
@@ -30,7 +30,7 @@ Sunrise time object is included in the array
 :::
 
 ```ts
-import { Methods, StaticCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya
 const calculator = new StaticCalculator({
@@ -78,7 +78,7 @@ calculator.getAllPrayerTimes()
 Get a specific Prayer time based on the date used to initialize the calculator. this method returns a `Date` object and accept a `prayer` parameter of type [`PrayerNames`]().
 
 ```ts
-import { Methods, PrayerNames, StaticCalculator } from 'prayer.ts'
+import { Methods, PrayerNames, StaticCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya
 const calculator = new StaticCalculator({
@@ -98,7 +98,7 @@ calculator.getPrayerTime(PrayerNames.FAJR)
 Return the time of the middle of the night based on the moon. The return type is a `Date` object. These calculations are useful for Qiyam.
 
 ```ts
-import { Methods, StaticCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya
 const calculator = new StaticCalculator({
@@ -118,7 +118,7 @@ calculator.getMiddleOfTheNightTime()
 Return the time of the last third of the night based on the moon. The return type is a `Date` object. These calculations are useful for Qiyam.
 
 ```ts
-import { Methods, StaticCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya
 const calculator = new StaticCalculator({
@@ -138,7 +138,7 @@ calculator.getLastThirdOfTheNightTime()
 The Qibla direction method return the direction in degrees from North of the Qibla. the return type is a `number`. By default this method will use the initialization coordinates but can accept an optional param of `CoordinatesObject` type.
 
 ```ts
-import { Methods, StaticCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya
 const calculator = new StaticCalculator({
@@ -163,7 +163,7 @@ calculator.getQiblaDirection(alAqsaCoordinates) // will return: 157.299242815287
 This method returns the full configuration object.
 
 ```ts
-import { Methods, StaticCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya
 const calculator = new StaticCalculator({
@@ -189,10 +189,10 @@ calculator.getCalculationOptions()
 
 ### setCalculationOptions
 
-This method allow you to change the configuration of a calculator instance without the need for creating a new one. accepts a `newConfig` param of `Partial<CalculationsConfig>` type. You can find all the configuration reference in the [Config](../config.md)
+This method allow you to change the configuration of a calculator instance without the need for creating a new one. accepts a `newConfig` param of `Partial<CalculationsConfig>` type. For configuration options, refer to the [Config](../config.md) section.
 
 ```ts
-import { Methods, StaticCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya
 const calculator = new StaticCalculator({

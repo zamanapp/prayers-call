@@ -65,5 +65,5 @@ import { StaticCalculator } from 'https://deno.land/x/prayers@v1.1.0'
 ```
 
 ::: tip
-The rest of this documentation assumes you are using npm/yarn/pnpm and importing directly from the "prayer.ts" package.
+The rest of this documentation assumes you are using npm/yarn/pnpm and importing directly from the "prayer-call" package.
 :::

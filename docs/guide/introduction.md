@@ -2,11 +2,11 @@
 
 ## What is it?
 
-Prayers.ts is a reactive library for calculating (Islamic) prayer times. It is built with typescript and can be used for both node and the browser.
+prayers-call is a reactive library for calculating (Islamic) prayer times. It is built with typescript and can be used for both node and the browser.
 
-Based on [Adhan-js](https://github.com/batoulapps/adhan-js) at it's core. Prayers.ts aims to provide accurate and versatile calculations methods as well as a number of configurations useful for making needed adjustments for the final results.
+Based on [Adhan-js](https://github.com/batoulapps/adhan-js) at it's core. prayers-call aims to provide accurate and versatile calculations methods as well as a number of configurations useful for making needed adjustments for the final results.
 
-Prayers.ts also focuses on ease of use. we wanted to make the Api straightforward to use and understand while still providing the user all the powerful features they need.
+prayers-call also focuses on ease of use. we wanted to make the Api straightforward to use and understand while still providing the user all the powerful features they need.
 
 ## Why this library?
 
@@ -14,7 +14,7 @@ When working with other solutions out there we couldn't find a solution that off
 
 This library provides reactivity for Qiyam times as well.
 
-Prayers.ts also aims to be accurate where reactions are triggered only when they are needed.
+prayers-call also aims to be accurate where reactions are triggered only when they are needed.
 
 ## Features
 

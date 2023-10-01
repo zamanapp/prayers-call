@@ -1,5 +1,6 @@
 import { Methods } from '../types/Methods'
 
+// the keys are ISO 3166-1 alpha-3 country codes (https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3)
 export const CountryMethods = {
   SAU: [Methods.UMM_AL_QURA],
   AFG: [Methods.KARACHI],

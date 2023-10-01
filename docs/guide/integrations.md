@@ -4,7 +4,7 @@ WIP
 
 ## Vue
 
-`Prayers.ts` plays very nicely with vue reactivity system and composition api in fact when designing `Prayers.ts`. we designed while having Vue in the back of our mind as an inspiration and as a potential use case for us to use `Prayers.ts`.
+`prayers-call` plays very nicely with vue reactivity system and composition api in fact when designing `prayers-call`. we designed while having Vue in the back of our mind as an inspiration and as a potential use case for us to use `prayers-call`.
 
 ### basic usage
 

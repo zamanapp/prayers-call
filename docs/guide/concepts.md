@@ -1,47 +1,50 @@
 # Core Concepts
 
-The Prayers.ts library provides two different types of calculators, a basic one time use calculator that can be used to calculate prayer times for any date (past, current and future). and a reactive realtime calculator that can be used to track events (adhan, iqama and other events) in realtime.
+The prayers-call library offers two distinct types of calculators:
+
+[Static Calculator](#static-calculator): Ideal for one-time calculations, this calculator can determine prayer times for any date—past, present, or future.
+
+[Reactive Calculator](#reactive-calculator): Designed for real-time tracking, this calculator allows you to monitor events like Adhan and Iqama as they happen.
+
+Each serves a unique purpose, enabling you to choose the best fit for your application's needs.
 
 ## Static Calculator
 
-The `StaticCalculator` accepts a date in it's initialization allowing you to get prayer times for any past, current or future date. This calculator however is not reactive. if you need realtime reactive prayer times calculations then read the [RealTime Reactive Calculator](#realtime-reactive-calculator) section.
+The `StaticCalculator` is initialized with a specific date, allowing you to obtain prayer times for any date — be it past, present, or future. Note that this calculator is not designed for real-time, reactive calculations. For that, refer to the [RealTime Reactive Calculator](#reactive-calculator) section.
 
 ```ts
-import { Methods, StaticCalculator } from 'prayer.ts'
+import { Methods, StaticCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya
 const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
 calculator.getPrayerTimes()
 ```
 
-For all the methods available to use with `StaticCalculator` check the [One time Calculator](./one-time-calculator.md).
+For a detailed list of available functions within th `StaticCalculator` class, consult the [One time Calculator](./one-time-calculator.md) documentation.
 
-You can find all the configuration reference in the [Config](../config.md)
+For configuration options, refer to the [Config](../config.md) section.
 
-## RealTime Reactive Calculator
+## Reactive Calculator
 
-The `ReactiveCalculator` provides a number of methods to get realtime updates on prayer times. The event approach can help you trigger certain logic at specific times.
+The `ReactiveCalculator` is designed for real-time monitoring of prayer times. It provides a set of functions that allow you to subscribe to events, such as the Adhan, and execute specific logic when these events occur.
 
 ```ts
-import { Methods, ReactiveCalculator } from 'prayer.ts'
+import { Methods, ReactiveCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya
 const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
-
-// create some subscriptions that would refresh the calculations
-reactiveCalculator.int()
 
 const adhanSubscription = reactiveCalculator.adhanObserver().subscribe({
   next(value: TimeEventObject) {
@@ -54,16 +57,19 @@ const adhanSubscription = reactiveCalculator.adhanObserver().subscribe({
 
 // ...
 
-// somewhere later in your code if you need to clean up
-// cleanup the subscriptions
+// Cleanup when needed
 reactiveCalculator.cleanup()
 adhanSubscription.unsubscribe()
 ```
 
-For all the methods available to use with `ReactiveCalculator` check the [Reactive Calculator](./reactive-calculator.md).
+For a detailed list of available functions within the `ReactiveCalculator` class, consult the [Reactive Calculator](./reactive-calculator.md) documentation.
 
-You can find all the configuration reference in the [Config](../config.md)
+For configuration options, refer to the [Config](../config.md) section.
 
 ## Date formatting
 
-Because the results are outputted as a [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object. There are a number of ways how you can format the date and time. For a thorough guide on how to formate your dates read the [formatters section](./formatters.md) guide. If you are looking to convert to a Hijri date follow the [Hijri Dates](./hijri.md) guide.
+The prayer times are returned as JavaScript [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects. offering you flexibility in formatting the date and time.
+
+For a detailed guide on how to format these Date objects, consult the [formatters section](./formatters.md) guide.
+
+If you wish to convert the dates to the Hijri calendar, refer to the [Hijri Dates](./hijri.md) guide.

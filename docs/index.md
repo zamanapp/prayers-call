@@ -20,9 +20,9 @@ features:
   - title: Accurate
     details: High precession calculations based on any given coordinates.
   - title: Simple
-    details: An easy to use, read and maintain api while providing a grate deal of configuration.
+    details: user-friendly API, easy to read and maintain with a great deal of customization options.
   - title: Reactive
-    details: A reactive calculator for realtime operations and even based paradigm.
+    details: Utilize a real-time, event-driven architecture for seamless integration into reactive programming paradigms.
   - title: Versatile
-    details: Rich calculation methods, Sunnah Times and Qibla all included.
+    details: A comprehensive suite of features, including various calculation methods, Sunnah Times and Qibla all included.
 ---
