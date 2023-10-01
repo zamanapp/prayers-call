@@ -2,9 +2,10 @@ import { Methods } from '../src/types/Methods'
 import { PrayerNames, ReactiveCalculator, StaticCalculator } from '../src'
 import type { TimeEventObject } from '../src'
 import { TimesNames } from '../src/types/TimeObject'
+
 // Cyberjaya location
 const calculator = new StaticCalculator({
-  date: new Date(2022, 0, 1),
+  date: new Date(),
   latitude: 2.9213,
   longitude: 101.6559,
   method: Methods.MALAYSIA,

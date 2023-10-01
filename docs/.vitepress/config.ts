@@ -23,7 +23,7 @@ export default defineConfig({
 
     footer: {
       message: 'Released under the MIT License.',
-      copyright: `Copyright © 2022-${new Date().getFullYear()} Gimyboya`,
+      copyright: `Copyright © 2022-${new Date().getFullYear()} Whiterock tech`,
     },
   },
 })
@@ -72,36 +72,21 @@ function nav() {
 function sidebarGuide() {
   return [
     {
-      text: 'Introduction',
+      text: 'Guide',
       collapsible: true,
       items: [
         { text: 'Introduction', link: '/guide/introduction' },
         { text: 'Getting Started', link: '/guide/getting-started' },
         { text: 'Core Concepts', link: '/guide/concepts' },
-      ],
-    },
-    {
-      text: 'Prayers Time Calculation',
-      collapsible: true,
-      items: [
+
         { text: 'One Time Calculator', link: '/guide/one-time-calculator' },
         { text: 'Reactive Calculator', link: '/guide/reactive-calculator' },
-      ],
-    },
-    {
-      text: 'Calculating Qibla',
-      collapsible: true,
-      items: [
+
         {
           text: 'Calculating The Qibla',
           link: '/guide/calculating-the-qibla',
         },
-      ],
-    },
-    {
-      text: 'Testing',
-      collapsible: true,
-      items: [
+
         {
           text: 'Testing',
           link: '/guide/testing',
@@ -112,10 +97,23 @@ function sidebarGuide() {
       text: 'Recipes',
       collapsible: true,
       items: [
-        { text: 'Formatters', link: '/guide/formatters' },
-        { text: 'Hijri Dates', link: '/guide/hijri' },
-        { text: 'Internalization', link: '/guide/i18n' },
+        { text: 'Formatters', link: '/recipes/formatters' },
+        { text: 'Hijri Dates', link: '/recipes/hijri' },
+        { text: 'Internalization', link: '/recipes/i18n' },
       ],
+    },
+    {
+      text: 'Config',
+      collapsible: true,
+      items: [
+        { text: 'Config Reference', link: '/config/index' },
+        { text: 'Methods', link: '/config/methods' },
+      ],
+    },
+    {
+      text: 'API',
+      collapsible: true,
+      items: [{ text: 'API Reference', link: '/api' }],
     },
   ]
 }

@@ -13,16 +13,19 @@ hero:
       text: Get Started
       link: /guide/getting-started
     - theme: alt
+      text: Why prayers-call?
+      link: /guide/introduction
+    - theme: alt
       text: View on GitHub
       link: https://github.com/whiterocktech/prayers-call
 
 features:
   - title: Accurate
-    details: High precession calculations based on any given coordinates.
+    details: High-precision prayer time calculations based on specified geographic coordinates.
   - title: Simple
-    details: user-friendly API, easy to read and maintain with a great deal of customization options.
+    details: User-friendly API, easy to read and maintain with a great deal of customization options.
   - title: Reactive
-    details: Utilize a real-time, event-driven architecture for seamless integration into reactive programming paradigms.
+    details: Real-time, event-driven architecture for seamless integration into reactive programming paradigms.
   - title: Versatile
-    details: A comprehensive suite of features, including various calculation methods, Sunnah Times and Qibla all included.
+    details: 'Multiple calculation methods, Sunnah Times, and Qibla direction, all in one package'
 ---

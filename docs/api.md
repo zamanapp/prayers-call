@@ -1,3 +1,3 @@
-# API <sup class="vt-badge wip" />
+# API Reference
 
 WIP
