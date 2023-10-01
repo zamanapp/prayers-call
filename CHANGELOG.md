@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/whiterocktech/prayers-call/compare/v1.4.0...v1.5.0) (2023-10-01)
+
+
+### Features
+
+* added method recommendation based on location ([c8fd1fb](https://github.com/whiterocktech/prayers-call/commit/c8fd1fb3a791dd30b3eeccf078fb9a9dfe462925))
+
 # [1.4.0](https://github.com/whiterocktech/prayers-call/compare/v1.3.5...v1.4.0) (2023-09-25)
 
 
