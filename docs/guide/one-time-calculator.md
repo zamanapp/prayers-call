@@ -1,6 +1,6 @@
 # Statice Calculator
 
-The `StaticCalculator` accepts a date in it's initialization allowing you to get prayer times for a single day in any past, current or future date.
+The `StaticCalculator` class is initialized with a date, allowing you to calculate prayer times for any single day—past, present, or future.
 
 ```ts
 import { Methods, StaticCalculator } from 'prayer-call'
@@ -15,18 +15,16 @@ const calculator = new StaticCalculator({
 })
 ```
 
-For configuration options, refer to the [Config](../config.md) section.
+For configuration details, refer to the [Config](../config.md) section.
 
-## Methods
-
-The calculator offer a number of methods to help you get Prayer times, Qiyam times and Qibla.
+## Available Functions
 
 ### getAllPrayerTimes
 
-This method returns a array of [`TimeObject`]() containing the prayer name and it's time. the time is a `Date` object.
+Returns an array of [`TimeObject`]() with prayer names and their corresponding time as a Javascript `Date` object.
 
 ::: info
-Sunrise time object is included in the array
+The array includes the sunrise time object.
 :::
 
 ```ts
@@ -37,7 +35,7 @@ const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
@@ -75,7 +73,7 @@ calculator.getAllPrayerTimes()
 
 ### getPrayerTime
 
-Get a specific Prayer time based on the date used to initialize the calculator. this method returns a `Date` object and accept a `prayer` parameter of type [`PrayerNames`]().
+Returns the time for a specific prayer based on the initialized date. Accepts a prayer parameter of type [`PrayerNames`]().
 
 ```ts
 import { Methods, PrayerNames, StaticCalculator } from 'prayer-call'
@@ -85,7 +83,7 @@ const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
@@ -93,9 +91,9 @@ calculator.getPrayerTime(PrayerNames.FAJR)
 // will return: "2022-01-31T22:07:00.000Z"
 ```
 
-### getMiddleOfTheNightTime
+### getMiddleOfTheNightTime and getLastThirdOfTheNightTime
 
-Return the time of the middle of the night based on the moon. The return type is a `Date` object. These calculations are useful for Qiyam.
+Returns a [`TimeObject`]() representing the time of the middle and the last third of the night respectively based on the moon. Useful for Qiyam calculations.
 
 ```ts
 import { Methods, StaticCalculator } from 'prayer-call'
@@ -105,29 +103,12 @@ const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
 calculator.getMiddleOfTheNightTime()
 // will return: { name: 'middleOfTheNight', time: 2022-02-01T16:47:00.000Z }
-```
-
-### getLastThirdOfTheNightTime
-
-Return the time of the last third of the night based on the moon. The return type is a `Date` object. These calculations are useful for Qiyam.
-
-```ts
-import { Methods, StaticCalculator } from 'prayer-call'
-
-// calculations for Cyberjaya
-const calculator = new StaticCalculator({
-  date: new Date(2022, 1, 1),
-  latitude: 2.9213,
-  longitude: 101.6559,
-  method: Methods.SINGAPORE,
-  adjustments: { dhuhr: 3, asr: 3, isha: 2 },
-})
 
 calculator.getLastThirdOfTheNightTime()
 // will return: { name: 'lastThirdOfTheNight', time: 2022-02-01T18:34:00.000Z }
@@ -135,7 +116,9 @@ calculator.getLastThirdOfTheNightTime()
 
 ### getQiblaDirection
 
-The Qibla direction method return the direction in degrees from North of the Qibla. the return type is a `number`. By default this method will use the initialization coordinates but can accept an optional param of `CoordinatesObject` type.
+Returns a `number` representing the Qibla direction in degrees from North.
+
+By default this method will use the initialization coordinates but can optional accept a `CoordinatesObject`.
 
 ```ts
 import { Methods, StaticCalculator } from 'prayer-call'
@@ -145,7 +128,7 @@ const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
@@ -160,7 +143,7 @@ calculator.getQiblaDirection(alAqsaCoordinates) // will return: 157.299242815287
 
 ### getCalculationOptions
 
-This method returns the full configuration object.
+Returns the full configuration object currently in use.
 
 ```ts
 import { Methods, StaticCalculator } from 'prayer-call'
@@ -189,7 +172,9 @@ calculator.getCalculationOptions()
 
 ### setCalculationOptions
 
-This method allow you to change the configuration of a calculator instance without the need for creating a new one. accepts a `newConfig` param of `Partial<CalculationsConfig>` type. For configuration options, refer to the [Config](../config.md) section.
+Allows you to update the calculator's configuration without creating a new instance. Accepts a `newConfig` param of type `Partial<CalculationsConfig>`.
+
+For configuration details, refer to the [Config](../config.md) section.
 
 ```ts
 import { Methods, StaticCalculator } from 'prayer-call'

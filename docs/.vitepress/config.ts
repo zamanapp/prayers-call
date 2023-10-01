@@ -42,10 +42,9 @@ function nav() {
         // }
       ],
     },
-    { text: 'Guide', link: '/guide/introduction', activeMatch: '/guide/' },
     {
       text: 'Config',
-      link: '/config',
+      link: '/config/index',
       activeMatch: '/config/',
     },
     {
@@ -53,6 +52,7 @@ function nav() {
       link: '/api',
       activeMatch: '/api/',
     },
+    { text: 'Playground', link: 'https://stackblitz.com/edit/prayer-ts?file=src%2FPrayerTimes.ts' },
     {
       text: version,
       items: [
