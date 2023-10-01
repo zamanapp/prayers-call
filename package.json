@@ -1,7 +1,7 @@
 {
   "name": "prayers-call",
   "type": "module",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "packageManager": "pnpm@7.9.0",
   "description": "",
   "author": "Gimyboya",

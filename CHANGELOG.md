@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/whiterocktech/prayers-call/compare/v1.5.0...v1.5.1) (2023-10-01)
+
+
+### Bug Fixes
+
+* fixed type error ([7cc7aed](https://github.com/whiterocktech/prayers-call/commit/7cc7aedddb8236b9b652dc0cf855ddae97937036))
+
 # [1.5.0](https://github.com/whiterocktech/prayers-call/compare/v1.4.0...v1.5.0) (2023-10-01)
 
 
