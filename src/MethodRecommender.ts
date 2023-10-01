@@ -3,7 +3,7 @@ import { CountryMethods } from './data/methods'
 import type { LngLatLike } from './types/LangLatLike'
 import type { Methods } from './types/Methods'
 
-const methodsMap = new WeakMap<WeakKey, Methods[]>(
+const methodsMap = new WeakMap<symbol, Methods[]>(
   Object.entries(CountryMethods).map(([country, methods]) => [Symbol(country), methods])
 )
 
