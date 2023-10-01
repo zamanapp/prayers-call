@@ -3,10 +3,6 @@ import { CountryMethods } from './data/methods'
 import type { LngLatLike } from './types/LangLatLike'
 import type { Methods } from './types/Methods'
 
-const methodsMap = new WeakMap<symbol, Methods[]>(
-  Object.entries(CountryMethods).map(([country, methods]) => [Symbol(country), methods])
-)
-
 /**
  * recommend methods to use from given coordinate
  * the methods are ranked by the most used to the least used
@@ -28,7 +24,7 @@ export function MethodRecommender(coordinatesOrLat: LngLatLike | number, longitu
   const countryInfo = findCountryByCoordinate(
     longitude ? [coordinatesOrLat as number, longitude] : getLngLat(coordinatesOrLat as LngLatLike)
   )
-  return methodsMap.get(Symbol(countryInfo?.code))
+  return countryInfo?.code ? (CountryMethods as Record<string, Methods[]>)[countryInfo?.code] : undefined
 }
 
 function getLngLat(coordinates: LngLatLike): [number, number] {
