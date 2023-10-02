@@ -1,29 +1,24 @@
 # Introduction
 
-## What is it?
+## What Is It?
 
-prayers-call is a reactive library for calculating (Islamic) prayer times. It is built with typescript and can be used for both node and the browser.
+`prayers-call` is a TypeScript library designed for calculating Islamic prayer times. It can be used in both Node.js and browser environments. Built on top of [adhan-js](https://github.com/batoulapps/adhan-js), the library aims for accuracy, versatility, and ease of use.
 
-Based on [Adhan-js](https://github.com/batoulapps/adhan-js) at it's core. prayers-call aims to provide accurate and versatile calculations methods as well as a number of configurations useful for making needed adjustments for the final results.
+## Why This Library?
 
-prayers-call also focuses on ease of use. we wanted to make the Api straightforward to use and understand while still providing the user all the powerful features they need.
+When working with other solutions we couldn't find anything that offers reactivity as a first class feature. we had to always wrap these solutions around some reactivity logic to get the results we need.
 
-## Why this library?
+Considering that prayer times represent events that happen across time it is very befitting to use reactivity as the paradigm to solve the issue of notifying and recalculating the prayer times each time.
 
-When working with other solutions out there we couldn't find a solution that offers reactivity as a first citizen feature. because prayer times are time related and are events that happen across time it is very befitting to use reactivity as the paradigm to solve the issue of recalculating the prayer times each time.
-
-This library provides reactivity for Qiyam times as well.
-
-prayers-call also aims to be accurate where reactions are triggered only when they are needed.
+This library takes in consideration Qiyam times as well. Plus, it's optimized to trigger updates only when necessary.
 
 ## Features
 
-- Tree shakable
-- Past, current and future time calculations
-- Qiyam prayers time related calculations
-- Event based (reactive) Adhan, Iqama and Qiyam time calculations
-- Accurate Prayer times calculation
-- Multiple pre-defined calculation methods
-- Granular controls over calculations
-- Qibla calculation
-- I18n and Date formatting supported
+- **Tree-Shakable:** Efficient bundling through tree-shaking.
+- **Time Calculations:** Supports past, present, and future dates.
+- **Qiyam Times:** Offers calculations for Qiyam times.
+- **Event-Based:** Reactive calculations for Adhan, Iqama, and Qiyam times.
+- **Accuracy:** Multiple pre-defined methods for precise calculations.
+- **Configurability:** Granular control over various calculation parameters.
+- **Qibla Direction:** Includes Qibla calculation.
+- **Localization:** Provides helpers for internationalization and date formatting.
