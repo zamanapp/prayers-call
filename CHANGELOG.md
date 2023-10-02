@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/whiterocktech/prayers-call/compare/v1.5.2...v1.5.3) (2023-10-01)
+
+
+### Bug Fixes
+
+* removed forgotten code that was breaking the calcualtion ([f259be7](https://github.com/whiterocktech/prayers-call/commit/f259be77c61cc30b01f19a9fbc8e388da1d09ba3))
+
 ## [1.5.2](https://github.com/whiterocktech/prayers-call/compare/v1.5.1...v1.5.2) (2023-10-01)
 
 
