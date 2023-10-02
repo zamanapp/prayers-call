@@ -5,7 +5,7 @@ import { Logger } from 'tslog'
 import type { Subscriber, Subscription } from 'rxjs'
 
 import { BaseCalculator } from './Base'
-import { EventType, TimesNames } from './types/TimeObject'
+import { EventType, PrayerNames, TimesNames } from './types/TimeObject'
 import type {
   CalculationsConfig,
   FinalCalculationsConfig,
@@ -15,6 +15,7 @@ import type { PrayerNamesType, TimeEventObject, TimeObject } from './types/TimeO
 import type { CoordinatesObject } from './types/Coordinates'
 import type { Iqama } from './types/Iqama'
 import { subscriptionsSymbols } from './types/Subscriptions'
+import { dateByAddingMinutes } from './utils/DatesUtils'
 
 export class ReactiveCalculator extends BaseCalculator {
   private _subscriptions = new Map<symbol, Subscription>()
@@ -232,24 +233,44 @@ export class ReactiveCalculator extends BaseCalculator {
       },
       {
         name: Prayer.Isha,
-        time: this._prayerTimesCalculator.isha,
+        time: this._adjustForRamadan()
+          ? dateByAddingMinutes(this._prayerTimesCalculator.isha, 30)
+          : this._prayerTimesCalculator.isha,
       },
     ]
   }
 
   private _calculateCurrentPrayer() {
     this._logger.debug('_calculateCurrentPrayer function invoked.')
-    this._currentPrayer = {
-      name: this._prayerTimesCalculator.currentPrayer(),
-      time: this._prayerTimesCalculator.timeForPrayer(this._prayerTimesCalculator.currentPrayer())!,
+    const prayer = this._prayerTimesCalculator.currentPrayer()
+    // check if prayer is isha and needs to adjust
+    if (prayer === PrayerNames.ISHA && this._adjustForRamadan()) {
+      this._currentPrayer = {
+        name: this._prayerTimesCalculator.currentPrayer(),
+        time: dateByAddingMinutes(this._prayerTimesCalculator.timeForPrayer(prayer)!, 30),
+      }
+    } else {
+      this._currentPrayer = {
+        name: this._prayerTimesCalculator.currentPrayer(),
+        time: this._prayerTimesCalculator.timeForPrayer(prayer)!,
+      }
     }
   }
 
   private _calculateNextPrayer() {
     this._logger.debug('_calculateNextPrayer function invoked.')
-    this._nextPrayer = {
-      name: this._prayerTimesCalculator.nextPrayer(),
-      time: this._prayerTimesCalculator.timeForPrayer(this._prayerTimesCalculator.nextPrayer())!,
+    const prayer = this._prayerTimesCalculator.nextPrayer()
+    // check if prayer is isha and needs to adjust
+    if (prayer === PrayerNames.ISHA && this._adjustForRamadan()) {
+      this._nextPrayer = {
+        name: this._prayerTimesCalculator.nextPrayer(),
+        time: dateByAddingMinutes(this._prayerTimesCalculator.timeForPrayer(prayer)!, 30),
+      }
+    } else {
+      this._nextPrayer = {
+        name: this._prayerTimesCalculator.nextPrayer(),
+        time: this._prayerTimesCalculator.timeForPrayer(prayer)!,
+      }
     }
   }
 
@@ -282,8 +303,13 @@ export class ReactiveCalculator extends BaseCalculator {
     return this._prayerTimes
   }
 
-  public getPrayerTime(prayer: PrayerNamesType): Date | null {
-    return this._prayerTimesCalculator.timeForPrayer(prayer)
+  public getPrayerTime(prayer: PrayerNamesType): Date {
+    // check if prayer is isha and needs to adjust
+    return prayer === PrayerNames.ISHA && this._adjustForRamadan()
+      ? // then add 30 minutes
+        dateByAddingMinutes(this._prayerTimesCalculator.timeForPrayer(prayer)!, 30)
+      : // else just return the prayer time
+        this._prayerTimesCalculator.timeForPrayer(prayer)!
   }
 
   public getMiddleOfTheNightTime(): TimeObject {

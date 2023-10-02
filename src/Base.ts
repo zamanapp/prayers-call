@@ -222,7 +222,7 @@ export class BaseCalculator {
     return calculationParams
   }
 
-  public _adjustForRamadan(): boolean {
+  protected _adjustForRamadan(): boolean {
     const adjust = false
     const date = this._prayerConfig.date
     const method = this._prayerConfig.method

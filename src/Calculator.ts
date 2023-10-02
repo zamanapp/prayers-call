@@ -41,13 +41,13 @@ export class StaticCalculator extends BaseCalculator {
     ]
   }
 
-  public getPrayerTime(prayer: PrayerNamesType): Date | null {
+  public getPrayerTime(prayer: PrayerNamesType): Date {
     // check if prayer is isha and needs to adjust
     return prayer === PrayerNames.ISHA && this._adjustForRamadan()
       ? // then add 30 minutes
         dateByAddingMinutes(this._prayerTimesCalculator.timeForPrayer(prayer)!, 30)
       : // else just return the prayer time
-        this._prayerTimesCalculator.timeForPrayer(prayer)
+        this._prayerTimesCalculator.timeForPrayer(prayer)!
   }
 
   public getMiddleOfTheNightTime(): TimeObject {
