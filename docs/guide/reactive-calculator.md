@@ -1,35 +1,12 @@
 # Reactive Calculator
 
-The reactive calculator helps you get realtime notifications about prayers times and prayer times related events. It doesn't need a date to be passed on to it when initialized as it will take the current date (now). once initialized you can get up to date prayer times from it just like you would use the static calculator on top of that it provides you with observables that can help you get notified when events happens.
+The `ReactiveCalculator` provides real-time notifications for prayer times and related events. Unlike the `StaticCalculator`, it initializes with the current date and time, offering both up-to-date prayer times and observables for event notifications. It also self-updates its internal configuration and prayer times so you always get real time up to date calculations, prayer times and notifications.
 
-the reactive calculator also takes care of updating it's own internal config (date and calculations) and prayer times so you always get real time up to date calculations, prayer times and notifications.
+## Available Functions
 
-### cleanup
+### `getCurrentPrayerTime`
 
-Invoking the `cleanup` function will let the calculator unsubscribe from the subscriptions it invoked via the `init` function.
-
-```ts
-import { Methods, ReactiveCalculator } from 'prayer-call'
-
-// calculations for Cyberjaya
-const reactiveCalculator = new ReactiveCalculator({
-  latitude: 2.9213,
-  longitude: 101.6559,
-  method: Methods.SINGAPORE,
-  adjustments: { dhuhr: 3, asr: 3, isha: 2 },
-})
-
-// somewhere in your code when you no longer need the calculator ...
-reactiveCalculator.cleanup() // clean up subscriptions
-```
-
-::: danger
-If you don't invoke the `cleanup` function, the calculator will continue to run and use up memory, even after you are done with it. This can lead to memory leaks and can potentially cause your application to crash. It is important to invoke that `cleanup` function where appropriate to prevent memory leaks and ensure the smooth running of your application.
-:::
-
-### getCurrentPrayerTime
-
-Based on the current time this method returns a [`TimeObject`]() containing the `name` of the current prayer and it's Adhan time as a `time` property. if the current time is passed `isha` time it will return `{ name: "none", time: null }`.
+Returns a [`TimeObject`]() with the name and Adhan time of the current prayer. If the invocation time is past Isha, the returned value would be `{ name: "none", time: null }`.
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer-call'
@@ -38,16 +15,16 @@ import { Methods, ReactiveCalculator } from 'prayer-call'
 const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
-reactiveCalculator.getCurrentPrayerTime() // will return: ""
+reactiveCalculator.getCurrentPrayerTime()
 ```
 
-### getNextPrayerTime
+### `getNextPrayerTime`
 
-Based on the current time this method returns a [`TimeObject`]() of the next prayer. if the current prayer is `"isha"` the output will be `{ name: "none", time: null }`.
+Returns a [`TimeObject`]() with the name and Adhan time of the next prayer. If the current prayer `"isha"`, the returned value would be `{ name: "none", time: null }`.
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer-call'
@@ -56,19 +33,19 @@ import { Methods, ReactiveCalculator } from 'prayer-call'
 const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
-reactiveCalculator.getNextPrayerTime() // will return: ""
+reactiveCalculator.getNextPrayerTime()
 ```
 
-### getAllPrayerTimes
+### `getAllPrayerTimes`
 
-This method returns a array of [`TimeObject`]() containing the prayer name and it's time. the time is a `Date` object.
+Returns an array of [`TimeObject`]() with prayer names and their corresponding time as a Javascript `Date` object.
 
 ::: info
-Sunrise time object is included in the array
+The array includes the sunrise time object.
 :::
 
 ```ts
@@ -79,7 +56,7 @@ const reactiveCalculator = new ReactiveCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
@@ -115,9 +92,9 @@ reactiveCalculator.getAllPrayerTimes()
  */
 ```
 
-### adhanObserver
+### `adhanObserver`
 
-This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method can be subscribed to for prayer times events (Adhan).
+Returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. You can subscribe to the observable for receiving real-time notifications of Adhan events.
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer-call'
@@ -126,7 +103,7 @@ import { Methods, ReactiveCalculator } from 'prayer-call'
 const reactiveCalculator = new ReactiveCalculator({
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
@@ -144,9 +121,9 @@ subscription.unsubscribe()
 reactiveCalculator.cleanup()
 ```
 
-### iqamaObserver
+### `iqamaObserver`
 
-This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method can be subscribed to for prayer Iqama times events.
+Returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method can be subscribed to for prayer Iqama times events.
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer-call'
@@ -174,12 +151,12 @@ reactiveCalculator.cleanup()
 ```
 
 ::: tip
-You can adjust how much time is given before each iqama in the `ReactiveCalculator` config object. refer to the [Config](../config.md) section to know more.
+The default time intervals in minutes between Adhan and Iqama are: `{ fajr: 20, dhuhr: 10, asr: 10, maghrib: 5, isha: 15 }` You can customize these intervals in the `ReactiveCalculator` configuration. For more details, see the [Config](../config.md) section.
 :::
 
-### qiyamTimesObserver
+### `qiyamTimesObserver`
 
-This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method can be subscribed to for Qiyam times events (The middle of the night and the last third of the night).
+This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method can be subscribed to for prayer Qiyam times events. (The middle of the night and the last third of the night).
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer-call'
@@ -207,3 +184,20 @@ reactiveCalculator.qiyamTimesObserver().subscribe({
   },
 })
 ```
+
+## Cleanup: Why It's Important
+
+The `cleanup` method is crucial for resource management. When you initialize a `ReactiveCalculator`, it starts various internal processes and subscriptions to provide real-time updates. These processes consume system resources and will continue to do so until explicitly stopped.
+
+Invoking `cleanup` will unsubscribe the calculator from all active observables, freeing up system resources and preventing memory leaks. This is especially important in long-running or resource-sensitive applications to ensure optimal performance.
+
+```ts
+// ...
+
+// Invoking cleanup when the calculator is no longer needed
+reactiveCalculator.cleanup() // clean up subscriptions
+```
+
+::: danger
+Neglecting to call cleanup can result in memory leaks, leading to decreased performance and potential application crashes. Always invoke cleanup when the calculator is no longer needed.
+:::

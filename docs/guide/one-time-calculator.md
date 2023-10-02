@@ -19,7 +19,7 @@ For configuration details, refer to the [Config](../config.md) section.
 
 ## Available Functions
 
-### getAllPrayerTimes
+### `getAllPrayerTimes`
 
 Returns an array of [`TimeObject`]() with prayer names and their corresponding time as a Javascript `Date` object.
 
@@ -71,7 +71,7 @@ calculator.getAllPrayerTimes()
  */
 ```
 
-### getPrayerTime
+### `getPrayerTime`
 
 Returns the time for a specific prayer based on the initialized date. Accepts a prayer parameter of type [`PrayerNames`]().
 
@@ -91,7 +91,7 @@ calculator.getPrayerTime(PrayerNames.FAJR)
 // will return: "2022-01-31T22:07:00.000Z"
 ```
 
-### getMiddleOfTheNightTime and getLastThirdOfTheNightTime
+### `getMiddleOfTheNightTime` and `getLastThirdOfTheNightTime`
 
 Returns a [`TimeObject`]() representing the time of the middle and the last third of the night respectively based on the moon. Useful for Qiyam calculations.
 
@@ -114,7 +114,7 @@ calculator.getLastThirdOfTheNightTime()
 // will return: { name: 'lastThirdOfTheNight', time: 2022-02-01T18:34:00.000Z }
 ```
 
-### getQiblaDirection
+### `getQiblaDirection`
 
 Returns a `number` representing the Qibla direction in degrees from North.
 
@@ -141,7 +141,7 @@ const alAqsaCoordinates = {
 calculator.getQiblaDirection(alAqsaCoordinates) // will return: 157.29924281528764
 ```
 
-### getCalculationOptions
+### `getCalculationOptions`
 
 Returns the full configuration object currently in use.
 
@@ -170,7 +170,7 @@ calculator.getCalculationOptions()
 */
 ```
 
-### setCalculationOptions
+### `setCalculationOptions`
 
 Allows you to update the calculator's configuration without creating a new instance. Accepts a `newConfig` param of type `Partial<CalculationsConfig>`.
 
