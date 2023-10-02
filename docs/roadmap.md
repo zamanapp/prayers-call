@@ -1,4 +1,5 @@
-- offer open source tools to make comparing and making methods easier.
-- re-write the library from scratch making it reactive from the ground up (using vue 3 reactive core api)
-- add altitude to the calculation formula
-- support `Temporal`
+- Offer open source tools to make comparing and making methods easier.
+- Re-write the library from scratch making it reactive from the ground up (using vue 3 reactive core api)
+- Add altitude to the calculation formula
+- Support `Temporal` instead of `Date`
+- Offer testing utilities for reactive code

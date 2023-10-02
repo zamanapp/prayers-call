@@ -82,15 +82,7 @@ function sidebarGuide() {
         { text: 'One Time Calculator', link: '/guide/one-time-calculator' },
         { text: 'Reactive Calculator', link: '/guide/reactive-calculator' },
 
-        {
-          text: 'Calculating The Qibla',
-          link: '/guide/calculating-the-qibla',
-        },
-
-        {
-          text: 'Testing',
-          link: '/guide/testing',
-        },
+        { text: 'Calculating The Qibla', link: '/guide/calculating-the-qibla' },
       ],
     },
     {
@@ -100,6 +92,7 @@ function sidebarGuide() {
         { text: 'Formatters', link: '/recipes/formatters' },
         { text: 'Hijri Dates', link: '/recipes/hijri' },
         { text: 'Internalization', link: '/recipes/i18n' },
+        { text: 'Testing', link: '/recipes/testing' },
       ],
     },
     {
