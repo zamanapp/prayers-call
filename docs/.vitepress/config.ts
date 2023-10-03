@@ -100,7 +100,7 @@ function sidebarGuide() {
       collapsible: true,
       items: [
         { text: 'Config Reference', link: '/config/index' },
-        { text: 'Methods', link: '/config/methods' },
+        { text: 'Calculation Methods', link: '/config/methods' },
       ],
     },
     {
