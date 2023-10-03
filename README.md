@@ -1,6 +1,8 @@
-# Prayes-call
+# Prayers-call
 
-Reactive prayer times calculation library for node and the browser built with Typescript.
+A TypeScript library for calculating Islamic prayer times, built with reactivity in mind. Compatible with both Node.js and the browser.
+
+For insights into the motivation and features of this project, visit the [Why prayers-call](https://prayers-ts.netlify.app/guide/introduction.html#why-this-library) section.
 
 [![npm version](https://badge.fury.io/js/prayers-call.svg)](https://badge.fury.io/js/prayers-call)
 

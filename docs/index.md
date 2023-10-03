@@ -2,7 +2,7 @@
 layout: home
 
 title: prayers-call
-titleTemplate: Reactive Prayer Times Calculator
+titleTemplate: A Reactive Prayer Times Calculator
 
 hero:
   name: Prayers-Call

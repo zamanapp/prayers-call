@@ -2,7 +2,7 @@
 
 ## Overview
 
-`prayers-call` is a TypeScript library designed for calculating Islamic prayer times. It's engineered to be reactive and is compatible with both Node.js and browser environments.
+`prayers-call` is a TypeScript library for calculating Islamic prayer times, built with reactivity in mind it's compatible with both Node.js and browser environments.
 
 For insights into the motivation and features of this project, visit the [Why prayers-call](./introduction.md#why-this-library) section.
 

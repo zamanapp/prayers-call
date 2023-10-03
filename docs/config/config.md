@@ -4,55 +4,55 @@ The `StaticCalculator` and the `ReactiveCalculator` class in `prayers-call` both
 
 ### date (`StaticCalculator` only)
 
-- Required: `true`
-- Type: `Date`
+- **Required:** `true`
+- **Type:** `Date`
 
 The date for which the prayer times will be calculated it can be past current or future. This property is specific to `StaticCalculator`.
 
 ### latitude and longitude
 
-- Required: `true`
-- Type: `number`
+- **Required:** `true`
+- **Type:** `number`
 
 The geographical coordinates of the location for which the prayer times will be calculated.
 
 ### method
 
-- Required: `false`
-- Type: `Methods | CustomMethod`
-- Default: `Methods.UMM_AL_QURA`
+- **Required:** `false`
+- **Type:** `Methods | CustomMethod`
+- **Default:** `Methods.UMM_AL_QURA`
 
 The calculation method to use. You can use one of the built-in methods or provide a custom method. for a comprehensive guide of available methods, see [Calculation Methods](./methods.md).
 
 ### adjustments
 
-- Required: `false`
-- Type: `Partial<PrayerAdjustments>`
-- Default: `{ fajr: 0, sunrise: 0, dhuhr: 0, asr: 0, maghrib: 0, isha: 0 }`
+- **Required:** `false`
+- **Type:** `Partial<PrayerAdjustments>`
+- **Default:** `{ fajr: 0, sunrise: 0, dhuhr: 0, asr: 0, maghrib: 0, isha: 0 }`
 
 Custom adjustments in minutes for each prayer time.
 
 ### asrTime
 
-- Required: `false`
-- Type: `AsrTime`
-- Default: `AsrTime.JUMHOOR`
+- **Required:** `false`
+- **Type:** `AsrTime`
+- **Default:** `AsrTime.JUMHOOR`
 
 Whether to use the earlier (Jumhoor) or later (Hanafi) Asr time calculation.
 
 ### iqama
 
-- Required: `false`
-- Type: `Partial<Iqama>`
-- Default: `{ fajr: 20, dhuhr: 10, asr: 10, maghrib: 5, isha: 15 }`
+- **Required:** `false`
+- **Type:** `Partial<Iqama>`
+- **Default:** `{ fajr: 20, dhuhr: 10, asr: 10, maghrib: 5, isha: 15 }`
 
 Waiting time in minutes for iqama after the actual prayer time.
 
 ### adjustForRamadan
 
-- Required: `false`
-- Type: `boolean`
-- Default: `false`
+- **Required:** `false`
+- **Type:** `boolean`
+- **Default:** `false`
 
 Whether to adjust the prayer times for Ramadan by adding 30 minutes to Isha.
 
@@ -62,33 +62,33 @@ When using `UMM_AL_QURA` method `prayer-calls` will automatically adjust the pra
 
 ### hijriCalendar
 
-- Required: `false`
-- Type: `HijriCalendar`
-- Default: `HijriCalendar.UMM_AL_QURA`
+- **Required:** `false`
+- **Type:** `HijriCalendar`
+- **Default:** `HijriCalendar.UMM_AL_QURA`
 
 The Hijri calendar to use in conjunction with `adjustForRamadan` to determine the start and end of Ramadan. for a comprehensive list of available calendars, see [HijriCalendar](../api.md#HijriCalendar).
 
 ### highLatitudeRule
 
-- Required: `false`
-- Type: `ValueOf<typeof HighLatitudeRule>`
-- Default: `HighLatitudeRule.MiddleOfTheNight`
+- **Required:** `false`
+- **Type:** `ValueOf<typeof HighLatitudeRule>`
+- **Default:** `HighLatitudeRule.MiddleOfTheNight`
 
 Rule to use for calculating prayer times at high latitudes. See the [Advanced section](#advanced-configuration) for more details.
 
 ### polarCircleResolution
 
-- Required: `false`
-- Type: `ValueOf<typeof PolarCircleResolution>`
-- Default: `PolarCircleResolution.Unresolved`
+- **Required:** `false`
+- **Type:** `ValueOf<typeof PolarCircleResolution>`
+- **Default:** `PolarCircleResolution.Unresolved`
 
 How to handle Midnight Sun & Polar Night days. See the [Advanced section](#advanced-configuration) for more details.
 
 ### debug (`ReactiveCalculator` only)
 
-- Required: `false`
-- Type: `boolean`
-- Default: `false`
+- **Required:** `false`
+- **Type:** `boolean`
+- **Default:** `false`
 
 Enable debugging logs for the `ReactiveCalculator`.
 
