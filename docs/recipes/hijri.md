@@ -2,7 +2,7 @@
 
 The `Formatter` class uses the [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) API which supports the Hijri calendar. This means that you can use the `calendar` option to format dates and times in the Hijri calendar.
 
-:: tip
+::: tip
 For detailed information on formatting dates and times and how to use the `Formatter` class, visit the [Date/Time Formatting](./formatters.md) section.
 :::
 

@@ -29,7 +29,7 @@ calculator.getPrayerTimes()
 
 For a detailed list of available functions within th `StaticCalculator` class, consult the [One time Calculator](./one-time-calculator.md) documentation.
 
-For configuration options, refer to the [Config](../config.md) section.
+For configuration options, refer to the [Config](../config/config.md) section.
 
 ## Reactive Calculator
 
@@ -64,7 +64,7 @@ adhanSubscription.unsubscribe()
 
 For a detailed list of available functions within the `ReactiveCalculator` class, consult the [Reactive Calculator](./reactive-calculator.md) documentation.
 
-For configuration options, refer to the [Config](../config.md) section.
+For configuration options, refer to the [Config](../config/config.md) section.
 
 ## Date formatting
 

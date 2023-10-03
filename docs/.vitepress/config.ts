@@ -3,7 +3,7 @@ import { version } from '../../package.json'
 
 // if version doesn't work we need to use this plugin https://github.com/semantic-release/git
 export default defineConfig({
-  title: 'prayers-call',
+  title: 'Prayers-Call',
   description: 'A reactive prayer times calculation library for node and the browser built with Typescript',
   ignoreDeadLinks: true, // FIXME: remove this when the docs are mature
   lastUpdated: true,
@@ -44,7 +44,7 @@ function nav() {
     },
     {
       text: 'Config',
-      link: '/config/index',
+      link: '/config/config',
       activeMatch: '/config/',
     },
     {
@@ -99,7 +99,8 @@ function sidebarGuide() {
       text: 'Config',
       collapsible: true,
       items: [
-        { text: 'Config Reference', link: '/config/index' },
+        { text: 'Calculators Config', link: '/config/config' },
+        { text: 'Formatter Config', link: '/config/formatter' },
         { text: 'Calculation Methods', link: '/config/methods' },
       ],
     },

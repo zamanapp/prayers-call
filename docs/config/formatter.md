@@ -1,4 +1,4 @@
-# Configuration Reference
+# Formatter Config
 
 WIP
 

@@ -15,7 +15,7 @@ const calculator = new StaticCalculator({
 })
 ```
 
-For configuration details, refer to the [Config](../config.md) section.
+For configuration details, refer to the [Config](../config/config.md) section.
 
 ## Available Functions
 
@@ -174,7 +174,7 @@ calculator.getCalculationOptions()
 
 Allows you to update the calculator's configuration without creating a new instance. Accepts a `newConfig` param of type `Partial<CalculationsConfig>`.
 
-For configuration details, refer to the [Config](../config.md) section.
+For configuration details, refer to the [Config](../config/config.md) section.
 
 ```ts
 import { Methods, StaticCalculator } from 'prayer-call'

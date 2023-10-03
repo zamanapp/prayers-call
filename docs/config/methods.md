@@ -1,3 +1,3 @@
-# Available Methods
+# Calculation Methods
 
 WIP

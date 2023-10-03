@@ -151,7 +151,7 @@ reactiveCalculator.cleanup()
 ```
 
 ::: tip
-The default time intervals in minutes between Adhan and Iqama are: `{ fajr: 20, dhuhr: 10, asr: 10, maghrib: 5, isha: 15 }` You can customize these intervals in the `ReactiveCalculator` configuration. For more details, see the [Config](../config.md) section.
+The default time intervals in minutes between Adhan and Iqama are: `{ fajr: 20, dhuhr: 10, asr: 10, maghrib: 5, isha: 15 }` You can customize these intervals in the `ReactiveCalculator` configuration. For more details, see the [Config](../config/config.md) section.
 :::
 
 ### `qiyamTimesObserver`
