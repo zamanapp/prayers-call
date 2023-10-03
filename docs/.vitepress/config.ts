@@ -89,9 +89,9 @@ function sidebarGuide() {
       text: 'Recipes',
       collapsible: true,
       items: [
-        { text: 'Formatters', link: '/recipes/formatters' },
+        { text: 'Date/Time Formatting', link: '/recipes/formatters' },
         { text: 'Hijri Dates', link: '/recipes/hijri' },
-        { text: 'Internalization', link: '/recipes/i18n' },
+        { text: 'Internalization (I18n)', link: '/recipes/i18n' },
         { text: 'Testing', link: '/recipes/testing' },
       ],
     },

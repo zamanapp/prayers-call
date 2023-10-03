@@ -123,80 +123,10 @@ const prayers = [
 formatter.formatPrayers(prayers) // [ { name: 'fajr', time: '2/1/2022, 5:30 AM' }, ... ]
 ```
 
-## Hijri Dates
+## Additional Resources
 
-To convert dates to the Hijri calendar, you can specify the calendar option in the `FormatterConfig`.
+For more specialized formatting options, you may refer to the following pages:
 
-```ts
-import { Formatter, HijriCalendar } from 'prayer-call'
+[Hijri Dates](./hijri.md): Learn how to format Islamic (Hijri) dates using the `Formatter` class.
 
-const formatter = new Formatter({
-  calendar: HijriCalendar.UMM_AL_QURA,
-  dateStyle: 'full',
-  timeStyle: 'short',
-})
-
-const date = new Date(2022, 1, 1)
-formatter.formatDate(date) // 'Tuesday, Jumada II 29, 1443 AH at 12:00 AM'
-```
-
-### Available Calendars
-
-Islamic calendars are usually categorized as bellow:
-
-- **Religious:** Based on sighting the moon with the naked eye. Actual dates varies by location.
-- **Algorithmic**: Based on astronomical or arithmetic calculations. Usually used for administrative purposes. Actual dates are fixed and can be predicted in advance.
-  - **Tabular**: Based on arithmetic calculations. Actual dates are fixed and can be predicted in advance.
-  - **Astronomical**: Based on astronomical calculations. Actual dates are fixed and can be predicted in advance.
-
-`prayers-call` provide the following Hijri calendars through the `HijriCalendar` enum:
-
-| Name        | Value              | Description                                                                                        |
-| ----------- | ------------------ | -------------------------------------------------------------------------------------------------- |
-| GENERAL     | `islamic`          | A general Islamic calendar, often used as a default.                                               |
-| CIVIL       | `islamic-civil`    | Based on tabular calculations. `(intercalary years [2,5,7,10,13,16,18,21,24,26,29] Friday epoch)`  |
-| TABULAR     | `islamic-tbla`     | Based on tabular calculation. `(intercalary years [2,5,7,10,13,16,18,21,24,26,29] Thursday epoch)` |
-| UMM_AL_QURA | `islamic-umalqura` | The official calendar of Saudi Arabia, based on astronomical calculations.                         |
-| SIGHTING_SA | `islamic-rgsa`     | Based on moon sighting in the region of Saudi Arabia; Requested by Oracle. dates may vary.         |
-
-::: tip
-The `Intl.DateTimeFormat` API support other calendars as well. to get a full list of supported calendars, you can use the `Intl.Locale.prototype.getCalendars()` method.
-:::
-
-### Arabic Display of Dates
-
-To display dates in Arabic, you can specify the locale option in the `FormatterConfig`.
-
-```ts
-import { Formatter } from 'prayer-call'
-
-const formatter = new Formatter({
-  locale: 'ar-DZ',
-  calendar: HijriCalendar.UMM_AL_QURA,
-  dateStyle: 'full',
-})
-
-const date = new Date(2022, 1, 1)
-formatter.formatDate(date) // 'الثلاثاء، 29 جمادى الآخرة 1443 هـ'
-```
-
-### Internalization (I18n)
-
-The `Formatter` class uses the [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) API for internationalization (I18n). This means that you can use the `locale` option to format dates and times in different languages.
-
-```ts
-import { Formatter } from 'prayer-call'
-
-const formatter = new Formatter({
-  locale: 'fr-FR',
-  dateStyle: 'full',
-  timeStyle: 'short',
-})
-
-const date = new Date(2022, 1, 1)
-formatter.formatDate(date) // 'mardi 1 février 2022 à 00:00'
-```
-
-::: tip
-For the general form and interpretation of the locales argument, see the [parameter description on the `Intl` main page](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl#locales_argument).
-:::
+[Internationalization (I18n)](./i18n.md): Discover how to use the `Formatter` class for internationalizing dates and times.

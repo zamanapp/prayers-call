@@ -70,6 +70,6 @@ For configuration options, refer to the [Config](../config.md) section.
 
 The prayer times are returned as JavaScript [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) objects. offering you flexibility in formatting the date and time.
 
-For a detailed guide on how to format these Date objects, consult the [formatters section](./formatters.md) guide.
+For a detailed guide on how to format these Date objects, consult the [Date/Time Formatting](../recipes/formatters.md) guide.
 
-If you wish to convert the dates to the Hijri calendar, refer to the [Hijri Dates](./hijri.md) guide.
+If you wish to convert the dates to the Hijri calendar or internationalize your dates and time, refer to the [Hijri Dates](./hijri.md) and [Internalization (I18n)](../recipes/i18n.md) guides respectively.
