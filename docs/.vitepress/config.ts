@@ -79,7 +79,7 @@ function sidebarGuide() {
         { text: 'Getting Started', link: '/guide/getting-started' },
         { text: 'Core Concepts', link: '/guide/concepts' },
 
-        { text: 'One Time Calculator', link: '/guide/one-time-calculator' },
+        { text: 'Static Calculator', link: '/guide/one-time-calculator' },
         { text: 'Reactive Calculator', link: '/guide/reactive-calculator' },
 
         { text: 'Calculating The Qibla', link: '/guide/calculating-the-qibla' },

@@ -14,6 +14,7 @@ import { AsrTime } from './types/AsrTime'
 import type { CalculationsConfig, CustomMethod } from './types/CalculationsConfig'
 import { Methods } from './types/Methods'
 import { Formatter } from './Formatter'
+import { HijriCalendar } from './types/HijriCalendar'
 
 export class BaseCalculator {
   protected _prayerTimesCalculator!: PrayerTimes
@@ -227,7 +228,7 @@ export class BaseCalculator {
     const date = this._prayerConfig.date
     const method = this._prayerConfig.method
     const hijriFormatter = new Formatter({
-      calendar: this._prayerConfig.hijriCalendar ?? 'islamic-umalqura',
+      calendar: this._prayerConfig.hijriCalendar ?? HijriCalendar.UMM_AL_QURA,
       dateStyle: 'short',
     })
     const hijriMonth = hijriFormatter.formatDate(date).split('/')[0]

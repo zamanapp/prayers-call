@@ -1,5 +1,5 @@
 import { Methods } from '../src/types/Methods'
-import { PrayerNames, ReactiveCalculator, StaticCalculator } from '../src'
+import { Formatter, HijriCalendar, PrayerNames, ReactiveCalculator, StaticCalculator } from '../src'
 import type { TimeEventObject } from '../src'
 import { TimesNames } from '../src/types/TimeObject'
 
@@ -11,8 +11,19 @@ const calculator = new StaticCalculator({
   method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
+
+const formatter = new Formatter()
 const prayerTimes = calculator.getAllPrayerTimes()
-prayerTimes.forEach((prayer) => console.log(prayer.name, prayer.time!.toLocaleString()))
+prayerTimes.forEach((prayer) => console.log(prayer.name, formatter.formatDate(prayer.time)))
+
+const formatterExample = new Formatter({
+  locale: 'ar-DZ',
+  calendar: HijriCalendar.UMM_AL_QURA,
+  dateStyle: 'full',
+})
+
+const date = new Date(2022, 1, 1)
+console.log('default formatter', formatterExample.formatDate(date))
 // console.log(calculator.getPrayerTime(PrayerNames.FAJR))
 // console.log('Middle', calculator.getMiddleOfTheNightTime().time?.toLocaleString())
 // console.log('LastThird', calculator.getLastThirdOfTheNightTime().time?.toLocaleString())
