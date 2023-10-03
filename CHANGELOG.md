@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/whiterocktech/prayers-call/compare/v1.5.3...v1.5.4) (2023-10-02)
+
+
+### Bug Fixes
+
+* made the reactive calcualator adjust to ramadhan time ([8a04100](https://github.com/whiterocktech/prayers-call/commit/8a04100cf3c35a3713ee376a848f75ee18381686))
+
 ## [1.5.3](https://github.com/whiterocktech/prayers-call/compare/v1.5.2...v1.5.3) (2023-10-01)
 
 
