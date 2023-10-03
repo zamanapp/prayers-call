@@ -2,12 +2,12 @@
 layout: home
 
 title: prayers-call
-titleTemplate: A Reactive Prayer Times Calculator
+titleTemplate: Reactive Prayer Times Calculator
 
 hero:
-  name: prayers-call
-  text: A Reactive Prayer Times Calculator
-  tagline: Easy to use, Configurable, and Accurate. All you need to get Prayer times calculations done right.
+  name: Prayers-Call
+  text: Reactive Prayer Times Calculator
+  tagline: Effortless, Customizable, and Precise. All you need to get prayer time calculations done right.
   actions:
     - theme: brand
       text: Get Started
