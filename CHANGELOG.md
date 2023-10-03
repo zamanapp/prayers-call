@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/whiterocktech/prayers-call/compare/v1.5.4...v1.6.0) (2023-10-03)
+
+
+### Features
+
+* added a qibla utility and exposed certain internals ([b76a9d4](https://github.com/whiterocktech/prayers-call/commit/b76a9d46abfeeba3815c70d2333898c7bca6defb))
+
 ## [1.5.4](https://github.com/whiterocktech/prayers-call/compare/v1.5.3...v1.5.4) (2023-10-02)
 
 
