@@ -30,13 +30,13 @@ Islamic calendars are usually categorized as bellow:
 
 `prayers-call` provide the following Hijri calendars through the `HijriCalendar` enum:
 
-| Name        |       Value        | Description                                                                                        |
-| ----------- | :----------------: | -------------------------------------------------------------------------------------------------- |
-| GENERAL     |     `islamic`      | A general Islamic calendar, often used as a default.                                               |
-| CIVIL       |  `islamic-civil`   | Based on tabular calculations. `(intercalary years [2,5,7,10,13,16,18,21,24,26,29] Friday epoch)`  |
-| TABULAR     |   `islamic-tbla`   | Based on tabular calculation. `(intercalary years [2,5,7,10,13,16,18,21,24,26,29] Thursday epoch)` |
-| UMM_AL_QURA | `islamic-umalqura` | The official calendar of Saudi Arabia, based on astronomical calculations.                         |
-| SIGHTING_SA |   `islamic-rgsa`   | Based on moon sighting in the region of Saudi Arabia; Requested by Oracle. dates may vary.         |
+| <div style="width:120px">Name</div> |       Value        | Description                                                                                        |
+| ----------------------------------- | :----------------: | -------------------------------------------------------------------------------------------------- |
+| GENERAL                             |     `islamic`      | A general Islamic calendar, often used as a default.                                               |
+| CIVIL                               |  `islamic-civil`   | Based on tabular calculations. `(intercalary years [2,5,7,10,13,16,18,21,24,26,29] Friday epoch)`  |
+| TABULAR                             |   `islamic-tbla`   | Based on tabular calculation. `(intercalary years [2,5,7,10,13,16,18,21,24,26,29] Thursday epoch)` |
+| UMM_AL_QURA                         | `islamic-umalqura` | The official calendar of Saudi Arabia, based on astronomical calculations.                         |
+| SIGHTING_SA                         |   `islamic-rgsa`   | Based on moon sighting in the region of Saudi Arabia; Requested by Oracle. dates may vary.         |
 
 ::: tip
 The `Intl.DateTimeFormat` API support other calendars as well. to get a full list of supported calendars, you can use the `Intl.Locale.prototype.getCalendars()` method.
