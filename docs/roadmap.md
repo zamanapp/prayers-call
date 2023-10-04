@@ -1,6 +1,7 @@
 - Write more tests to cover the library
 - Offer open source tools to make comparing and building calculation methods easier.
 - Re-write the library from scratch making it reactive from the ground up (using vue 3 reactive core api)
+- Do we need to have daylight saving times handled in the library? if yes what's the best way to do it?
 - improve the docs to have examples imported from actual ts files <!-- https://vitepress.dev/guide/markdown#import-code-snippets -->
 - translated the docs to Arabic
 - Add altitude to the calculation formula

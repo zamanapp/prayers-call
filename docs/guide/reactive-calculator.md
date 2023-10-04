@@ -78,7 +78,7 @@ reactiveCalculator.getAllPrayerTimes() // check the output tab
 
 ### `getPrayerTime`
 
-`getPrayerTime` returns a Javascript `Date` object with the name and Adhan time of the specified prayer. Accepts a prayer parameter of type [`PrayerNames`]().
+`getPrayerTime` returns a Javascript `Date` object with the name and Adhan time of the specified prayer. Accepts prayer parameter of type `PrayerNamesType`. Use the [`PrayerNames`]() enum for available prayer names.
 
 ```ts
 import { Methods, ReactiveCalculator, PrayerNames } from 'prayer-call'
@@ -99,7 +99,7 @@ reactiveCalculator.getPrayerTime(PrayerNames.FAJR)
 Returns a [`TimeObject`]() representing the time of the middle and the last third of the night respectively based on the moon. Useful for Qiyam calculations.
 
 ```ts
-import { Methods, ReactiveCalculator, PrayerNames } from 'prayer-call'
+import { Methods, ReactiveCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya
 const reactiveCalculator = new ReactiveCalculator({

@@ -78,7 +78,7 @@ calculator.getAllPrayerTimes() // check the output tab
 
 ### `getPrayerTime`
 
-Returns the time for a specific prayer based on the initialized date. Accepts a prayer parameter of type [`PrayerNames`]().
+Returns the time for a specific prayer based on the initialized date. Accepts a prayer parameter of type `PrayerNamesType`. Use the [`PrayerNames`]() enum for available prayer names.
 
 ```ts
 import { Methods, PrayerNames, StaticCalculator } from 'prayer-call'
