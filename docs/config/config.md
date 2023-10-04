@@ -66,7 +66,7 @@ When using `UMM_AL_QURA` method `prayer-calls` will automatically adjust the pra
 - **Type:** `HijriCalendar`
 - **Default:** `HijriCalendar.UMM_AL_QURA`
 
-The Hijri calendar to use in conjunction with `adjustForRamadan` to determine the start and end of Ramadan. for a comprehensive list of available calendars, see [HijriCalendar](../api.md#HijriCalendar).
+The Hijri calendar to use in conjunction with `adjustForRamadan` to determine the start and end of Ramadan. for a comprehensive list of available calendars, see [HijriCalendar](../api.md#hijricalendar).
 
 ### highLatitudeRule
 
