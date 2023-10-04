@@ -20,12 +20,12 @@ hero:
       link: https://github.com/whiterocktech/prayers-call
 
 features:
-  - title: Accurate
+  - title: 🎯 Accurate
     details: High-precision prayer time calculations based on specified geographic coordinates.
-  - title: Simple
+  - title: 💡 Intuitive
     details: User-friendly API, easy to read and maintain with a great deal of customization options.
-  - title: Reactive
+  - title: ⚡ Reactive
     details: Real-time, event-driven architecture for seamless integration into reactive programming paradigms.
-  - title: Versatile
+  - title: 🛠️ Versatile
     details: 'Multiple calculation methods, Sunnah Times, and Qibla direction, all in one package'
 ---

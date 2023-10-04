@@ -16,7 +16,7 @@ export default defineConfig({
 
     editLink: {
       pattern: 'https://github.com/whiterocktech/prayers-call/edit/master/docs/:path',
-      text: 'Edit this page on GitHub',
+      text: 'Suggest changes to this page',
     },
 
     socialLinks: [{ icon: 'github', link: 'https://github.com/whiterocktech/prayers-call' }],
@@ -27,6 +27,16 @@ export default defineConfig({
     },
 
     externalLinkIcon: true,
+
+    search: {
+      provider: 'local',
+    },
+  },
+  markdown: {
+    theme: {
+      light: 'light-plus',
+      dark: 'one-dark-pro',
+    },
   },
 })
 
