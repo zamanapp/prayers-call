@@ -20,7 +20,7 @@ For configuration details, refer to the [Config](../config/config.md) section.
 
 ### `getCurrentPrayerTime`
 
-Returns a [`TimeObject`]() with the name and Adhan time of the current prayer. If the invocation time is past Isha, the returned value would be `{ name: "none", time: null }`.
+Returns a [`TimeObject`](../api.md#timeobject) with the name and Adhan time of the current prayer. If the invocation time is past Isha, the returned value would be `{ name: "none", time: null }`.
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer-call'
@@ -38,7 +38,7 @@ reactiveCalculator.getCurrentPrayerTime()
 
 ### `getNextPrayerTime`
 
-Returns a [`TimeObject`]() with the name and Adhan time of the next prayer. If the current prayer `"isha"`, the returned value would be `{ name: "none", time: null }`.
+Returns a [`TimeObject`](../api.md#timeobject) with the name and Adhan time of the next prayer. If the current prayer `"isha"`, the returned value would be `{ name: "none", time: null }`.
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer-call'
@@ -56,7 +56,7 @@ reactiveCalculator.getNextPrayerTime()
 
 ### `getAllPrayerTimes`
 
-Returns an array of [`TimeObject`]() with prayer names and their corresponding time as a Javascript `Date` object.
+Returns an array of [`TimeObject`](../api.md#timeobject) with prayer names and their corresponding time as a Javascript `Date` object.
 
 ::: info
 The array includes the sunrise time object.
@@ -78,7 +78,7 @@ reactiveCalculator.getAllPrayerTimes() // check the output tab
 
 ### `getPrayerTime`
 
-`getPrayerTime` returns a Javascript `Date` object with the name and Adhan time of the specified prayer. Accepts prayer parameter of type `PrayerNamesType`. Use the [`PrayerNames`]() enum for available prayer names.
+`getPrayerTime` returns a Javascript `Date` object with the name and Adhan time of the specified prayer. Accepts prayer parameter of type [`PrayerNamesType`](../api.md#prayernamestype). Use the [`PrayerNames`](../api.md#prayernames) enum for available prayer names.
 
 ```ts
 import { Methods, ReactiveCalculator, PrayerNames } from 'prayer-call'
@@ -96,7 +96,7 @@ reactiveCalculator.getPrayerTime(PrayerNames.FAJR)
 
 ### `getMiddleOfTheNightTime` and `getLastThirdOfTheNightTime`
 
-Returns a [`TimeObject`]() representing the time of the middle and the last third of the night respectively based on the moon. Useful for Qiyam calculations.
+Returns a [`TimeObject`](../api.md#timeobject) representing the time of the middle and the last third of the night respectively based on the moon. Useful for Qiyam calculations.
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer-call'
@@ -116,7 +116,7 @@ reactiveCalculator.getLastThirdOfTheNightTime()
 
 ### `adhanObserver`
 
-Returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. You can subscribe to the observable for receiving real-time notifications of Adhan events.
+Returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`](../api.md#timeeventobject) ie: `Observable<TimeEventObject>`. You can subscribe to the observable for receiving real-time notifications of Adhan events.
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer-call'
@@ -145,7 +145,7 @@ reactiveCalculator.cleanup()
 
 ### `iqamaObserver`
 
-Returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method can be subscribed to for prayer Iqama times events.
+Returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`](../api.md#timeeventobject) ie: `Observable<TimeEventObject>`. This method can be subscribed to for prayer Iqama times events.
 
 ```ts
 import { Methods, ReactiveCalculator, TimeEventObject } from 'prayer-call'
@@ -178,7 +178,7 @@ The default time intervals in minutes between Adhan and Iqama are: `{ fajr: 20, 
 
 ### `qiyamTimesObserver`
 
-This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method can be subscribed to for prayer Qiyam times events. (The middle of the night and the last third of the night).
+This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`](../api.md#timeeventobject) ie: `Observable<TimeEventObject>`. This method can be subscribed to for prayer Qiyam times events. (The middle of the night and the last third of the night).
 
 ```ts
 import { Methods, ReactiveCalculator, TimesNames, TimeEventObject } from 'prayer-call'
@@ -213,7 +213,7 @@ reactiveCalculator.cleanup()
 
 ### `prayerEventsObserver`
 
-This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`]() ie: `Observable<TimeEventObject>`. This method is a shortcut for subscribing to all prayer events at once (Adhan, Iqama, Qiyam).
+This method returns an [`Observable`](https://rxjs.dev/guide/observable) of type [`TimeEventObject`](../api.md#timeeventobject) ie: `Observable<TimeEventObject>`. This method is a shortcut for subscribing to all prayer events at once (Adhan, Iqama, Qiyam).
 
 ```ts
 import { Methods, ReactiveCalculator, TimeEventObject, EventType } from 'prayer-call'
@@ -290,7 +290,7 @@ const qiyamSubscription = reactiveCalculator.newQiyamObserver().subscribe({
 
 Returns a `number` representing the Qibla direction in degrees from North.
 
-By default this method will use the initialization coordinates but can optional accept a `CoordinatesObject`.
+By default this method will use the initialization coordinates but can optional accept a [`CoordinatesObject`](../api.md#coordinatesobject).
 
 ```ts
 import { Methods, ReactiveCalculator } from 'prayer-call'
@@ -343,7 +343,7 @@ calculator.getCalculationOptions()
 
 ### `setCalculationOptions`
 
-Allows you to update the calculator's configuration without creating a new instance. Accepts a `newConfig` param of type `Partial<ReactiveCalculationsConfig>`.
+Allows you to update the calculator's configuration without creating a new instance. Accepts a `newConfig` param of type [`Partial<ReactiveCalculationsConfig>`](../api.md#reactivecalculationsconfig).
 
 For configuration details, refer to the [Config](../config/config.md) section.
 

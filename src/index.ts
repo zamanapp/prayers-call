@@ -11,7 +11,6 @@ export { AsrTime } from './types/AsrTime'
 export { EventType, PrayerNames } from './types/TimeObject'
 export { HijriCalendar } from './types/HijriCalendar'
 export type {
-  PrayersTimeObject,
   PrayerNamesType,
   TimesNamesType,
   FormattedTimeObject,

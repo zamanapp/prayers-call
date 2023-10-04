@@ -44,7 +44,7 @@ The `Intl.DateTimeFormat` API support other calendars as well. to get a full lis
 
 ### Arabic Display of Dates
 
-To display dates in Arabic, you can specify the locale option in the `FormatterConfig`.
+To display dates in Arabic, you can specify the locale option in the [`FormatterConfig`](../api.md#formatterconfig).
 
 ```ts
 import { Formatter } from 'prayer-call'

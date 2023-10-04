@@ -4,7 +4,7 @@ The `Formatter` class in `prayers-call` provides a flexible way to format dates 
 
 ## Initialization and Configuration
 
-To begin using the `Formatter` class, you'll need to initialize it. While the class comes with a default configuration, you can customize it by passing an optional `FormatterConfig` object during initialization.
+To begin using the `Formatter` class, you'll need to initialize it. While the class comes with a default configuration, you can customize it by passing an optional [`FormatterConfig`](../api.md#formatterconfig) object during initialization.
 
 ### Default Configuration
 
@@ -100,7 +100,7 @@ formatter.formatDate(date) // 'Tuesday, February 1, 2022 at 12:00 AM'
 
 ### `formatePrayers`
 
-To format prayer times, use the formatPrayers method. It accepts an array of [`TimeObject`]() as its only argument. it will return an array of `FormattedTimeObject`.
+To format prayer times, use the formatPrayers method. It accepts an array of [`TimeObject`](../api.md#timeobject) as its only argument. it will return an array of [`FormattedTimeObject`](../api.md#formattedtimeobject).
 
 ```ts
 import { Formatter } from 'prayer-call'

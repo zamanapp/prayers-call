@@ -23,7 +23,7 @@ console.log(qiblaDirection) // 292.6457605278075
 
 ### Optional Coordinates
 
-You can also pass in an optional [`CoordinatesObject`]() to the `getQiblaDirection` method. This is useful if you want to calculate the Qibla direction for a different location than the one you used to initialize the calculator.
+You can also pass in an optional [`CoordinatesObject`](../api.md#coordinatesobject) to the `getQiblaDirection` method. This is useful if you want to calculate the Qibla direction for a different location than the one you used to initialize the calculator.
 
 ```ts
 const alAqsaCoordinates = {
@@ -37,7 +37,7 @@ console.log(qiblaDirection) // 157.29924281528764
 
 ## Using the `calculateQiblaDirection` Function Helper
 
-The `calculateQiblaDirection` function helper is a standalone function that can be used to calculate the Qibla direction. It accepts a [`CoordinatesObject`]() as its only argument.
+The `calculateQiblaDirection` function helper is a standalone function that can be used to calculate the Qibla direction. It accepts a [`CoordinatesObject`](../api.md#coordinatesobject) as its only argument.
 
 ```ts
 import { calculateQiblaDirection } from 'prayer-call'

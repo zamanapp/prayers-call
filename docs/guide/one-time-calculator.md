@@ -21,7 +21,7 @@ For configuration details, refer to the [Config](../config/config.md) section.
 
 ### `getAllPrayerTimes`
 
-Returns an array of [`TimeObject`]() with prayer names and their corresponding time as a Javascript `Date` object.
+Returns an array of [`TimeObject`](../api.md#timeobject) with prayer names and their corresponding time as a Javascript `Date` object.
 
 ::: info
 The array includes the sunrise time object.
@@ -78,7 +78,7 @@ calculator.getAllPrayerTimes() // check the output tab
 
 ### `getPrayerTime`
 
-Returns the time for a specific prayer based on the initialized date. Accepts a prayer parameter of type `PrayerNamesType`. Use the [`PrayerNames`]() enum for available prayer names.
+Returns the time for a specific prayer based on the initialized date. Accepts a prayer parameter of type [`PrayerNamesType`](../api.md#prayernamestype). Use the [`PrayerNames`](../api.md#prayernames) enum for available prayer names.
 
 ```ts
 import { Methods, PrayerNames, StaticCalculator } from 'prayer-call'
@@ -98,7 +98,7 @@ calculator.getPrayerTime(PrayerNames.FAJR)
 
 ### `getMiddleOfTheNightTime` and `getLastThirdOfTheNightTime`
 
-Returns a [`TimeObject`]() representing the time of the middle and the last third of the night respectively based on the moon. Useful for Qiyam calculations.
+Returns a [`TimeObject`](../api.md#timeeventobject) representing the time of the middle and the last third of the night respectively based on the moon. Useful for Qiyam calculations.
 
 ```ts
 import { Methods, StaticCalculator } from 'prayer-call'
@@ -123,7 +123,7 @@ calculator.getLastThirdOfTheNightTime()
 
 Returns a `number` representing the Qibla direction in degrees from North.
 
-By default this method will use the initialization coordinates but can optional accept a `CoordinatesObject`.
+By default this method will use the initialization coordinates but can optional accept a [`CoordinatesObject`](../api.md#coordinatesobject).
 
 ```ts
 import { Methods, StaticCalculator } from 'prayer-call'
@@ -177,7 +177,7 @@ calculator.getCalculationOptions()
 
 ### `setCalculationOptions`
 
-Allows you to update the calculator's configuration without creating a new instance. Accepts a `newConfig` param of type `Partial<CalculationsConfig>`.
+Allows you to update the calculator's configuration without creating a new instance. Accepts a `newConfig` param of type [`Partial<CalculationsConfig>`](../api.md#calculationsconfig).
 
 For configuration details, refer to the [Config](../config/config.md) section.
 

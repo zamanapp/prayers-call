@@ -31,15 +31,6 @@ export enum TimesNames {
   LAST_THIRD_OF_THE_NIGHT = 'lastThirdOfTheNight',
 }
 
-export interface PrayersTimeObject {
-  fajr: Date
-  sunrise: Date
-  dhuhr: Date
-  asr: Date
-  maghrib: Date
-  isha: Date
-}
-
 export interface FormattedTimeObject {
   name: TimesNamesType
   time: string
