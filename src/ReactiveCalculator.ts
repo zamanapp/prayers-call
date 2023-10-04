@@ -347,10 +347,9 @@ export class ReactiveCalculator extends BaseCalculator {
   }
 
   /**
-   * this function observes the solar time and triggers and event each time we have a new day
-   * as moon days end after maghrib, solar days end at midnight
-   * this function is use to refresh the calculator
-   * @returns
+   * Returns an observable that emits a number every 24 hours and 1 minute, starting from the next solar day.
+   *
+   * @returns An observable that emits a number every 24 hours and 1 minute, starting from the next solar day.
    */
   public newSolarDayObserver(): Observable<number> {
     return defer(() => {
@@ -368,6 +367,13 @@ export class ReactiveCalculator extends BaseCalculator {
     })
   }
 
+  /**
+   * Returns an observable that emits a TimeEventObject representing the last third of the night.
+   * The observable emits the event once every day, at the time of the last third of the night.
+   * The observable repeats indefinitely.
+   *
+   * @returns An observable that emits a TimeEventObject representing the last third of the night.
+   */
   public newQiyamObserver(): Observable<TimeEventObject> {
     return defer(() => {
       this._logger.debug(`subscription made for new qiyam. subscription map size: ${this._subscriptions.size}`)

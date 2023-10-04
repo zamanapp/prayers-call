@@ -6,3 +6,4 @@
 - Add altitude to the calculation formula
 - Support `Temporal` instead of `Date`
 - Offer testing utilities for reactive code
+- include Algolia search in the docs

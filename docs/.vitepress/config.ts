@@ -25,6 +25,8 @@ export default defineConfig({
       message: 'Released under the MIT License.',
       copyright: `Copyright © 2022-${new Date().getFullYear()} Whiterock tech`,
     },
+
+    externalLinkIcon: true,
   },
 })
 

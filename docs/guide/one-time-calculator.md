@@ -10,7 +10,7 @@ const calculator = new StaticCalculator({
   date: new Date(2022, 0, 1),
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 ```
@@ -27,7 +27,9 @@ Returns an array of [`TimeObject`]() with prayer names and their corresponding t
 The array includes the sunrise time object.
 :::
 
-```ts
+::: code-group
+
+```ts [main.ts]
 import { Methods, StaticCalculator } from 'prayer-call'
 
 // calculations for Cyberjaya
@@ -39,10 +41,11 @@ const calculator = new StaticCalculator({
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
-calculator.getAllPrayerTimes()
-// will return:
-/*
- * [
+calculator.getAllPrayerTimes() // check the output tab
+```
+
+```bash [output]
+[
     {
       name: "fajr",
       time: 2022-01-31T22:07:00.000Z,
@@ -68,8 +71,10 @@ calculator.getAllPrayerTimes()
       time: 2022-02-01T12:41:00.000Z
     }
   ]
- */
+
 ```
+
+:::
 
 ### `getPrayerTime`
 
@@ -153,7 +158,7 @@ const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 calculator.getCalculationOptions()
@@ -163,7 +168,7 @@ calculator.getCalculationOptions()
   date: 2022-01-31T16:00:00.000Z,
   latitude: 2.9213,
   longitude: 101.6559,
-  method: 'Singapore',
+  method: 'Malaysia',
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
   iqama: { fajr: 20, dhuhr: 10, asr: 10, maghrib: 5, isha: 15 }
 }
@@ -184,7 +189,7 @@ const calculator = new StaticCalculator({
   date: new Date(2022, 1, 1),
   latitude: 2.9213,
   longitude: 101.6559,
-  method: Methods.SINGAPORE,
+  method: Methods.MALAYSIA,
   adjustments: { dhuhr: 3, asr: 3, isha: 2 },
 })
 
@@ -193,7 +198,7 @@ const alAqsaCoordinates = {
   longitude: 35.2335256,
 }
 
-// now the prayer times are calculated for alAqsa
+// now the prayer times are calculated for al-Aqsa
 calculator.setCalculationOptions({
   latitude: alAqsaCoordinates.latitude,
   longitude: alAqsaCoordinates.longitude,
