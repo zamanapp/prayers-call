@@ -6,9 +6,13 @@ import taskList from 'markdown-it-task-lists'
 // if version doesn't work we need to use this plugin https://github.com/semantic-release/git
 export default defineConfig({
   title: 'Prayers-Call',
-  description: 'A reactive prayer times calculation library for node and the browser built with Typescript',
+  description: 'Reactive prayer times calculator built for Node and the Browser',
   ignoreDeadLinks: true, // FIXME: remove this when the docs are mature
   lastUpdated: true,
+  // <script defer data-domain="prayers-call.netlify.app" src="https://plausible.io/js/script.js"></script>
+  head: [
+    ['script', { defer: 'defer', 'data-domain': 'prayers-call.netlify.app', src: 'https://plausible.io/js/script.js' }],
+  ],
   themeConfig: {
     nav: nav(),
     outline: [1, 4],

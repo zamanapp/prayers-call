@@ -1,10 +1,14 @@
+<!-- <script setup>
+import MethodsMap from '../components/MethodsMap.vue'
+</script> -->
+
 # Calculation Methods
 
 ## Overview
 
 Calculation methods are sets of parameters and rules used to compute Islamic prayer times. These methods are often standardized by religious authorities or geographical regions. They define specific angles of the sun or time intervals, and other factors to accurately calculate the times for Fajr, Sunrise, Dhuhr, Asr, Maghrib, and Isha prayers.
 
-## Available Methods and Their Parameters
+## Available Methods
 
 We recommend using `prayers-call` pre-defined calculation methods, as they are endorsed by official religious authorities making them more accurate and consistent with the local community. These methods are available via the [`Method`](../api.md#method) enum. However, if you need to, you can create your own custom method using the [`CustomMethod`](../api.md#custommethod) interface for that check the [Building a Custom Method](#building-a-custom-method) section.
 
@@ -65,6 +69,10 @@ import { recommendMethod } from 'prayers-call'
 const methods = recommendMethod({ latitude: 21.3891, longitude: 39.8579 }) // mekka coordinates
 console.log(methods) // Output: ['UmmAlQura']
 ```
+
+<!-- The following is a map projecting the recommended methods for each country. hover on a country to see the recommended methods.
+
+<MethodsMap /> -->
 
 ::: tip Help wanted
 We're looking for help to map more countries with their respective methods. If you have the knowledge and resources to help us or have found any issue, please [open an issue](https://github.com/whiterocktech/prayers-call/issues/new/choose) or submit a pull request.
