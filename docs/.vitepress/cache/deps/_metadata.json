@@ -1,41 +1,59 @@
 {
-  "hash": "fa628c01",
-  "browserHash": "5d98ddba",
+  "hash": "95339d0c",
+  "browserHash": "f3132f6c",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/.pnpm/vue@3.2.45/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "ebb0ce03",
+      "fileHash": "001eb8ed",
       "needsInterop": false
     },
     "vitepress > @vue/devtools-api": {
       "src": "../../../../node_modules/.pnpm/@vue+devtools-api@6.5.0/node_modules/@vue/devtools-api/lib/esm/index.js",
       "file": "vitepress___@vue_devtools-api.js",
-      "fileHash": "df8ccb83",
+      "fileHash": "d7eddfef",
       "needsInterop": false
     },
     "vitepress > @vueuse/integrations/useFocusTrap": {
       "src": "../../../../node_modules/.pnpm/@vueuse+integrations@10.4.1_focus-trap@7.5.3+vue@3.3.4/node_modules/@vueuse/integrations/useFocusTrap.mjs",
       "file": "vitepress___@vueuse_integrations_useFocusTrap.js",
-      "fileHash": "e7d2521b",
+      "fileHash": "3a86c6eb",
       "needsInterop": false
     },
     "vitepress > mark.js/src/vanilla.js": {
       "src": "../../../../node_modules/.pnpm/mark.js@8.11.1/node_modules/mark.js/src/vanilla.js",
       "file": "vitepress___mark__js_src_vanilla__js.js",
-      "fileHash": "32fe33db",
+      "fileHash": "64dd8249",
       "needsInterop": false
     },
     "vitepress > minisearch": {
       "src": "../../../../node_modules/.pnpm/minisearch@6.1.0/node_modules/minisearch/dist/es/index.js",
       "file": "vitepress___minisearch.js",
-      "fileHash": "74a2d189",
+      "fileHash": "a2c08cc7",
+      "needsInterop": false
+    },
+    "@observablehq/plot": {
+      "src": "../../../../node_modules/.pnpm/@observablehq+plot@0.6.11/node_modules/@observablehq/plot/src/index.js",
+      "file": "@observablehq_plot.js",
+      "fileHash": "36a684c2",
+      "needsInterop": false
+    },
+    "d3": {
+      "src": "../../../../node_modules/.pnpm/d3@7.8.5/node_modules/d3/src/index.js",
+      "file": "d3.js",
+      "fileHash": "d17cc134",
       "needsInterop": false
     }
   },
   "chunks": {
+    "chunk-G2KXNFOW": {
+      "file": "chunk-G2KXNFOW.js"
+    },
     "chunk-ICPKVSEZ": {
       "file": "chunk-ICPKVSEZ.js"
+    },
+    "chunk-UXIASGQL": {
+      "file": "chunk-UXIASGQL.js"
     }
   }
 }

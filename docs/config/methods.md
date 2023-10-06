@@ -1,6 +1,6 @@
-<!-- <script setup>
+<script setup>
 import MethodsMap from '../components/MethodsMap.vue'
-</script> -->
+</script>
 
 # Calculation Methods
 
@@ -70,9 +70,9 @@ const methods = recommendMethod({ latitude: 21.3891, longitude: 39.8579 }) // me
 console.log(methods) // Output: ['UmmAlQura']
 ```
 
-<!-- The following is a map projecting the recommended methods for each country. hover on a country to see the recommended methods.
+The following is a map projecting the recommended methods for each country. hover on a country to see the recommended methods.
 
-<MethodsMap /> -->
+<MethodsMap />
 
 ::: tip Help wanted
 We're looking for help to map more countries with their respective methods. If you have the knowledge and resources to help us or have found any issue, please [open an issue](https://github.com/whiterocktech/prayers-call/issues/new/choose) or submit a pull request.
