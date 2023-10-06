@@ -64,11 +64,22 @@ The calculation methods provided are based on our best capacity of research and 
 `prayers-call` offers the [`recommendMethod`](../api.md#functions) helper function, designed to suggest the most appropriate calculation methods for prayer times based on the country of a given location. The function accepts a [`CoordinatesObject`](../api.md#coordinatesobject) returns an array of recommended methods, ranked by best guess or by the number of methods commonly used in that specific country. If no match is found, the function returns `undefined`. Here's an example:"
 
 ```ts
-import { recommendMethod } from 'prayers-call'
+import { ReactiveCalculator, recommendMethod } from 'prayers-call'
 
-const methods = recommendMethod({ latitude: 21.3891, longitude: 39.8579 }) // mekka coordinates
-console.log(methods) // Output: ['UmmAlQura']
+const makkaCoordinates = { latitude: 21.3891, longitude: 39.8579 }
+
+const recommendedMethod = recommendMethod(makkaCoordinates)[0] // 'UmmAlQura'
+
+const reactiveCalculator = new ReactiveCalculator({
+  latitude: makkaCoordinates.latitude,
+  longitude: makkaCoordinates.longitude,
+  method: recommendedMethod ? recommendedMethod : Methods.MUSLIM_WORLD_LEAGUE,
+})
 ```
+
+::: tip
+While the `recommendMethod` function returns an array of recommended methods, the clculators expect one method only. If no match is found, the function returns `undefined`. in that case you can use methods like `MUSLIM_WORLD_LEAGUE`, `STANDARD` or even `UMM_AL_QURA` as a fallback.
+:::
 
 The following is a map projecting the recommended methods for each country. hover on a country to see the recommended methods.
 

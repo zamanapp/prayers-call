@@ -39,7 +39,7 @@ Islamic calendars are usually categorized as bellow:
 | SIGHTING_SA | `islamic-rgsa`                        | Based on moon sighting in the region of Saudi Arabia; Requested by Oracle. dates may vary.         |
 
 ::: tip
-The `Intl.DateTimeFormat` API support other calendars as well. to get a full list of supported calendars, you can use the `Intl.Locale.prototype.getCalendars()` method.
+The `Intl.DateTimeFormat` API support calendars other then the islamic calendars as well. to get a full list of supported calendars, you can use the `Intl.Locale.prototype.getCalendars()` method.
 :::
 
 ### Arabic Display of Dates

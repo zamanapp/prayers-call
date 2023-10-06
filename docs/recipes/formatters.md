@@ -2,6 +2,12 @@
 
 The `Formatter` class in `prayers-call` provides a flexible way to format dates and times, including Islamic (Hijri) dates. It leverages the [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) API for internationalization (I18n) and supports a variety of formatting options.
 
+::: tip
+By using the `Intl.DateTimeFormat`, `prayers-call` remove the need to use a separate library for internationalization (I18n) and date time formatting. This also means we are relying on the standard way of formatting dates and times in JavaScript, which is supported by all modern browsers and Node.js.
+
+Of course you can use libraries like [date-fns](https://date-fns.org/) or [moment.js](https://momentjs.com/) to format the dates and times returned by `prayers-call`.
+:::
+
 ## Initialization and Configuration
 
 To begin using the `Formatter` class, you'll need to initialize it. While the class comes with a default configuration, you can customize it by passing an optional [`FormatterConfig`](../api.md#formatterconfig) object during initialization.
