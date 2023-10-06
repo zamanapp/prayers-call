@@ -7,14 +7,14 @@
 import { onMounted, ref, shallowRef, watch } from 'vue'
 import * as Plot from '@observablehq/plot'
 import { json } from 'd3'
-import { useData } from 'vitepress'
+import { useData, withBase } from 'vitepress'
 import { CountryMethods } from '../../src/data/methods'
 import { Methods } from '../../src'
 
 const isLoading = ref(true)
 const { isDark } = useData()
 const map = ref<HTMLElement | null>(null)
-const dataPath = '../data/countries.geojson'
+const dataPath = withBase('/data/countries.geojson')
 const world = shallowRef<any | null>(null)
 
 onMounted(async () => {

@@ -4,6 +4,7 @@ export default defineConfig({
   define: {
     'import.meta.vitest': 'undefined',
   },
+  publicDir: 'public',
   test: {
     coverage: {
       provider: 'istanbul', // or 'c8'
