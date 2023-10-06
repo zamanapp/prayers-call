@@ -1,5 +1,7 @@
 import { defineConfig } from 'vitepress'
 import { version } from '../../package.json'
+import footnote from 'markdown-it-footnote'
+import taskList from 'markdown-it-task-lists'
 
 // if version doesn't work we need to use this plugin https://github.com/semantic-release/git
 export default defineConfig({
@@ -36,6 +38,10 @@ export default defineConfig({
     theme: {
       light: 'light-plus',
       dark: 'one-dark-pro',
+    },
+    config(md) {
+      md.use(footnote)
+      md.use(taskList)
     },
   },
 })
@@ -120,6 +126,11 @@ function sidebarGuide() {
       text: 'API',
       collapsible: true,
       items: [{ text: 'API Reference', link: '/api' }],
+    },
+    {
+      text: 'Roadmap',
+      collapsible: true,
+      items: [{ text: 'The future', link: '/roadmap' }],
     },
   ]
 }

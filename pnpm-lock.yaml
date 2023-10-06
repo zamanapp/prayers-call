@@ -21,6 +21,8 @@ importers:
       eslint-config-prettier: ^8.5.0
       eslint-plugin-tsdoc: ^0.2.17
       esno: ^0.16.3
+      markdown-it-footnote: ^3.0.3
+      markdown-it-task-lists: ^2.1.1
       pnpm: ^7.9.0
       prettier: ^2.7.1
       rimraf: ^3.0.2
@@ -54,6 +56,8 @@ importers:
       eslint-config-prettier: 8.5.0_eslint@8.30.0
       eslint-plugin-tsdoc: 0.2.17
       esno: 0.16.3
+      markdown-it-footnote: 3.0.3
+      markdown-it-task-lists: 2.1.1
       pnpm: 7.18.2
       prettier: 2.8.1
       rimraf: 3.0.2
@@ -4444,6 +4448,14 @@ packages:
 
   /mark.js/8.11.1:
     resolution: {integrity: sha512-1I+1qpDt4idfgLQG+BNWmrqku+7/2bi5nLf4YwF8y8zXvmfiTBY3PV3ZibfrjBueCByROpuBjLLFCajqkgYoLQ==}
+    dev: true
+
+  /markdown-it-footnote/3.0.3:
+    resolution: {integrity: sha512-YZMSuCGVZAjzKMn+xqIco9d1cLGxbELHZ9do/TSYVzraooV8ypsppKNmUJ0fVH5ljkCInQAtFpm8Rb3eXSrt5w==}
+    dev: true
+
+  /markdown-it-task-lists/2.1.1:
+    resolution: {integrity: sha512-TxFAc76Jnhb2OUu+n3yz9RMu4CwGfaT788br6HhEDlvWfdeJcLUsxk1Hgw2yJio0OXsxv7pyIPmvECY7bMbluA==}
     dev: true
 
   /marked-terminal/5.1.1_marked@4.2.4:

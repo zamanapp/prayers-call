@@ -2,7 +2,9 @@
 
 ## What Is It?
 
-`prayers-call` is a TypeScript library designed for calculating Islamic prayer times. It can be used in both Node.js and browser environments. Built on top of [adhan-js](https://github.com/batoulapps/adhan-js), the library aims for accuracy, versatility, and ease of use.
+`prayers-call` is a TypeScript library designed for calculating Islamic prayer times. It can be used in both Node.js and browser environments. Currently[^1] built on top of [adhan-js](https://github.com/batoulapps/adhan-js), the library aims for accuracy, versatility, and ease of use.
+
+[^1]: We're planning a new version that is built from scratch to offer more features with a native reactivity system. Check our [roadmap](../roadmap.md) and stay tuned for updates.
 
 ## Why This Library?
 

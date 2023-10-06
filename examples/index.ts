@@ -1,5 +1,13 @@
 import { Methods } from '../src/types/Methods'
-import { Formatter, HighLatitudeRule, HijriCalendar, PrayerNames, ReactiveCalculator, StaticCalculator } from '../src'
+import {
+  Formatter,
+  HighLatitudeRule,
+  HijriCalendar,
+  PrayerNames,
+  ReactiveCalculator,
+  StaticCalculator,
+  recommendMethod,
+} from '../src'
 import type { TimeEventObject } from '../src'
 import { TimesNames } from '../src/types/TimeObject'
 
@@ -27,6 +35,9 @@ console.log('default formatter', formatterExample.formatDate(date))
 
 const rule = HighLatitudeRule.recommended({ latitude: 59.91, longitude: 10.75 }) // SeventhOfTheNight
 console.log(rule)
+
+const methods = recommendMethod({ latitude: 21.3891, longitude: 39.8579 })
+console.log(methods) // Output: ['UMM_AL_QURA']
 // console.log(calculator.getPrayerTime(PrayerNames.FAJR))
 // console.log('Middle', calculator.getMiddleOfTheNightTime().time?.toLocaleString())
 // console.log('LastThird', calculator.getLastThirdOfTheNightTime().time?.toLocaleString())

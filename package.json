@@ -70,6 +70,8 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-tsdoc": "^0.2.17",
     "esno": "^0.16.3",
+    "markdown-it-footnote": "^3.0.3",
+    "markdown-it-task-lists": "^2.1.1",
     "pnpm": "^7.9.0",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
