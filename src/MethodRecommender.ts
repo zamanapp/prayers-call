@@ -1,9 +1,9 @@
-import { findCountryByCoordinate } from 'country-locator'
+import { iso1A3Code } from '@rapideditor/country-coder'
 import { CountryMethods } from './data/methods'
 import type { Methods } from './types/Methods'
 import type { CoordinatesObject } from './types/Coordinates'
 
-export function recommendMethod({ latitude, longitude }: CoordinatesObject): Methods[] | undefined {
-  const countryInfo = findCountryByCoordinate(latitude, longitude)
-  return countryInfo?.code ? (CountryMethods as Record<string, Methods[]>)[countryInfo?.code] : undefined
+export function recommendMethod({ longitude, latitude }: CoordinatesObject): Methods[] | undefined {
+  const countryCode = iso1A3Code([longitude, latitude])
+  return countryCode ? (CountryMethods as Record<string, Methods[]>)[countryCode] : undefined
 }
