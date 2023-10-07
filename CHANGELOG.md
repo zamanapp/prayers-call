@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/whiterocktech/prayers-call/compare/v1.6.0...v1.6.1) (2023-10-07)
+
+
+### Bug Fixes
+
+* make recommendMethod work on the browser as well ([29ab43a](https://github.com/whiterocktech/prayers-call/commit/29ab43a26134e48bf458cde7ff070783ea17da35))
+
 # [1.6.0](https://github.com/whiterocktech/prayers-call/compare/v1.5.4...v1.6.0) (2023-10-03)
 
 
