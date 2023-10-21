@@ -202,5 +202,6 @@ const alAqsaCoordinates = {
 calculator.setCalculationOptions({
   latitude: alAqsaCoordinates.latitude,
   longitude: alAqsaCoordinates.longitude,
+  method: Methods.PALESTINE,
 })
 ```
