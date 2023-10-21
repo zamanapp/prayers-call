@@ -21,17 +21,14 @@ jobs:
       - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           cache: pnpm
 
-      - name: Setup
-        run: npm i -g @antfu/ni
-
       - name: Install
-        run: nci
+        run: pnpm install
 
       - name: Lint
-        run: nr lint
+        run: pnpm run lint
 
   TypeCheck:
     runs-on: ubuntu-latest
@@ -44,24 +41,21 @@ jobs:
       - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           cache: pnpm
 
-      - name: Setup
-        run: npm i -g @antfu/ni
-
       - name: Install
-        run: nci
+        run: pnpm install
 
       - name: Typecheck
-        run: nr typecheck
+        run: pnpm run typecheck
 
   Test:
     runs-on: ${{ matrix.os }}
 
     strategy:
       matrix:
-        node: [16.x]
+        node: [18.x]
         os: [ubuntu-latest, windows-latest, macos-latest]
       fail-fast: false
 
@@ -78,13 +72,13 @@ jobs:
           cache: pnpm
 
       - name: Install
-        run: pnpm i --frozen-lockfile
+        run: pnpm install
 
       - name: Build
-        run: pnpm build
+        run: pnpm run build
 
       - name: Test
-        run: pnpm test
+        run: pnpm run test
   # we release if everything is fine
   Release:
     runs-on: ubuntu-latest
@@ -103,7 +97,7 @@ jobs:
           extra_plugins: |
             @semantic-release/changelog
             @semantic-release/git
-          node-version: 14.x
+          node-version: 18.x
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
