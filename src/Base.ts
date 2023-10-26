@@ -231,9 +231,11 @@ export class BaseCalculator {
       calendar: this._prayerConfig.hijriCalendar ?? HijriCalendar.UMM_AL_QURA,
       dateStyle: 'short',
     })
+    console.log(hijriFormatter.formatDate(date))
     const hijriMonth = hijriFormatter.formatDate(date).split('/')[0]
+    console.log(hijriMonth)
     // check if the month is ramadan
-    if (parseInt(hijriMonth) === 9) {
+    if (parseInt(hijriMonth, 10) === 9) {
       if (method === Methods.UMM_AL_QURA || this._prayerConfig.adjustForRamadan) {
         return true
       }
