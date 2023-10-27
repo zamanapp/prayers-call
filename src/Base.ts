@@ -9,7 +9,8 @@ import {
   PrayerTimes,
   SunnahTimes,
 } from 'adhan'
-import type { Logger } from 'tslog'
+import { createConsola } from 'consola'
+import type { ConsolaInstance } from 'consola'
 import { AsrTime } from './types/AsrTime'
 import type { CalculationsConfig, CustomMethod } from './types/CalculationsConfig'
 import { Methods } from './types/Methods'
@@ -21,9 +22,16 @@ export class BaseCalculator {
   protected _qiyamTimesCalculator!: SunnahTimes
   protected _prayerConfig!: CalculationsConfig
   protected _qiyamConfig!: CalculationsConfig
-  protected _logger!: Logger<any>
+  protected _logger!: ConsolaInstance
 
   constructor(config: CalculationsConfig) {
+    this._logger = createConsola({
+      level: config.debug ? 4 : 2,
+      fancy: config.debug,
+      formatOptions: {
+        colors: true,
+      },
+    })
     this._initializer(config)
   }
 
@@ -245,9 +253,7 @@ export class BaseCalculator {
       calendar: this._prayerConfig.hijriCalendar ?? HijriCalendar.UMM_AL_QURA,
       dateStyle: 'short',
     })
-    console.log(hijriFormatter.formatDate(date))
     const hijriMonth = hijriFormatter.formatDate(date).split('/')[0]
-    console.log(hijriMonth)
     // check if the month is ramadan
     if (parseInt(hijriMonth, 10) === 9) {
       if (method === Methods.UMM_AL_QURA || this._prayerConfig.adjustForRamadan) {

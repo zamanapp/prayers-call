@@ -1,7 +1,6 @@
 import { Observable, defer, merge, timer } from 'rxjs'
 import { delay, repeat } from 'rxjs/operators'
 import { Coordinates, Prayer, PrayerTimes, Qibla, SunnahTimes } from 'adhan'
-import { Logger } from 'tslog'
 import type { Subscriber, Subscription } from 'rxjs'
 
 import { BaseCalculator } from './Base'
@@ -32,12 +31,6 @@ export class ReactiveCalculator extends BaseCalculator {
       ...rConfig,
     }
     super(config)
-
-    this._logger = new Logger({
-      name: `ReactiveCalculator-${Math.random().toString(36).slice(-6)}`,
-      minLevel: config.debug ? 2 : 4,
-      prefix: ['ReactiveCalculator:'],
-    })
 
     this._logger.debug('logger initialized successfully.')
 
