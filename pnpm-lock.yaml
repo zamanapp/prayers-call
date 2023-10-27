@@ -20,6 +20,7 @@ importers:
       '@vitest/ui': ^0.23.4
       adhan: ^4.4.3
       bumpp: ^8.2.1
+      consola: ^3.2.3
       d3: ^7.8.5
       eslint: ^8.22.0
       eslint-config-prettier: ^8.5.0
@@ -32,7 +33,6 @@ importers:
       rimraf: ^3.0.2
       rxjs: ^7.5.6
       semantic-release: ^19.0.5
-      tslog: ^4.4.4
       typescript: ^4.9.4
       unbuild: ^0.8.8
       vite: ^3.0.7
@@ -42,8 +42,8 @@ importers:
     dependencies:
       '@rapideditor/country-coder': 5.2.2
       adhan: 4.4.3
+      consola: 3.2.3
       rxjs: 7.8.1
-      tslog: 4.9.2
     devDependencies:
       '@antfu/eslint-config': 0.26.3_a3vhf2jlnnjnbmpqqovi7mhg4a
       '@antfu/ni': 0.17.2
@@ -2389,6 +2389,11 @@ packages:
   /consola/2.15.3:
     resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==}
     dev: true
+
+  /consola/3.2.3:
+    resolution: {integrity: sha512-I5qxpzLv+sJhTVEoLYNcTW+bThDCPsit0vLNKShZx6rLtpilNpmmeTPaeqJb9ZE9dV3DGaeby6Vuhrw38WjeyQ==}
+    engines: {node: ^14.18.0 || >=16.10.0}
+    dev: false
 
   /conventional-changelog-angular/5.0.13:
     resolution: {integrity: sha512-i/gipMxs7s8L/QeuavPF2hLnJgH6pEZAttySB6aiQLWcX3puWDL3ACVmvBhJGxnAy52Qc15ua26BufY6KpmrVA==}
@@ -6524,11 +6529,6 @@ packages:
 
   /tslib/2.6.2:
     resolution: {integrity: sha512-AEYxH93jGFPn/a2iVAwW87VuUIkR1FVUKB77NwMF7nBTDkDrrT/Hpt/IrCJ0QXhW27jTBDcf5ZY7w6RiqTMw2Q==}
-    dev: false
-
-  /tslog/4.9.2:
-    resolution: {integrity: sha512-wBM+LRJoNl34Bdu8mYEFxpvmOUedpNUwMNQB/NcuPIZKwdDde6xLHUev3bBjXQU7gdurX++X/YE7gLH8eXYsiQ==}
-    engines: {node: '>=16'}
     dev: false
 
   /tsutils/3.21.0_typescript@4.9.5:
