@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/whiterocktech/prayers-call/compare/v1.6.1...v1.6.2) (2023-10-27)
+
+
+### Bug Fixes
+
+* added config validation ([59759e5](https://github.com/whiterocktech/prayers-call/commit/59759e5864e363c95fbb3f24e29319dc4bff9857))
+
 ## [1.6.1](https://github.com/whiterocktech/prayers-call/compare/v1.6.0...v1.6.1) (2023-10-07)
 
 
