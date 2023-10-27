@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/whiterocktech/prayers-call/compare/v1.6.2...v1.7.0) (2023-10-27)
+
+
+### Features
+
+* used consola instaid of tslog ([7759bc3](https://github.com/whiterocktech/prayers-call/commit/7759bc33cb3d09808b81173e32846e88b1a1e999))
+
 ## [1.6.2](https://github.com/whiterocktech/prayers-call/compare/v1.6.1...v1.6.2) (2023-10-27)
 
 
