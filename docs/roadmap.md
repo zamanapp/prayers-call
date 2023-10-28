@@ -8,6 +8,7 @@ This roadmap outlines our future plans and the features we're considering. We we
 
 - [ ] Write more tests to cover the library
 - [ ] Improve the docs to have examples imported from actual TS files
+<!-- https://vitepress.dev/guide/markdown#import-code-snippets -->
 - [x] ~~Include Algolia search in the docs~~ (done via [minisearch](https://github.com/lucaong/minisearch/))
 
 ## Planned
@@ -26,13 +27,3 @@ This roadmap outlines our future plans and the features we're considering. We we
 ## How to Contribute
 
 We're always open to contributions and suggestions. If you have ideas or find issues, please [open an issue](https://github.com/your-repo/issues/new/choose) or submit a pull request.
-
-- Write more tests to cover the library
-- Offer open source tools to make comparing and building calculation methods easier.
-- Re-write the library from scratch making it reactive from the ground up [(using vue 3 reactivity package from the core api)](https://github.com/vuejs/core/tree/main/packages/reactivity)
-- Do we need to have daylight saving times handled in the library? if yes what's the best way to do it?
-- improve the docs to have examples imported from actual ts files <!-- https://vitepress.dev/guide/markdown#import-code-snippets -->
-- translated the docs to Arabic
-- Add altitude to the calculation formula
-- Support `Temporal` instead of `Date`
-- Offer testing utilities for reactive code
