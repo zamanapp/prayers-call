@@ -51,7 +51,7 @@ export interface CalculationsConfig {
    * */
   longitude: number
   /**
-   * Method used for the calculation, see [Calculation methods](https://prayers-ts.netlify.app/config/methods.html)
+   * Method used for the calculation, see [Calculation methods](https://prayers-call.netlify.app/config/methods.html)
    * @defaultValue Methods.UMM_AL_QURA
    * */
   method?: Methods | CustomMethod
@@ -62,7 +62,7 @@ export interface CalculationsConfig {
   adjustments?: Partial<PrayerAdjustments>
   /**
    * Rule to use for calculating prayer times at high latitudes.
-   * see [Advanced config](https://prayers-ts.netlify.app/config/config.html#advanced-configuration)
+   * see [Advanced config](https://prayers-call.netlify.app/config/config.html#advanced-configuration)
    * @defaultValue HighLatitudeRule.MiddleOfTheNight
    * */
   highLatitudeRule?: ValueOf<typeof HighLatitudeRule>
@@ -73,7 +73,7 @@ export interface CalculationsConfig {
   asrTime?: AsrTime
   /**
    * How to handle Midnight Sun & Polar Night days.
-   * see [Advanced config](https://prayers-ts.netlify.app/config/config.html#advanced-configuration)
+   * see [Advanced config](https://prayers-call.netlify.app/config/config.html#advanced-configuration)
    * @defaultValue PolarCircleResolution.Unresolved
    * */
   polarCircleResolution?: ValueOf<typeof PolarCircleResolution>
